@@ -1,0 +1,13 @@
+import {readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {providers} from '../dist/data/providers.js';
+for(const f of ['dist/app.js','dist/data/providers.js'])execFileSync(process.execPath,['--check',f]);
+const html=readFileSync('dist/index.html','utf8');
+assert(html.includes('charset="UTF-8"')&&html.includes('VibeBase'));
+for(const f of ['dist/styles.css','dist/app.js','dist/data/providers.js','dist/data/relays.json'])assert(readFileSync(f,'utf8').length>0);
+const js=readFileSync('dist/app.js','utf8');
+assert(!/fetch\s*\(\s*['"]https?:/.test(js),'Catalog must load from this site');
+const data=JSON.parse(readFileSync('dist/data/relays.json','utf8'));assert(data.sites.length>=800);
+assert.equal(providers.filter(p=>p.official).length,37);
+console.log(`Validated VibeBase: ${data.sites.length} raw catalog entries; all static assets present.`);

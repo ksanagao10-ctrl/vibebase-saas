@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VibeBase — AI API 导航、模型聚合、Android/SaaS 匹配与推广联盟。" />
+  <title>VibeBase · AI API 导航与推广联盟</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" data-route="home" aria-label="VibeBase 首页">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-text">VibeBase</span>
+        <span class="brand-beta">BETA</span>
+      </a>
+      <nav class="topnav" aria-label="主导航">
+        <a href="#explore" data-route="explore">API 导航</a>
+        <a href="#apps" data-route="apps">APP / SaaS</a>
+        <a href="#compare" data-route="compare">API 对比</a>
+        <a href="#calculator" data-route="calculator">成本计算</a>
+        <a href="#affiliate" data-route="affiliate">推广联盟</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="切换主题">◐</button>
+        <button class="ghost-btn" id="submitProviderBtn">提交平台</button>
+        <button class="primary-btn" data-route="affiliate">开始推广</button>
+      </div>
+      <button class="mobile-menu" id="mobileMenuBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
+    </header>
+
+    <main id="app"></main>
+
+    <footer class="footer">
+      <div>
+        <div class="brand footer-brand"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-text">VibeBase</span></div>
+        <p>AI API 导航 · 应用兼容库 · 推广联盟</p>
+      </div>
+      <div class="footer-links">
+        <a href="#explore" data-route="explore">API 数据库</a>
+        <a href="#apps" data-route="apps">应用兼容库</a>
+        <a href="#affiliate" data-route="affiliate">推广计划</a>
+        <button id="disclaimerBtn">风险说明</button>
+      </div>
+      <div class="freshness">目录快照 2026-09-19 · 官方种子资料 2026-09-17</div>
+    </footer>
+  </div>
+
+  <div class="compare-dock" id="compareDock" hidden></div>
+  <div class="modal-layer" id="modalLayer" aria-hidden="true"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
