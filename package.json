@@ -7,7 +7,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "node scripts/validate.mjs",
+    "build": "node scripts/validate.mjs && node scripts/release.mjs",
+    "verify:live": "node scripts/verify-live.mjs",
     "dev": "wrangler dev",
     "deploy": "npm run build && wrangler deploy"
   },

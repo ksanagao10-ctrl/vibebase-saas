@@ -42,6 +42,26 @@ Cloudflare 控制台 → Workers & Pages → Create application → Import a rep
 `npm run build` 检查脚本语法、UTF-8 声明、静态文件完整性和 800+ 索引数量。
 `npm run dev` 使用 Wrangler 本地预览。
 
+## 自动校验与发布版本
+
+每次构建会生成 `dist/release.json`，包含提交 SHA、构建时间和静态资源 SHA-256。
+该文件随部署发布，不提交到 Git。
+
+GitHub Actions 在 main 推送和拉取请求时执行构建校验；实际发布由 Cloudflare 的 Git 集成完成。
+请确认 Cloudflare 已连接本仓库，并开启 main 自动构建，构建命令保持 `npm run build`。
+此仓库不保存 Cloudflare Token。
+
+设置 GitHub 仓库 Actions 变量 `SITE_URL` 为实际线上地址后，main 的工作流会等待 Cloudflare 发布，并校验提交版本、CSS/JS/JSON 哈希、HTTP 状态、Content-Type、UTF-8 和 800+ 数据量。未设置该变量时，线上校验任务会跳过。
+
+也可手动执行：
+
+```sh
+npm run verify:live -- https://实际线上域名
+```
+
+线上资源校验不等于桌面端和手机端的交互验收；搜索、弹窗和分页仍需浏览器验证。
+GitHub 校验本身不会阻止 Cloudflare 构建；Cloudflare 构建中的 `npm run build` 失败才会阻止该次发布。
+
 ## 数据来源
 
 官方与重点平台种子来自用户提供的 VibeBase Full Catalog 包。中转索引来源：https://github.com/hvoyai/awesome-ai-api/blob/main/data.json 。条目收录不构成可用性或信誉保证，价格和返佣以各平台当前条款为准。

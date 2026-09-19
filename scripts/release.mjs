@@ -1,0 +1,14 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+
+let commit = process.env.CF_PAGES_COMMIT_SHA || process.env.WORKERS_CI_COMMIT_SHA || process.env.GITHUB_SHA;
+if (!commit) {
+  try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); }
+  catch { commit = 'local'; }
+}
+const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json'];
+const assets = Object.fromEntries(paths.map(path => [path, createHash('sha256').update(readFileSync(`dist/${path}`)).digest('hex')]));
+const manifest = { commit, builtAt: new Date().toISOString(), rawCatalogEntries: JSON.parse(readFileSync('dist/data/relays.json', 'utf8')).sites.length, assets };
+writeFileSync('dist/release.json', JSON.stringify(manifest, null, 2) + '\n');
+console.log(`Release manifest generated for ${commit}`);
