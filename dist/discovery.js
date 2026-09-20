@@ -56,9 +56,9 @@ function freeBoard(platform='all',compact=false,cap='all',query='',sort='name',p
  if(['trial','conditional'].includes(platform))return trialBoard(platform);
  const rows=rankedFreeModels(platform,cap,query,sort);
  const pages=Math.max(1,Math.ceil(rows.length/24)),currentPage=Math.max(1,Math.min(pages,Number(pageIndex)||1)),visibleRows=rows.slice((currentPage-1)*24,currentPage*24);
- if(compact)return '<p>按平台与具体模型整理，已核验 '+d.freeModels.length+' 个免费调用条目。</p><div class="discovery-grid three">'+rankedFreeModels('openrouter').slice(0,6).map(freeModelCard).join('')+'</div>'+link('boards/free','查看全部免费模型 →');
+ if(compact)return '<p>按平台与具体模型整理，已核验 '+rankedFreeModels().length+' 个免费调用条目。</p><div class="discovery-grid three">'+rankedFreeModels('openrouter').slice(0,6).map(freeModelCard).join('')+'</div>'+link('boards/free','查看全部免费模型 →');
  const path=(p,c)=>'boards/free/'+p+'/'+c+'/'+encodeURIComponent(query)+'/'+sort;
- const platforms=tabs([['all','全部平台 · '+d.freeModels.length],...d.freeModelPlatforms.map(p=>[p.id,p.name+' · '+rankedFreeModels(p.id).length])],platform,'boards/free/');
+ const platforms=tabs([['all','全部平台 · '+rankedFreeModels().length],...d.freeModelPlatforms.map(p=>[p.id,p.name+' · '+rankedFreeModels(p.id).length])],platform,'boards/free/');
  const caps='<nav class="discovery-tabs" aria-label="免费模型用途">'+freeCaps.map(([c,label])=>'<a href="#'+esc(path(platform,c))+'" data-route="'+esc(path(platform,c))+'" '+(c===cap?'aria-current="page"':'')+'>'+esc(label)+'</a>').join('')+'</nav>';
  const form='<form id="freeModelSearch" class="hero-search" data-platform="'+esc(platform)+'" data-cap="'+esc(cap)+'"><input id="freeModelQuery" aria-label="搜索免费模型" placeholder="搜索模型名称或完整 ID" value="'+esc(query)+'"><button>搜索</button></form><div class="price-controls"><label>排序<select id="freeModelSort"><option value="name" '+(sort==='name'?'selected':'')+'>模型名称</option><option value="context" '+(sort==='context'?'selected':'')+'>上下文从大到小</option></select></label></div>';
  const pagination='<nav class="discovery-tabs" aria-label="免费模型分页">'+(currentPage>1?link(path(platform,cap)+'/'+(currentPage-1),'← 上一页'):'')+'<span>第 '+currentPage+' / '+pages+' 页</span>'+(currentPage<pages?link(path(platform,cap)+'/'+(currentPage+1),'下一页 →'):'')+'</nav>';

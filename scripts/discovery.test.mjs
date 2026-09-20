@@ -59,7 +59,7 @@ console.log('Free relay filters, evidence and referral routing passed.');
 
 const freeRows=d.freeModels;
 assert.equal(new Set(freeRows.map(m=>m.platform+':'+m.modelId)).size,freeRows.length);
-assert.equal(rankedFreeModels('openrouter').length,21);
+assert.equal(rankedFreeModels('openrouter').length,freeRows.filter(m=>m.platform==='openrouter'&&!offerExpired(m)).length);
 assert.equal(rankedFreeModels('groq').length,10);
 assert.equal(rankedFreeModels('siliconflow').length,14);
 assert(rankedFreeModels('openrouter').every(m=>m.modelId.endsWith(':free')&&m.priceEvidence.prompt==='0'&&m.priceEvidence.completion==='0'));
@@ -82,5 +82,5 @@ assert(!freeRows.some(m=>['relay-5','relay-78','relay-255','relay-295'].includes
 assert(freeRows.filter(m=>m.platform==='relay-638').every(m=>m.groupNames.includes('\u516c\u76ca')));
 assert(freeRows.filter(m=>m.platform==='relay-215').every(m=>m.limits.includes('13:30')));
 assert.equal((renderDiscovery('boards/free').match(/class="discovery-card free-model-card"/g)||[]).length,24);
-assert.equal((renderDiscovery('boards/free/all/all//name/7').match(/class="discovery-card free-model-card"/g)||[]).length,16);
+assert.equal((renderDiscovery('boards/free/all/all//name/7').match(/class="discovery-card free-model-card"/g)||[]).length,rankedFreeModels().length-144);
 console.log('Relay group eligibility, exclusions and pagination passed.');
