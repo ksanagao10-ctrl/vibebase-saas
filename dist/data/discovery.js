@@ -193,7 +193,8 @@ export const discovery = {
       "desc": "保留用于已有项目兼容与专项评估；新任务请优先查看按具体交付物整理的模型方案。",
       "checkedAt": "2026-09-21",
       "status": "历史 / 专项备选",
-      "guideCount": 0
+      "guideCount": 0,
+      "vendor": "OpenAI"
     },
     {
       "id": "mistral-small",
@@ -455,7 +456,8 @@ export const discovery = {
       "pricingNote": "OpenRouter 目录文本输入 $2.0 / 输出 $10.0 每百万 Token；存在阶梯或时段覆盖价，按请求核对最终费率。",
       "context": 1050000,
       "status": "渠道目录已核对",
-      "guideCount": 4
+      "guideCount": 4,
+      "vendor": "OpenAI"
     },
     {
       "id": "flash38",
@@ -579,7 +581,8 @@ export const discovery = {
       "provider": null,
       "checkedAt": "2026-09-21",
       "status": "托管转写接口",
-      "guideCount": 1
+      "guideCount": 1,
+      "vendor": "OpenAI"
     },
     {
       "id": "whisper-turbo",
@@ -593,7 +596,8 @@ export const discovery = {
       "provider": null,
       "checkedAt": "2026-09-21",
       "status": "托管转写接口",
-      "guideCount": 1
+      "guideCount": 1,
+      "vendor": "OpenAI"
     },
     {
       "id": "rerank25",
@@ -621,6 +625,154 @@ export const discovery = {
       "provider": null,
       "checkedAt": "2026-09-21",
       "status": "文档视觉模型",
+      "guideCount": 1
+    },
+    {
+      "id": "astra6",
+      "name": "GPT-6 Astra",
+      "modelId": "gpt-6-astra",
+      "tasks": [
+        "text",
+        "code",
+        "knowledge"
+      ],
+      "desc": "复杂研究、推理、编码与文档创作；支持图像输入，输出文本。",
+      "pricingNote": "官方标准文本输入 $10 / 输出 $50 每百万 Token；超过 272K 输入时有阶梯价，工具另计。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 5
+    },
+    {
+      "id": "terra56",
+      "name": "GPT-5.6 Terra",
+      "modelId": "gpt-5.6-terra",
+      "tasks": [
+        "text",
+        "code",
+        "knowledge"
+      ],
+      "desc": "兼顾能力与成本的日常任务候选；支持文字与图像输入、结构化输出。",
+      "pricingNote": "官方标准文本输入 $2 / 输出 $12 每百万 Token；超过 272K 输入时有阶梯价，工具另计。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 4
+    },
+    {
+      "id": "openai-sunburst",
+      "name": "GPT Image 2.5 Sunburst",
+      "modelId": "gpt-image-2.5-sunburst",
+      "tasks": [
+        "image"
+      ],
+      "desc": "面向精细图像编辑与生成，适合商品修图、品牌视觉和复杂修改。",
+      "pricingNote": "文本输入 $5、图像输入 $8、图像输出 $30 每百万 Token；不能用旧版图片计算器直接推算本版单张成本。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 2
+    },
+    {
+      "id": "openai-flare",
+      "name": "GPT Image 2.5 Flare",
+      "modelId": "gpt-image-2.5-flare",
+      "tasks": [
+        "image"
+      ],
+      "desc": "面向日常高质量生图与快速迭代，接受文字与图像输入。",
+      "pricingNote": "文本输入 $5、图像输入 $8、图像输出 $30 每百万 Token；实际用量随尺寸与质量设置变化。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 1
+    },
+    {
+      "id": "openai-live",
+      "name": "GPT-Live 1",
+      "modelId": "gpt-live-1",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "双向实时语音，可同时听与说；复杂推理和工具工作委托给后端代理。",
+      "pricingNote": "语音会话 $0.05 / 分钟，按秒计费；后端模型与工具调用另外计费。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 1
+    },
+    {
+      "id": "openai-realtime",
+      "name": "GPT-Realtime 2.1",
+      "modelId": "gpt-realtime-2.1",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "面向具有推理与工具调用的实时语音交互；与 GPT-Live 的后端委托结构分别评估。",
+      "pricingNote": "音频与文本的输入输出分别计费，按官方当前报价和会话用量试算。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-realtime-2.1",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 1
+    },
+    {
+      "id": "openai-transcribe",
+      "name": "GPT-Transcribe",
+      "modelId": "gpt-transcribe",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "用于录音文件及实时已提交片段的转写，支持上下文、关键词与多语言提示。",
+      "pricingNote": "官方转写音频时长价 $0.0045 / 分钟。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-transcribe",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 1
+    },
+    {
+      "id": "openai-tts",
+      "name": "GPT-4o mini TTS",
+      "modelId": "gpt-4o-mini-tts",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "把审核过的文字转为语音，可通过指令控制语气和表达；不是双向语音对话。",
+      "pricingNote": "按官方文本输入与音频输出用量计费；配乐、剪辑与重试另计。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-4o-mini-tts",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
+      "guideCount": 2
+    },
+    {
+      "id": "openai-embedding",
+      "name": "text-embedding-3-large",
+      "modelId": "text-embedding-3-large",
+      "tasks": [
+        "knowledge"
+      ],
+      "desc": "用于文本向量检索，适合在 OpenAI 接入体系中建立文档索引；不生成答案。",
+      "pricingNote": "按官方当前输入 Token 报价计算，向量库、索引、重排与回答生成另计。",
+      "source": "https://developers.openai.com/api/docs/models/text-embedding-3-large",
+      "provider": null,
+      "vendor": "OpenAI",
+      "checkedAt": "2026-09-21",
+      "status": "官方 API 型号",
       "guideCount": 1
     }
   ],
@@ -9669,6 +9821,12 @@ export const discovery = {
           "setup": "提供受众、语气样文、必含事实与禁用词。"
         },
         {
+          "model": "terra56",
+          "role": "OpenAI 日常写作",
+          "why": "适合有明确要求的日常文案与修订；用相同品牌样文对照语气和事实保真。",
+          "setup": "提供受众、长度、品牌样稿和必须保留的事实。"
+        },
+        {
           "model": "opus5",
           "role": "复杂交付",
           "why": "多约束长文与论证需要更多推理和复核时升级",
@@ -9695,6 +9853,12 @@ export const discovery = {
           "role": "复杂推演",
           "why": "推理与长流程候选，用于多条件方案比较",
           "setup": "提供证据包，要求区分事实、假设与建议。"
+        },
+        {
+          "model": "astra6",
+          "role": "OpenAI 复杂研究",
+          "why": "官方定位包含复杂研究与推理，适合需要交叉检查证据的方案分析。",
+          "setup": "提供证据材料和评价标准，计算交给工具，保留来源。"
         },
         {
           "model": "sol56",
@@ -9725,6 +9889,12 @@ export const discovery = {
           "setup": "把决策、行动人、截止日拆成独立字段。"
         },
         {
+          "model": "terra56",
+          "role": "OpenAI 文档整理",
+          "why": "支持长上下文文字处理，适合基于已有文档或转写稿提取摘要和待办。",
+          "setup": "音频先转写，再提取责任人、截止时间与原文位置。"
+        },
+        {
           "model": "pro31",
           "role": "复杂材料",
           "why": "跨文件推理与多模态核对候选",
@@ -9751,6 +9921,12 @@ export const discovery = {
           "role": "批量候选",
           "why": "渠道支持结构化输出与工具参数，适合字段抽取样本验证",
           "setup": "固定 schema，缺失值返回 null，并用程序验证。"
+        },
+        {
+          "model": "terra56",
+          "role": "OpenAI 结构化抽取",
+          "why": "官方支持结构化输出，适合将内容抽取到固定字段。",
+          "setup": "限定 schema、缺失值规则并运行字段校验。"
         },
         {
           "model": "flash38",
@@ -9781,6 +9957,12 @@ export const discovery = {
           "setup": "提供仓库约定、验收条件与可执行测试。"
         },
         {
+          "model": "astra6",
+          "role": "OpenAI 复杂开发",
+          "why": "官方将编码与端到端工作列为用途，适合跨文件复杂功能实现。",
+          "setup": "连接仓库和运行环境，以构建与测试结果验收。"
+        },
+        {
           "model": "sonnet5",
           "role": "持续开发",
           "why": "适合常规功能迭代与编码代理工作流",
@@ -9807,6 +9989,12 @@ export const discovery = {
           "role": "疑难排错",
           "why": "代码审查、缺陷查找和长链推理候选",
           "setup": "提交复现步骤、日志与相关代码，先论证根因。"
+        },
+        {
+          "model": "astra6",
+          "role": "OpenAI 根因分析",
+          "why": "适合需要复杂推理与代码上下文的排错和审查。",
+          "setup": "先运行复现用例，再验证根因与回归测试。"
         },
         {
           "model": "sol56",
@@ -9837,6 +10025,12 @@ export const discovery = {
           "setup": "提供参考图、组件规范、交互与验收尺寸。"
         },
         {
+          "model": "astra6",
+          "role": "OpenAI 视觉开发",
+          "why": "支持图像输入和编码，适合结合参考图实现界面与交互。",
+          "setup": "提供参考图和响应式要求，运行后截图检查差异。"
+        },
+        {
           "model": "sonnet5",
           "role": "日常页面",
           "why": "图像输入与专业编码候选，适合持续界面迭代",
@@ -9863,6 +10057,12 @@ export const discovery = {
           "role": "复杂视觉",
           "why": "官方定位偏复杂视觉、品牌一致性和精细控制",
           "setup": "提供品牌参考、构图与需要保留的元素。"
+        },
+        {
+          "model": "openai-sunburst",
+          "role": "OpenAI 精细视觉",
+          "why": "官方定位强调生成与编辑精度，匹配品牌物料与复杂视觉修改。",
+          "setup": "提供品牌素材与构图要求，最终文字和 Logo 逐项复核。"
         },
         {
           "model": "image",
@@ -9893,6 +10093,12 @@ export const discovery = {
           "setup": "输入真实主体参考图，明确禁止改动的区域。"
         },
         {
+          "model": "openai-sunburst",
+          "role": "OpenAI 商品编辑",
+          "why": "接受参考图并进行图像编辑，适合保留商品主体的局部修改候选。",
+          "setup": "明确允许修改的区域，回查包装、标识和材质。"
+        },
+        {
           "model": "image-pro",
           "role": "高要求修订",
           "why": "复杂品牌一致性与精细修改的候选",
@@ -9913,6 +10119,12 @@ export const discovery = {
           "role": "快速探索",
           "why": "官方面向速度与规模的单次视觉生成",
           "setup": "每轮只改变一个视觉变量，筛选后再精修。"
+        },
+        {
+          "model": "openai-flare",
+          "role": "OpenAI 快速生图",
+          "why": "官方面向日常快速高质量生图，适合批量探索构图。",
+          "setup": "控制尺寸与质量，选中方案后再做细节迭代。"
         },
         {
           "model": "flux",
@@ -10015,6 +10227,12 @@ export const discovery = {
           "setup": "先试听专名和数字，预览接口保留版本迁移安排。"
         },
         {
+          "model": "openai-tts",
+          "role": "OpenAI 可控配音",
+          "why": "针对文本转语音，可通过指令描述所需语气与表达。",
+          "setup": "先做短样试听专名与数字，再分段合成和混音。"
+        },
+        {
           "model": "tts-pro",
           "role": "细致配音备选",
           "why": "对语气与停顿要求高时用同一文稿对照试听",
@@ -10043,6 +10261,12 @@ export const discovery = {
           "setup": "为每名角色固定标识和声音，按段落试听。"
         },
         {
+          "model": "openai-tts",
+          "role": "OpenAI 分角色制作",
+          "why": "可按角色分别选择声音与指令生成，再在剪辑中组装对话。",
+          "setup": "每个角色独立生成片段；不是一次请求自动完成多角色时间线。"
+        },
+        {
           "model": "tts-pro",
           "role": "样稿对照",
           "why": "多角色配音候选，用于比较语气和长段稳定性",
@@ -10065,6 +10289,12 @@ export const discovery = {
           "setup": "提供术语提示，逐段复核关键金额和姓名。"
         },
         {
+          "model": "openai-transcribe",
+          "role": "OpenAI 专用转写",
+          "why": "官方支持录音文件转写和术语、多语言提示，匹配会议与专业录音。",
+          "setup": "提供术语提示，回查关键人名、数字和噪声段。"
+        },
+        {
           "model": "whisper-turbo",
           "role": "高吞吐候选",
           "why": "Groq 文档定位偏速度和费用的多语言转写",
@@ -10085,6 +10315,18 @@ export const discovery = {
           "role": "原生实时接口",
           "why": "官方 Live API 使用此型号，提供连续音频输入与语音输出",
           "setup": "建立 Live 会话，接入麦克风、播放、工具回传和重连。"
+        },
+        {
+          "model": "openai-live",
+          "role": "OpenAI 自然对话",
+          "why": "全双工语音可同时听说，适合自然对话与打断交互。",
+          "setup": "语音会话接入 Live API，复杂推理与工具工作配置后端代理。"
+        },
+        {
+          "model": "openai-realtime",
+          "role": "OpenAI 语音工具交互",
+          "why": "带推理与工具调用的实时语音型号，适合业务型语音代理。",
+          "setup": "验证工具结果回传、语音打断、重连与实际延迟。"
         }
       ]
     },
@@ -10101,6 +10343,12 @@ export const discovery = {
           "role": "检索质量候选",
           "why": "官方定位通用多语言检索质量优先",
           "setup": "固定切片和评估问题，检查 top-k 证据覆盖。"
+        },
+        {
+          "model": "openai-embedding",
+          "role": "OpenAI 文本检索",
+          "why": "为文本生成向量，可作为现有 OpenAI 技术栈的检索候选。",
+          "setup": "匹配文档切分与向量维度，用标注查询评估召回。"
         },
         {
           "model": "voyage-4",
@@ -10147,6 +10395,12 @@ export const discovery = {
           "setup": "只向模型提供获授权片段，逐条验证引用。"
         },
         {
+          "model": "terra56",
+          "role": "OpenAI 引用问答",
+          "why": "适合基于提供的文字证据回答问题，检索与引用验证仍由应用完成。",
+          "setup": "只传入获授权证据片段，无证据时拒答并核对引用。"
+        },
+        {
           "model": "flash38",
           "role": "多模态证据",
           "why": "当证据含文件、图像或音视频时作为回答候选",
@@ -10175,6 +10429,12 @@ export const discovery = {
           "setup": "保留原页和坐标，关键字段人工复核后再索引。"
         },
         {
+          "model": "astra6",
+          "role": "OpenAI 页面复核",
+          "why": "支持图像理解与推理，可辅助复核复杂页面，不代替专用 OCR 流程。",
+          "setup": "先 OCR，仅对难识别片段检查页面含义，数字回查原件。"
+        },
+        {
           "model": "pro31",
           "role": "复杂页面复核",
           "why": "多模态推理可辅助解释异常页面和跨页关系",
@@ -10182,5 +10442,20 @@ export const discovery = {
         }
       ]
     }
-  ]
+  ],
+  "openaiReview": {
+    "checkedAt": "2026-09-21",
+    "source": "https://developers.openai.com/api/docs/models/all",
+    "note": "ChatGPT 是 OpenAI 的应用产品；这里列的是 OpenAI 的具体 API 型号。ChatGPT 界面功能、订阅与 API 接入并不等同。",
+    "exclusions": [
+      {
+        "task": "video",
+        "reason": "官方目录将 Sora 2 / Sora 2 Pro 标为弃用，因此不列为新视频项目的默认候选。"
+      },
+      {
+        "task": "rerank",
+        "reason": "没有在本次官方目录中确认可直接替代专用重排接口的 OpenAI 型号；向量模型与生成模型不冒充专用重排模型。"
+      }
+    ]
+  }
 };

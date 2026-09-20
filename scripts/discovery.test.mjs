@@ -144,7 +144,7 @@ console.log('24 industries, 120 distinct modality briefs and 360 tier plans vali
 const guides=d.taskGuides;
 assert.equal(guides.length,21);
 assert.equal(new Set(guides.map(g=>g.id)).size,21);
-assert.equal(guides.reduce((n,g)=>n+g.picks.length,0),53);
+assert.equal(guides.reduce((n,g)=>n+g.picks.length,0),71);
 for(const t of d.tasks)assert(guides.some(g=>g.category===t.id));
 for(const g of guides){
  assert(g.goal&&g.criteria&&g.avoid);
@@ -159,10 +159,21 @@ for(const g of guides){
  assert.equal((html.match(/class="discovery-card task-pick"/g)||[]).length,g.picks.length);
  assert(!/undefined|NaN|\[object Object\]/.test(html));
 }
-assert.deepEqual(guides.find(g=>g.id==='realtime').picks.map(p=>p.model),['live38']);
+assert.deepEqual(guides.find(g=>g.id==='realtime').picks.map(p=>p.model),['live38','openai-live','openai-realtime']);
 assert(!guides.find(g=>g.id==='product-edit').picks.some(p=>['flux','image-lite'].includes(p.model)));
 assert(guides.find(g=>g.id==='rerank').picks.every(p=>p.model==='rerank25'));
 assert(!renderDiscovery('models/text').includes('Gemini 2.5 Flash-Lite'));
 assert(renderDiscovery('models/catalog').includes('Gemini 2.5 Flash-Lite'));
 assert(renderDiscovery('models/unknown/unknown').includes('具体任务'));
-console.log('21 task guides / 53 model matches: coverage, modality boundaries, source references and routes passed.');
+console.log('21 task guides / 71 model matches: coverage, modality boundaries, source references and routes passed.');
+
+for(const id of ['copy','summary','frontend','product-edit','transcribe','realtime','retrieve','rag-answer']){
+ const g=guides.find(g=>g.id===id);
+ assert(g.picks.some(p=>d.models.find(m=>m.id===p.model).vendor==='OpenAI'),id);
+ assert(renderDiscovery('models/'+g.category+'/'+g.id).includes('OpenAI'));
+}
+assert(searchDiscovery('ChatGPT').models.some(m=>m.id==='astra6'));
+assert(renderDiscovery('models/openai').includes('GPT Image 2.5 Sunburst'));
+assert(renderDiscovery('models/image').includes('OpenAI'));
+assert(d.openaiReview.exclusions.some(e=>e.task==='video'));
+console.log('OpenAI task coverage, visible brand labels, ChatGPT search and lifecycle exclusions passed.');
