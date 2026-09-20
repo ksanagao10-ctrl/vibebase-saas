@@ -1644,5 +1644,4581 @@ export const discovery = {
         "reason": "页面同时写免费体验和充值后调用，免费 API 额度与范围未明确。"
       }
     ]
+  },
+  "freeModelPlatforms": [
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "type": "聚合平台",
+      "source": "https://openrouter.ai/api/v1/models",
+      "rules": "https://openrouter.ai/docs/api_reference/limits",
+      "coverage": "当前公开目录中全部 21 个 :free 模型；自动路由不算具体模型。"
+    },
+    {
+      "id": "siliconflow",
+      "name": "硅基流动",
+      "type": "模型云平台",
+      "source": "https://siliconflow.cn/pricing",
+      "rules": "https://siliconflow.cn/pricing",
+      "coverage": "公开价格页已确认 14 个免费模型；折叠目录尚未全部核验，不代表完整清单。"
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "type": "推理平台",
+      "source": "https://console.groq.com/docs/rate-limits",
+      "rules": "https://console.groq.com/docs/rate-limits",
+      "coverage": "当前公开 Free Plan Limits 表中的 10 个模型。"
+    },
+    {
+      "id": "relay-27",
+      "name": "Modelsell",
+      "type": "中转站",
+      "source": "https://modelsell.com/api/pricing",
+      "rules": "https://modelsell.com/api/pricing",
+      "coverage": "公开价格目录确认 3 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-51",
+      "name": "XycAi(星道智能)",
+      "type": "中转站",
+      "source": "https://xycai.us/api/pricing",
+      "rules": "https://xycai.us/api/pricing",
+      "coverage": "公开价格目录确认 4 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-60",
+      "name": "Apiko",
+      "type": "中转站",
+      "source": "https://a-piko.top/api/pricing",
+      "rules": "https://a-piko.top/api/pricing",
+      "coverage": "公开价格目录确认 10 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-65",
+      "name": "Lietio",
+      "type": "中转站",
+      "source": "https://lietio.com/api/pricing",
+      "rules": "https://lietio.com/api/pricing",
+      "coverage": "公开价格目录确认 1 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-162",
+      "name": "LinkAPI",
+      "type": "中转站",
+      "source": "https://linkapi.ai/api/pricing",
+      "rules": "https://linkapi.ai/api/pricing",
+      "coverage": "公开价格目录确认 8 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-211",
+      "name": "哈基米",
+      "type": "中转站",
+      "source": "https://api.gemai.cc/api/pricing",
+      "rules": "https://api.gemai.cc/api/pricing",
+      "coverage": "公开价格目录确认 6 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-213",
+      "name": "大肘子",
+      "type": "中转站",
+      "source": "https://api.dzzi.ai/api/pricing",
+      "rules": "https://api.dzzi.ai/api/pricing",
+      "coverage": "公开价格目录确认 4 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-215",
+      "name": "宅恋",
+      "type": "中转站",
+      "source": "https://az.zlapi.vip/api/pricing",
+      "rules": "https://az.zlapi.vip/api/pricing",
+      "coverage": "公开价格目录确认 5 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-262",
+      "name": "Zooo Ai",
+      "type": "中转站",
+      "source": "https://zoooai.com/api/pricing",
+      "rules": "https://zoooai.com/api/pricing",
+      "coverage": "公开价格目录确认 3 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-311",
+      "name": "deepproxy",
+      "type": "中转站",
+      "source": "https://airouter.mxyhi.com/api/pricing",
+      "rules": "https://airouter.mxyhi.com/api/pricing",
+      "coverage": "公开价格目录确认 3 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-486",
+      "name": "OfficesAI",
+      "type": "中转站",
+      "source": "https://officesai.top/api/pricing",
+      "rules": "https://officesai.top/api/pricing",
+      "coverage": "公开价格目录确认 19 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-621",
+      "name": "NBAI",
+      "type": "中转站",
+      "source": "https://niubiai.ai/api/pricing",
+      "rules": "https://niubiai.ai/api/pricing",
+      "coverage": "公开价格目录确认 1 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-638",
+      "name": "瀛光 AI",
+      "type": "中转站",
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "rules": "https://ai.yzy15.dpdns.org/api/pricing",
+      "coverage": "公开价格目录确认 24 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-679",
+      "name": "酸奶AI",
+      "type": "中转站",
+      "source": "https://closedai.kylenqaq.com/api/pricing",
+      "rules": "https://closedai.kylenqaq.com/api/pricing",
+      "coverage": "公开价格目录确认 1 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-695",
+      "name": "apiopencc",
+      "type": "中转站",
+      "source": "https://sub.apiopencc.com/api/pricing",
+      "rules": "https://sub.apiopencc.com/api/pricing",
+      "coverage": "公开价格目录确认 1 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-716",
+      "name": "河图",
+      "type": "中转站",
+      "source": "https://hetune.top/api/pricing",
+      "rules": "https://hetune.top/api/pricing",
+      "coverage": "公开价格目录确认 21 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    },
+    {
+      "id": "relay-800",
+      "name": "深龙AI",
+      "type": "中转站",
+      "source": "https://shenlongapi.com/api/pricing",
+      "rules": "https://shenlongapi.com/api/pricing",
+      "coverage": "公开价格目录确认 1 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+    }
+  ],
+  "freeModels": [
+    {
+      "platform": "openrouter",
+      "modelId": "inclusionai/ling-3.0-flash-vl:free",
+      "name": "inclusionAI: Ling 3.0 Flash VL",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/inclusionai/ling-3.0-flash-vl:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nex-agi/nex-n2.5-mini:free",
+      "name": "Nex AGI: Nex-N2.5-Mini",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nex-agi/nex-n2.5-mini:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nex-agi/nex-n2.5-pro:free",
+      "name": "Nex AGI: Nex-N2.5-Pro",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nex-agi/nex-n2.5-pro:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "inclusionai/ling-3.0-flash-sante:free",
+      "name": "inclusionAI: Ling 3.0 Flash Sante",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/inclusionai/ling-3.0-flash-sante:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "inclusionai/ling-3.0-flash-fin:free",
+      "name": "inclusionAI: Ling 3.0 Flash Fin",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/inclusionai/ling-3.0-flash-fin:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "qwen/qwen3.8-27b:free",
+      "name": "Qwen: Qwen3.8 27B",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/qwen/qwen3.8-27b:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "dots-studio/dots-3-note-preview:free",
+      "name": "Dots Studio: Dots3-Note Preview",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 512000,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/dots-studio/dots-3-note-preview:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": "2026-09-30"
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "liquid/lfm-2.5-2.6b:free",
+      "name": "LiquidAI: LFM2.5-2.6B",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 65536,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/liquid/lfm-2.5-2.6b:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nvidia/nemotron-3.5-lightning:free",
+      "name": "NVIDIA: Nemotron 3.5 Lightning",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 1000000,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "thinkingmachines/inkling-small:free",
+      "name": "Thinking Machines: Inkling Small",
+      "capabilities": [
+        "text",
+        "vision",
+        "audio",
+        "tools",
+        "reasoning"
+      ],
+      "context": 1048576,
+      "inputModalities": [
+        "text",
+        "image",
+        "audio"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/thinkingmachines/inkling-small:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "poolside/laguna-s-2.1:free",
+      "name": "Poolside: Laguna S 2.1",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/poolside/laguna-s-2.1:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "thinkingmachines/inkling:free",
+      "name": "Thinking Machines: Inkling",
+      "capabilities": [
+        "text",
+        "vision",
+        "audio",
+        "tools",
+        "reasoning"
+      ],
+      "context": 1048576,
+      "inputModalities": [
+        "text",
+        "image",
+        "audio"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/thinkingmachines/inkling:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "poolside/laguna-xs-2.1:free",
+      "name": "Poolside: Laguna XS 2.1",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/poolside/laguna-xs-2.1:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "cohere/north-mini-code:free",
+      "name": "Cohere: North Mini Code",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 256000,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/cohere/north-mini-code:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "z-ai/glm-5.2:free",
+      "name": "Z.ai: GLM 5.2",
+      "capabilities": [
+        "text",
+        "reasoning"
+      ],
+      "context": 32768,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/z-ai/glm-5.2:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nvidia/nemotron-3.5-content-safety:free",
+      "name": "NVIDIA: Nemotron 3.5 Content Safety",
+      "capabilities": [
+        "text",
+        "vision",
+        "reasoning"
+      ],
+      "context": 128000,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nvidia/nemotron-3.5-content-safety:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "NVIDIA: Nemotron 3 Ultra",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 1000000,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "NVIDIA: Nemotron 3 Nano Omni",
+      "capabilities": [
+        "text",
+        "vision",
+        "audio",
+        "tools",
+        "reasoning"
+      ],
+      "context": 256000,
+      "inputModalities": [
+        "text",
+        "audio",
+        "image",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "google/gemma-4-26b-a4b-it:free",
+      "name": "Google: Gemma 4 26B A4B ",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/google/gemma-4-26b-a4b-it:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "google/gemma-4-31b-it:free",
+      "name": "Google: Gemma 4 31B",
+      "capabilities": [
+        "text",
+        "vision",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/google/gemma-4-31b-it:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "openrouter",
+      "modelId": "nvidia/nemotron-3-super-120b-a12b:free",
+      "name": "NVIDIA: Nemotron 3 Super",
+      "capabilities": [
+        "text",
+        "tools",
+        "reasoning"
+      ],
+      "context": 262144,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b:free",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
+      "endsAt": null
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "tencent/Hunyuan-MT-7B",
+      "name": "Hunyuan-MT-7B",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "XingChenAGI/Xing4.0-29B",
+      "name": "Xing4.0-29B",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "name": "PaddleOCR-VL-1.5",
+      "capabilities": [
+        "vision"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "BAAI/bge-m3",
+      "name": "bge-m3",
+      "capabilities": [
+        "embedding"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "BAAI/bge-reranker-v2-m3",
+      "name": "bge-reranker-v2-m3",
+      "capabilities": [
+        "rerank"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "BAAI/bge-large-zh-v1.5",
+      "name": "bge-large-zh-v1.5",
+      "capabilities": [
+        "embedding"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "BAAI/bge-large-en-v1.5",
+      "name": "bge-large-en-v1.5",
+      "capabilities": [
+        "embedding"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "Kwai-Kolors/Kolors",
+      "name": "Kolors",
+      "capabilities": [
+        "image"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "XingChenAGI/XingChenGSR-V1.0",
+      "name": "XingChenGSR-V1.0",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "XingChenAGI/XingChenASR-V3.2-Ultra",
+      "name": "XingChenASR-V3.2-Ultra",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "XingChenAGI/XingChenASR-Diarize-V3.0",
+      "name": "XingChenASR-Diarize-V3.0",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "XingChenAGI/XingChenASR-V3.2",
+      "name": "XingChenASR-V3.2",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "Qwen/Qwen3-ASR-1.7B",
+      "name": "Qwen3-ASR-1.7B",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "siliconflow",
+      "modelId": "FunAudioLLM/SenseVoiceSmall",
+      "name": "SenseVoiceSmall",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://siliconflow.cn/pricing",
+      "url": "https://siliconflow.cn/pricing",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "免费"
+      },
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+    },
+    {
+      "platform": "groq",
+      "modelId": "canopylabs/orpheus-arabic-saudi",
+      "name": "orpheus-arabic-saudi",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "10 RPM · 100 RPD · 1.2K TPM · 3.6K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "语音合成"
+    },
+    {
+      "platform": "groq",
+      "modelId": "canopylabs/orpheus-v1-english",
+      "name": "orpheus-v1-english",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "10 RPM · 100 RPD · 1.2K TPM · 3.6K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "语音合成"
+    },
+    {
+      "platform": "groq",
+      "modelId": "meta-llama/llama-prompt-guard-2-22m",
+      "name": "llama-prompt-guard-2-22m",
+      "capabilities": [
+        "safety"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 14.4K RPD · 15K TPM · 500K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "提示安全检测"
+    },
+    {
+      "platform": "groq",
+      "modelId": "meta-llama/llama-prompt-guard-2-86m",
+      "name": "llama-prompt-guard-2-86m",
+      "capabilities": [
+        "safety"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 14.4K RPD · 15K TPM · 500K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "提示安全检测"
+    },
+    {
+      "platform": "groq",
+      "modelId": "openai/gpt-oss-120b",
+      "name": "gpt-oss-120b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "文本"
+    },
+    {
+      "platform": "groq",
+      "modelId": "openai/gpt-oss-20b",
+      "name": "gpt-oss-20b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "文本"
+    },
+    {
+      "platform": "groq",
+      "modelId": "openai/gpt-oss-safeguard-20b",
+      "name": "gpt-oss-safeguard-20b",
+      "capabilities": [
+        "safety"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "安全检测"
+    },
+    {
+      "platform": "groq",
+      "modelId": "qwen/qwen3.8-27b",
+      "name": "qwen3.8-27b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "文本"
+    },
+    {
+      "platform": "groq",
+      "modelId": "whisper-large-v3",
+      "name": "whisper-large-v3",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "20 RPM · 2K RPD · 7.2K 音频秒/小时 · 28.8K 音频秒/日。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "语音识别"
+    },
+    {
+      "platform": "groq",
+      "modelId": "whisper-large-v3-turbo",
+      "name": "whisper-large-v3-turbo",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://console.groq.com/docs/rate-limits",
+      "url": "https://console.groq.com/docs/models",
+      "freeType": "quota",
+      "checkedAt": "2026-09-21",
+      "priceEvidence": {
+        "label": "Free Plan Limits"
+      },
+      "limits": "20 RPM · 2K RPD · 7.2K 音频秒/小时 · 28.8K 音频秒/日。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
+      "note": "语音识别"
+    },
+    {
+      "platform": "relay-27",
+      "modelId": "mimo-v2.5-tts",
+      "name": "mimo-v2.5-tts",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://modelsell.com/api/pricing",
+      "url": "https://modelsell.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 XiaomiMIMO。XiaomiMIMO：XiaomiMIMO 官方。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "XiaomiMIMO"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "XiaomiMIMO": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-27",
+      "modelId": "mimo-v2.5-tts-voicedesign",
+      "name": "mimo-v2.5-tts-voicedesign",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://modelsell.com/api/pricing",
+      "url": "https://modelsell.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 XiaomiMIMO。XiaomiMIMO：XiaomiMIMO 官方。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "XiaomiMIMO"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "XiaomiMIMO": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-27",
+      "modelId": "mimo-v2.5-tts-voiceclone",
+      "name": "mimo-v2.5-tts-voiceclone",
+      "capabilities": [
+        "audio"
+      ],
+      "context": null,
+      "source": "https://modelsell.com/api/pricing",
+      "url": "https://modelsell.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 XiaomiMIMO。XiaomiMIMO：XiaomiMIMO 官方。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "XiaomiMIMO"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "XiaomiMIMO": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-51",
+      "modelId": "glm-4.5-flash",
+      "name": "glm-4.5-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://xycai.us/api/pricing",
+      "url": "https://xycai.us/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 glm-flow。glm-flow：GLM 工作流。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "glm-flow"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "glm-flow": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-51",
+      "modelId": "glm-4.7-flash",
+      "name": "glm-4.7-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://xycai.us/api/pricing",
+      "url": "https://xycai.us/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 glm-flow。glm-flow：GLM 工作流。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "glm-flow"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "glm-flow": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-51",
+      "modelId": "glm-4-flash",
+      "name": "glm-4-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://xycai.us/api/pricing",
+      "url": "https://xycai.us/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 glm-flow。glm-flow：GLM 工作流。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "glm-flow"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "glm-flow": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-51",
+      "modelId": "glm-4.6v-flash",
+      "name": "glm-4.6v-flash",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://xycai.us/api/pricing",
+      "url": "https://xycai.us/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 glm-flow。glm-flow：GLM 工作流。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "glm-flow"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "glm-flow": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-fable-5-1",
+      "name": "claude-fable-5-1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-opus-5-high-fast",
+      "name": "claude-opus-5-high-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-sonnet-5",
+      "name": "claude-sonnet-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-sonnet-5-max",
+      "name": "claude-sonnet-5-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 1,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "gpt-5.6-terra-max-fast",
+      "name": "gpt-5.6-terra-max-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 1,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "muse-spark-1.3-max",
+      "name": "muse-spark-1.3-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0.625,
+        "model_price": 0,
+        "completion_ratio": 0.12,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-fable-5-1-max",
+      "name": "claude-fable-5-1-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "gpt-5.6-sol-max-fast",
+      "name": "gpt-5.6-sol-max-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-fable-5",
+      "name": "claude-fable-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-60",
+      "modelId": "claude-opus-5",
+      "name": "claude-opus-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://a-piko.top/api/pricing",
+      "url": "https://a-piko.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor免费福利。Cursor免费福利：使用Anthropic协议，亏本福利，不稳定，限制高并发。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor免费福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor免费福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-65",
+      "modelId": "glm-5.3:free",
+      "name": "glm-5.3:free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://lietio.com/api/pricing",
+      "url": "https://lietio.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：免费渠道，不做任何保障。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]kimi-k3",
+      "name": "[free]kimi-k3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]deepseek-v4-pro-0813",
+      "name": "[free]deepseek-v4-pro-0813",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]GLM-5.3",
+      "name": "[free]GLM-5.3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]gpt-5.6-sol",
+      "name": "[free]gpt-5.6-sol",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]qwen3.8-max",
+      "name": "[free]qwen3.8-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]gemini-3.7-flash",
+      "name": "[free]gemini-3.7-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]grok-4-6",
+      "name": "[free]grok-4-6",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-162",
+      "modelId": "[free]GLM-5.3-flash",
+      "name": "[free]GLM-5.3-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://linkapi.ai/api/pricing",
+      "url": "https://linkapi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 once。once：按次计费分组 / Per-use billing group。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "once"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": "tiered_expr",
+        "billing_expr": "tier(\"request\", fixed(0))"
+      },
+      "groupRatios": {
+        "once": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]GLM-5.3",
+      "name": "[free]GLM-5.3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]claude-opus-5",
+      "name": "[free]claude-opus-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]deepseek-v4-pro-0813",
+      "name": "[free]deepseek-v4-pro-0813",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]qwen3.8-max",
+      "name": "[free]qwen3.8-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]gpt-5.6-sol",
+      "name": "[free]gpt-5.6-sol",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-211",
+      "modelId": "[free]kimi-k3",
+      "name": "[free]kimi-k3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.gemai.cc/api/pricing",
+      "url": "https://api.gemai.cc/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default。default：默认分组。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-213",
+      "modelId": "gpt-oss-20b-free",
+      "name": "gpt-oss-20b-free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.dzzi.ai/api/pricing",
+      "url": "https://api.dzzi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-213",
+      "modelId": "[按次]glm-5.3-flash-free",
+      "name": "[按次]glm-5.3-flash-free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.dzzi.ai/api/pricing",
+      "url": "https://api.dzzi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-213",
+      "modelId": "gpt-oss-120b-free",
+      "name": "gpt-oss-120b-free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.dzzi.ai/api/pricing",
+      "url": "https://api.dzzi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-213",
+      "modelId": "[按次]deepseek-v4-flash-free",
+      "name": "[按次]deepseek-v4-flash-free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://api.dzzi.ai/api/pricing",
+      "url": "https://api.dzzi.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-215",
+      "modelId": "[0.01]限时/kimi-k3",
+      "name": "[0.01]限时/kimi-k3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://az.zlapi.vip/api/pricing",
+      "url": "https://az.zlapi.vip/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free。Free：福利模型[免费时间13:30-15:30]。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。仅站方所列 13:30–15:30 免费时段；时区未说明，使用前确认，其他分组可能收费。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0.01,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free": 0
+      },
+      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+    },
+    {
+      "platform": "relay-215",
+      "modelId": "[0.01]限时/gpt-5.6-sol",
+      "name": "[0.01]限时/gpt-5.6-sol",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://az.zlapi.vip/api/pricing",
+      "url": "https://az.zlapi.vip/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free。Free：福利模型[免费时间13:30-15:30]。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。仅站方所列 13:30–15:30 免费时段；时区未说明，使用前确认，其他分组可能收费。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0.01,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free": 0
+      },
+      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+    },
+    {
+      "platform": "relay-215",
+      "modelId": "[0.01]限时/GLM-5.3",
+      "name": "[0.01]限时/GLM-5.3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://az.zlapi.vip/api/pricing",
+      "url": "https://az.zlapi.vip/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free。Free：福利模型[免费时间13:30-15:30]。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。仅站方所列 13:30–15:30 免费时段；时区未说明，使用前确认，其他分组可能收费。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0.01,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free": 0
+      },
+      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+    },
+    {
+      "platform": "relay-215",
+      "modelId": "[0.01]限时/deepseek-v4-pro-0813",
+      "name": "[0.01]限时/deepseek-v4-pro-0813",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://az.zlapi.vip/api/pricing",
+      "url": "https://az.zlapi.vip/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free。Free：福利模型[免费时间13:30-15:30]。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。仅站方所列 13:30–15:30 免费时段；时区未说明，使用前确认，其他分组可能收费。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0.01,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free": 0
+      },
+      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+    },
+    {
+      "platform": "relay-215",
+      "modelId": "[0.01]限时/qwen3.8-max",
+      "name": "[0.01]限时/qwen3.8-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://az.zlapi.vip/api/pricing",
+      "url": "https://az.zlapi.vip/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free。Free：福利模型[免费时间13:30-15:30]。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。仅站方所列 13:30–15:30 免费时段；时区未说明，使用前确认，其他分组可能收费。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0.01,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free": 0
+      },
+      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+    },
+    {
+      "platform": "relay-262",
+      "modelId": "claude-sonnet-4.6",
+      "name": "claude-sonnet-4.6",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://zoooai.com/api/pricing",
+      "url": "https://zoooai.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Claude Code。Claude Code：Claude Code有缓存命中率。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Claude Code"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Claude Code": 1.5
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-262",
+      "modelId": "claude-opus-4.6",
+      "name": "claude-opus-4.6",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://zoooai.com/api/pricing",
+      "url": "https://zoooai.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Claude Code。Claude Code：Claude Code有缓存命中率。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Claude Code"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Claude Code": 1.5
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-262",
+      "modelId": "claude-opus-4.5",
+      "name": "claude-opus-4.5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://zoooai.com/api/pricing",
+      "url": "https://zoooai.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Claude Code。Claude Code：Claude Code有缓存命中率。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Claude Code"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Claude Code": 1.5
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-311",
+      "modelId": "agnes-image-2.0-flash",
+      "name": "agnes-image-2.0-flash",
+      "capabilities": [
+        "image"
+      ],
+      "context": null,
+      "source": "https://airouter.mxyhi.com/api/pricing",
+      "url": "https://airouter.mxyhi.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：限时free,随时死,别找我。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-311",
+      "modelId": "agnes-image-2.1-flash",
+      "name": "agnes-image-2.1-flash",
+      "capabilities": [
+        "image"
+      ],
+      "context": null,
+      "source": "https://airouter.mxyhi.com/api/pricing",
+      "url": "https://airouter.mxyhi.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：限时free,随时死,别找我。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-311",
+      "modelId": "agnes-2.0-flash",
+      "name": "agnes-2.0-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://airouter.mxyhi.com/api/pricing",
+      "url": "https://airouter.mxyhi.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 free。free：限时free,随时死,别找我。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "free"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "free": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "meta/llama-4-maverick-17b-128e-instruct",
+      "name": "meta/llama-4-maverick-17b-128e-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "google/gemma-2-2b-it",
+      "name": "google/gemma-2-2b-it",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "microsoft/phi-3-vision-128k-instruct",
+      "name": "microsoft/phi-3-vision-128k-instruct",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "microsoft/phi-4-multimodal-instruct",
+      "name": "microsoft/phi-4-multimodal-instruct",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "meta/codellama-70b",
+      "name": "meta/codellama-70b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "mistralai/mistral-large-2-instruct",
+      "name": "mistralai/mistral-large-2-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "nvidia/llama-3.3-nemotron-super-49b-v1",
+      "name": "nvidia/llama-3.3-nemotron-super-49b-v1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "google/codegemma-7b",
+      "name": "google/codegemma-7b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "microsoft/phi-3.5-moe-instruct",
+      "name": "microsoft/phi-3.5-moe-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "google/gemma-3n-e2b-it",
+      "name": "google/gemma-3n-e2b-it",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "meta/llama-3.2-90b-vision-instruct",
+      "name": "meta/llama-3.2-90b-vision-instruct",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "google/codegemma-1.1-7b",
+      "name": "google/codegemma-1.1-7b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "nvidia/llama-3.1-nemotron-51b-instruct",
+      "name": "nvidia/llama-3.1-nemotron-51b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "nvidia/llama3-chatqa-1.5-70b",
+      "name": "nvidia/llama3-chatqa-1.5-70b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "meta/llama-3.3-70b-instruct",
+      "name": "meta/llama-3.3-70b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "mistralai/codestral-22b-instruct-v0.1",
+      "name": "mistralai/codestral-22b-instruct-v0.1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "nvidia/nemotron-4-340b-instruct",
+      "name": "nvidia/nemotron-4-340b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "meta/llama-3.1-70b-instruct",
+      "name": "meta/llama-3.1-70b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-486",
+      "modelId": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "name": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://officesai.top/api/pricing",
+      "url": "https://officesai.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 基础普及通道。基础普及通道：Offices AI 的基础款通道，里面集中了 100 +普通模型。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "基础普及通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "基础普及通道": 0.15
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-621",
+      "modelId": "agnes-2.0-flash",
+      "name": "agnes-2.0-flash",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://niubiai.ai/api/pricing",
+      "url": "https://niubiai.ai/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 NBAI福利。NBAI福利：NBAI福利(超低倍率)。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "NBAI福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0.5,
+        "model_price": 0,
+        "completion_ratio": 1.5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "NBAI福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama-nemotron-embed-vl-1b-v2",
+      "name": "nvidia/llama-nemotron-embed-vl-1b-v2",
+      "capabilities": [
+        "embedding"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "mistralai/mistral-large-2-instruct",
+      "name": "mistralai/mistral-large-2-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama-3.1-nemotron-51b-instruct",
+      "name": "nvidia/llama-3.1-nemotron-51b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "deepseek-ai/deepseek-coder-6.7b-instruct",
+      "name": "deepseek-ai/deepseek-coder-6.7b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "meta/codellama-70b",
+      "name": "meta/codellama-70b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/cosmos-reason2-8b",
+      "name": "nvidia/cosmos-reason2-8b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/riva-translate-4b-instruct-v1.1",
+      "name": "nvidia/riva-translate-4b-instruct-v1.1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "mistralai/mistral-7b-instruct-v0.3",
+      "name": "mistralai/mistral-7b-instruct-v0.3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "microsoft/phi-3-vision-128k-instruct",
+      "name": "microsoft/phi-3-vision-128k-instruct",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "mistralai/codestral-22b-instruct-v0.1",
+      "name": "mistralai/codestral-22b-instruct-v0.1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama3-chatqa-1.5-70b",
+      "name": "nvidia/llama3-chatqa-1.5-70b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "mistralai/mistral-nemotron",
+      "name": "mistralai/mistral-nemotron",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 3,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "google/codegemma-1.1-7b",
+      "name": "google/codegemma-1.1-7b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "name": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "deepseek-ai/deepseek-v4-pro-0813",
+      "name": "deepseek-ai/deepseek-v4-pro-0813",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "google/codegemma-7b",
+      "name": "google/codegemma-7b",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "meta/llama-guard-4-12b",
+      "name": "meta/llama-guard-4-12b",
+      "capabilities": [
+        "safety"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/nemotron-4-340b-instruct",
+      "name": "nvidia/nemotron-4-340b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+      "name": "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+      "capabilities": [
+        "safety"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "microsoft/phi-3.5-moe-instruct",
+      "name": "microsoft/phi-3.5-moe-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "name": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 3,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "meta/llama-3.2-90b-vision-instruct",
+      "name": "meta/llama-3.2-90b-vision-instruct",
+      "capabilities": [
+        "text",
+        "vision"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-638",
+      "modelId": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "name": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://ai.yzy15.dpdns.org/api/pricing",
+      "url": "https://ai.yzy15.dpdns.org/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 公益。公益：公益提供，不保证可用性。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "公益"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "公益": 0.01
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-679",
+      "modelId": "dots3-note-prev",
+      "name": "dots3-note-prev",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://closedai.kylenqaq.com/api/pricing",
+      "url": "https://closedai.kylenqaq.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 DOTS。DOTS：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "DOTS"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "DOTS": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-695",
+      "modelId": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+      "name": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+      "capabilities": [
+        "embedding"
+      ],
+      "context": null,
+      "source": "https://sub.apiopencc.com/api/pricing",
+      "url": "https://sub.apiopencc.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 default / GPT特惠。default：默认分组；GPT特惠：长期优惠活动，支持GPT5.6、5.5。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "default",
+        "GPT特惠"
+      ],
+      "priceEvidence": {
+        "quota_type": 1,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 0,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "default": 1,
+        "GPT特惠": 0.5
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-sol-max-fast",
+      "name": "gpt-5.6-sol-max-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-terra-max",
+      "name": "gpt-5.6-terra-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-terra-fast",
+      "name": "gpt-5.6-terra-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "muse-spark-1.3",
+      "name": "muse-spark-1.3",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-fable",
+      "name": "claude-fable",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-opus-5-fast",
+      "name": "claude-opus-5-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-opus-5-high-fast",
+      "name": "claude-opus-5-high-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-terra-max-fast",
+      "name": "gpt-5.6-terra-max-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 1,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-sonnet-5",
+      "name": "claude-sonnet-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-sol-fast",
+      "name": "gpt-5.6-sol-fast",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-fable-5",
+      "name": "claude-fable-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-fable-5-1",
+      "name": "claude-fable-5-1",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-opus",
+      "name": "claude-opus",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-fable-5-1-max",
+      "name": "claude-fable-5-1-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "muse-spark-1.3-max",
+      "name": "muse-spark-1.3-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0.625,
+        "model_price": 0,
+        "completion_ratio": 0.12,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-opus-5-high",
+      "name": "claude-opus-5-high",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-opus-5",
+      "name": "claude-opus-5",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 2.5,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "gpt-5.6-sol-max",
+      "name": "gpt-5.6-sol-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 6,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-sonnet-5-max",
+      "name": "claude-sonnet-5-max",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 1,
+        "model_price": 0,
+        "completion_ratio": 5,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "muse-spark",
+      "name": "muse-spark",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-716",
+      "modelId": "claude-sonnet",
+      "name": "claude-sonnet",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://hetune.top/api/pricing",
+      "url": "https://hetune.top/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Cursor福利。Cursor福利：Anthropic协议。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。零价依据为该分组倍率 0；其他分组的同名模型可能收费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Cursor福利"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 37.5,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Cursor福利": 0
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    },
+    {
+      "platform": "relay-800",
+      "modelId": "z-ai/glm-5.2:free",
+      "name": "z-ai/glm-5.2:free",
+      "capabilities": [
+        "text"
+      ],
+      "context": null,
+      "source": "https://shenlongapi.com/api/pricing",
+      "url": "https://shenlongapi.com/",
+      "freeType": "zero",
+      "checkedAt": "2026-09-21",
+      "limits": "仅限分组 Free免费通道。Free免费通道：。需账号与对应分组权限；资格、额度上限和截止时间未完成登录验证。公开标准计费字段为零；不代表包月套餐、附加服务也免费。本站仅记录渠道声明，未验证底层模型身份或调用成功率。",
+      "groupNames": [
+        "Free免费通道"
+      ],
+      "priceEvidence": {
+        "quota_type": 0,
+        "model_ratio": 0,
+        "model_price": 0,
+        "completion_ratio": 1,
+        "billing_mode": null,
+        "billing_expr": null
+      },
+      "groupRatios": {
+        "Free免费通道": 1
+      },
+      "availability": "仅指定分组；账号资格待确认"
+    }
+  ],
+  "freeModelAudit": {
+    "checkedAt": "2026-09-21",
+    "scope": "已对目录内 847 家中转站逐站尝试公开 /api/pricing 入口，246 家返回可解析目录（含空目录），其余未获得可用价格数据。结合 OpenRouter、硅基流动、Groq 的公开目录，按具体模型和免费条件收录。接口不可读或未入榜不等于没有免费模型；未登录或执行推理。",
+    "pending": [
+      {
+        "name": "xiaoxuapi",
+        "url": "https://api.xiaoxuapi.com/",
+        "reason": "目录称每周免费模型，当前公开公告与价格响应未能确认具体名单。"
+      },
+      {
+        "name": "章鱼公益平台",
+        "url": "https://zhangyuapi.com/pricing",
+        "reason": "公开模型广场动态加载，未取得具体模型与免费价格的对应证据。"
+      },
+      {
+        "name": "Euzhi",
+        "url": "https://euzhi.vip/",
+        "reason": "文档有模型 ID，但未确认零价或明确免费层；公益名称不作为免费依据。"
+      },
+      {
+        "name": "728vibecode",
+        "url": "https://728vibecode.top/",
+        "reason": "目录有公益描述，站方页面无法核验具体模型 ID 与免费条件。"
+      },
+      {
+        "name": "Agent Router",
+        "url": "https://agentrouter.org/",
+        "reason": "赠额与公益宣传不能证明某个模型长期零价；待核对账号内模型分组。"
+      },
+      {
+        "name": "Gitee AI",
+        "url": "https://ai.gitee.com/serverless-api",
+        "reason": "公开页面未返回模型数据，暂不将历史免费信息当成当前价格。"
+      },
+      {
+        "name": "Pollinations",
+        "url": "https://github.com/pollinations/pollinations/blob/main/APIDOCS.md",
+        "reason": "模型与工具可能消耗 Pollen；需按具体模型核验，暂不将全平台视为免费。"
+      },
+      {
+        "name": "零价字段但另有计费规则",
+        "url": "https://origin.modelflare.dev/",
+        "reason": "Modelflare 按视频分辨率计费；兔子、数智AI 等存在计费表达式或其他费用，未因默认字段为 0 就入榜。"
+      },
+      {
+        "name": "占位、辅助动作与权限不明",
+        "url": "https://api.muskapi.cc/",
+        "reason": "MuskAI 批量零值缺少可用分组；MJ 弹窗/上传/缩放辅助动作、test-model、身份不明别名不作为具体免费模型。"
+      }
+    ],
+    "attemptedSites": 847,
+    "readablePricingSites": 246
   }
 };

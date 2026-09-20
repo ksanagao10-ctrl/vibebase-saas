@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {discovery as d} from '../dist/data/discovery.js';
 import {providers} from '../dist/data/providers.js';
-import {freeOffers,quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
+import {rankedFreeModels,freeOffers,quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
 
 const ids=xs=>new Set(xs.map(x=>x.id));
 for(const key of ['tasks','models','quotes','offers','news','industries','articles'])assert.equal(ids(d[key]).size,d[key].length,`Duplicate ${key}`);
@@ -53,6 +53,34 @@ assert.equal(d.relayFreeReview.confirmedCount,relayFree.length);
 assert(freeOffers().every(o=>o.type==='free'));
 for(const o of relayFree){assert(o.terms);assert(o.modelScope);assert(o.evidence);assert.equal(new URL(o.source).protocol,'https:');}
 assert(relayFree.find(o=>o.relayRank===47).terms.includes('Telegram'));
-assert(renderDiscovery('boards/free/relay').includes('https://voltapi.ai/register?aff=WPCLXQ43AQHV'));
+assert(renderDiscovery('boards/trials/relay').includes('https://voltapi.ai/register?aff=WPCLXQ43AQHV'));
 assert(!renderDiscovery('boards/free/other').includes('WPCLXQ43AQHV'));
 console.log('Free relay filters, evidence and referral routing passed.');
+
+const freeRows=d.freeModels;
+assert.equal(new Set(freeRows.map(m=>m.platform+':'+m.modelId)).size,freeRows.length);
+assert.equal(rankedFreeModels('openrouter').length,21);
+assert.equal(rankedFreeModels('groq').length,10);
+assert.equal(rankedFreeModels('siliconflow').length,14);
+assert(rankedFreeModels('openrouter').every(m=>m.modelId.endsWith(':free')&&m.priceEvidence.prompt==='0'&&m.priceEvidence.completion==='0'));
+assert(!freeRows.some(m=>m.modelId==='openrouter/free'||m.modelId.startsWith('google/lyria')));
+assert(rankedFreeModels('all','image').every(m=>m.capabilities.includes('image')));
+assert.equal(rankedFreeModels('openrouter','text','qwen3.8').length,1);
+assert.equal(rankedFreeModels('groq','image').length,0);
+const contextRows=rankedFreeModels('all','all','','context');
+assert(contextRows.every((m,i)=>!i||(contextRows[i-1].context||0)>=(m.context||0)));
+for(const m of freeRows){assert(m.modelId);assert(m.limits);assert(m.priceEvidence);assert(['zero','quota'].includes(m.freeType));assert.equal(new URL(m.source).protocol,'https:');}
+assert(!renderDiscovery('boards/free').includes('WPCLXQ43AQHV'));
+assert(renderDiscovery('boards/free/openrouter').includes('nvidia/nemotron-3.5-lightning:free'));
+assert(!renderDiscovery('boards/free/all/all/'+encodeURIComponent(attack)).includes(attack));
+assert(renderDiscovery('boards/free/groq/image').includes('empty'));
+console.log('Model-level free directory, filters, pricing evidence, separation and sorting passed.');
+
+assert.equal(freeRows.length,160);
+assert.equal(d.freeModelPlatforms.length,20);
+assert(!freeRows.some(m=>['relay-5','relay-78','relay-255','relay-295'].includes(m.platform)));
+assert(freeRows.filter(m=>m.platform==='relay-638').every(m=>m.groupNames.includes('\u516c\u76ca')));
+assert(freeRows.filter(m=>m.platform==='relay-215').every(m=>m.limits.includes('13:30')));
+assert.equal((renderDiscovery('boards/free').match(/class="discovery-card free-model-card"/g)||[]).length,24);
+assert.equal((renderDiscovery('boards/free/all/all//name/7').match(/class="discovery-card free-model-card"/g)||[]).length,16);
+console.log('Relay group eligibility, exclusions and pagination passed.');

@@ -234,3 +234,5 @@ input:focus,select:focus{border-color:var(--focus)}
 .model-id{overflow-wrap:anywhere;color:var(--muted);font-size:13px}
 .price-table td p{max-width:320px;min-width:180px;font-size:12px;line-height:1.7}
 .discovery-card p,.discovery-card h3{overflow-wrap:anywhere}
+
+.free-model-id{overflow-wrap:anywhere;font-size:12px;line-height:1.6}.free-model-card{min-width:0}.free-model-card h3{overflow-wrap:anywhere}
