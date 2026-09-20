@@ -98,7 +98,7 @@ for(const i of d.industries){
  const [quality,budget,value]=i.plans.map(p=>industryPlanCost(p));
  assert(quality>value&&value>budget);
  assert.equal(budget,0);
- assert.equal((renderDiscovery('industry/'+i.id).match(/industry-plan /g)||[]).length,3);
+ assert.equal((renderDiscovery('industry/'+i.id+'/text').match(/industry-plan /g)||[]).length,3);
 }
 assert(Math.abs(industryPlanCost(d.industries[0].plans[0])-6.5)<1e-9);
 assert(Math.abs(industryPlanCost(d.industries[0].plans[2])-1.575)<1e-9);
@@ -108,3 +108,35 @@ assert.equal(industryMatches('all','\u7535\u5546').length,1);
 assert(!renderDiscovery('industries/all/'+encodeURIComponent(attack)).includes(attack));
 assert.equal((homeDiscovery().match(/class="industry-card"/g)||[]).length,4);
 console.log('24 industries / 72 plans: model references, shared cost basis, search and routes passed.');
+
+// Each industry has distinct modality briefs, complete tier choices, and resolvable evidence.
+const {dimensions,workflowBriefs,capabilityModels,dimensionBrief,dimensionPlans}=await import('../dist/data/industry-workflows.js');
+assert.equal(Object.keys(workflowBriefs).length,24);
+for(const [dimension] of dimensions){
+ const outputs=new Set();
+ for(const i of d.industries){
+  const b=dimensionBrief(i,dimension);
+  for(const field of ['title','inputs','output','method','acceptance'])assert(b[field]?.length>3,i.id+'/'+dimension+'/'+field);
+  outputs.add(b.output);
+  const plans=dimensionPlans(i,dimension);
+  assert.deepEqual(plans.map(p=>p.id),['quality','budget','value']);
+  const html=renderDiscovery('industry/'+i.id+'/'+dimension);
+  assert.equal((html.match(/industry-plan /g)||[]).length,3);
+  assert(!/undefined|NaN|\[object Object\]/.test(html));
+  if(dimension!=='text')for(const p of plans){
+   assert.equal(p.actions.length,4);
+   for(const id of p.models){const m=capabilityModels[id];assert(m?.name);assert(m.price);assert(m.source.startsWith('https://'));}
+  }
+ }
+ assert.equal(outputs.size,24,'Distinct '+dimension+' deliverables');
+}
+for(const i of d.industries){
+ const html=renderDiscovery('industry/'+i.id);
+ assert.equal((html.match(/class="discovery-card dimension-card"/g)||[]).length,5);
+ assert(!/flash-lite|\[object Object\]/.test(html));
+}
+assert.equal(capabilityModels['veo-lite'].billing,'paid');
+assert.equal(capabilityModels.cosy.billing,'self-host');
+assert.equal(capabilityModels.med.billing,'research');
+assert(dimensionPlans(d.industries.find(i=>i.id==='health-ops'),'specialty')[1].models.every(id=>id!=='med'));
+console.log('24 industries, 120 distinct modality briefs and 360 tier plans validated.');

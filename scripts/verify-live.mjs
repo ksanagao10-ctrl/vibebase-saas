@@ -30,9 +30,10 @@ async function verify() {
     get('data/affiliate-programs.js', /(?:javascript|ecmascript)/i),
     get('data/affiliate-links.js', /(?:javascript|ecmascript)/i),
     get('discovery.js', /(?:javascript|ecmascript)/i),
-    get('data/discovery.js', /(?:javascript|ecmascript)/i)
+    get('data/discovery.js', /(?:javascript|ecmascript)/i),
+    get('data/industry-workflows.js', /(?:javascript|ecmascript)/i)
   ]);
-  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js'];
+  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js', 'data/industry-workflows.js'];
   results.forEach((result, index) => {
     // Cloudflare may inject analytics into HTML; other static files must match exactly.
     if (index > 0) assert.equal(result.hash, manifest.assets[paths[index]], `${paths[index]}: stale or modified asset`);
