@@ -39,4 +39,6 @@ assert.equal(taskQuotes('knowledge')[0].cost,.02);
 assert.equal(taskQuotes('audio')[1].cost,taskQuotes('audio')[2].cost);
 assert(!renderDiscovery('model/flux').includes('data-discover-provider="null"'));
 assert(renderDiscovery('model/image').includes('0.0672'));
+assert(renderDiscovery('boards/price/sonnet').includes('value="sonnet" selected'));
+assert(!renderDiscovery('boards/price/sonnet').includes('data-quote-id="google-flash"'));
 console.log('Discovery: references, quote arithmetic, expiry boundaries, search escaping and routes passed.');
