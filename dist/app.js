@@ -1,10 +1,12 @@
-import { providers, apps, affiliateRows } from './data/providers.js';
+import { providers, apps } from './data/providers.js';
+import { affiliatePrograms, affiliateCheckedAt } from './data/affiliate-programs.js';
+import { affiliateFor, activeReferral, providerDestination, affiliateStatusLabels, affiliateKindLabels } from './data/affiliate-links.js';
 
 const app = document.querySelector('#app');
 const modalLayer = document.querySelector('#modalLayer');
 const compareDock = document.querySelector('#compareDock');
 const state = {
-  route:'home', appProtocol:'', compare:new Set(), page:1, pageSize:48,
+  route:'home', appProtocol:'', affiliateScope:'all', affiliateKind:'all', affiliateQuery:'', compare:new Set(), page:1, pageSize:48,
   filters:{q:'',type:'all',scope:'all',verified:false,china:false,model:[],protocol:[],android:false},
   calc:{input:10,output:2,inputPrice:1,outputPrice:5,calls:1000},
   catalog:{status:'loading',relayCount:providers.filter(p=>!p.official).length,sourceDate:'',error:''}
@@ -58,7 +60,7 @@ function mergeRelaySites(sites,updatedDate){
     if(!site?.name) continue;
     const key=normalizeName(site.name);
     if(seededNames.has(key)) continue;
-    const item=normalizeRelay(site,updatedDate); providers.push(item); seededNames.add(key); added++;
+    const item=normalizeRelay(site,updatedDate); applyAffiliateRecord(item); providers.push(item); seededNames.add(key); added++;
   }
   state.catalog.relayCount=providers.filter(p=>!p.official).length;
   state.catalog.sourceDate=updatedDate||state.catalog.sourceDate;
@@ -121,7 +123,7 @@ function home(){
         <div class="quick-tags"><button data-quick="Claude">Claude</button><button data-quick="DeepSeek">DeepSeek</button><button data-quick="OpenAI">OpenAI Compatible</button><button data-quick="Android">Android 可用</button></div>
       </div>
       <div class="hero-side">
-        <div class="pulse-card"><div class="pulse-grid"></div><div class="pulse-orb"></div><div class="pulse-top"><span>API MARKET PULSE</span><span class="live-pill">● CATALOG SNAPSHOT</span></div><div class="pulse-number">${providers.length}<span style="font-size:22px;letter-spacing:-1px"> APIs</span></div><div class="pulse-label">官方 API + 中转 / Router / Gateway 全量线索</div><div class="pulse-bottom"><div class="pulse-bars">${[34,64,42,80,55,93,62,73,46,84,58,92].map(h=>`<span style="height:${h}%"></span>`).join('')}</div><div class="pulse-stats"><div><b>${providers.filter(x=>x.android).length}</b><span>ANDROID READY</span></div><div><b>${apps.length}</b><span>APP / SAAS</span></div><div><b>${affiliateRows.filter(x=>x.state==='ok').length}</b><span>PROMO LEADS</span></div></div></div></div>
+        <div class="pulse-card"><div class="pulse-grid"></div><div class="pulse-orb"></div><div class="pulse-top"><span>API MARKET PULSE</span><span class="live-pill">● CATALOG SNAPSHOT</span></div><div class="pulse-number">${providers.length}<span style="font-size:22px;letter-spacing:-1px"> APIs</span></div><div class="pulse-label">官方 API + 中转 / Router / Gateway 全量线索</div><div class="pulse-bottom"><div class="pulse-bars">${[34,64,42,80,55,93,62,73,46,84,58,92].map(h=>`<span style="height:${h}%"></span>`).join('')}</div><div class="pulse-stats"><div><b>${providers.filter(x=>x.android).length}</b><span>ANDROID READY</span></div><div><b>${apps.length}</b><span>APP / SAAS</span></div><div><b>${affiliatePrograms.filter(x=>x.status==='documented'&&x.kind!=='enterprise').length}</b><span>PROMO LEADS</span></div></div></div></div>
       </div>
     </section>
     <section class="journey-grid">
@@ -190,15 +192,42 @@ function calculatorPage(){
   return `<div class="page"><div class="section-head"><div><div class="eyebrow"><span class="eyebrow-dot"></span>COST CALCULATOR</div><h2 style="margin-top:14px">Token 成本估算</h2><p>填写输入、输出单价与调用量，估算每月 API 成本。</p></div></div><div class="calculator-shell"><div class="calc-panel"><div class="field-grid"><div class="field"><label>每次输入 Token <span>tokens</span></label><input data-calc="input" type="number" min="0" value="${c.input}"></div><div class="field"><label>每次输出 Token <span>tokens</span></label><input data-calc="output" type="number" min="0" value="${c.output}"></div></div><div class="field-grid"><div class="field"><label>输入价格 <span>$/1M tokens</span></label><input data-calc="inputPrice" type="number" min="0" step="0.01" value="${c.inputPrice}"></div><div class="field"><label>输出价格 <span>$/1M tokens</span></label><input data-calc="outputPrice" type="number" min="0" step="0.01" value="${c.outputPrice}"></div></div><div class="field"><label>月调用次数 <span>calls</span></label><input data-calc="calls" type="number" min="0" value="${c.calls}"></div><div class="notice" style="margin-top:18px">单价请参照平台最新报价填写，计算器不会自动获取实时价格。</div></div><div class="calc-result"><div class="eyebrow"><span class="eyebrow-dot"></span>ESTIMATED MONTHLY COST</div><div class="cost"><small>$</small>${monthly.toFixed(4)}</div><div class="cost-sub">按当前输入、输出与调用次数估算，不含平台附加费、缓存、Batch、长上下文阶梯价。</div><div class="cost-breakdown"><div><b>${(c.input*c.calls/1_000_000).toFixed(2)}M</b><span>INPUT TOKENS</span></div><div><b>${(c.output*c.calls/1_000_000).toFixed(2)}M</b><span>OUTPUT TOKENS</span></div><div><b>${c.calls.toLocaleString()}</b><span>CALLS / MONTH</span></div></div><div class="calc-note">VibeBase calculator · transparent formula</div></div></div></div>`;
 }
 
+function applyAffiliateRecord(p){
+  const r=affiliateFor(p); if(!r)return;
+  if(r.description)p.desc=r.description;
+  p.url=r.url; p.affiliate=`${affiliateStatusLabels[r.status]} · ${r.reward}`;
+  p.affiliateState=r.status==='documented'?'ok':'warn';
+}
+providers.forEach(applyAffiliateRecord);
+
 function affiliatePage(){
-  return `<div class="page"><section class="affiliate-hero"><div class="aff-intro"><div class="eyebrow"><span class="eyebrow-dot"></span>VIBEBASE ALLIANCE</div><h1>把 API 流量<br>变成收入。</h1><p>聚合“邀请返现、Credits 奖励、应用生态合作、渠道商务”四类推广机会。对状态冲突的平台直接标记待核验，不把历史活动伪装成当前返佣。</p><div class="aff-flow"><span class="flow-step">内容 / SEO / GEO</span><span class="flow-arrow">→</span><span class="flow-step">VibeBase 导航</span><span class="flow-arrow">→</span><span class="flow-step">API 注册</span><span class="flow-arrow">→</span><span class="flow-step">返佣 / 合作</span></div></div><div class="aff-widget"><div class="wallet-label">示例 · 你的推广收入仪表</div><div class="wallet-number"><small>¥</small> 8,420</div><div class="mini-chart">${[18,28,24,45,70,48,86,62,94,70,82,100].map(h=>`<span style="height:${h}%"></span>`).join('')}</div><div style="margin-top:18px;font-size:11px;font-weight:700">真实版接入 click_id → 注册 → 首充 → API 消费 → 佣金归因</div></div></section><section class="section"><div class="section-head"><div><h2>推广机会池</h2><p>目前先把已验证、待验证和信息冲突明确分开。</p></div></div><div class="affiliate-table"><div class="affiliate-row header"><div>平台</div><div>类型</div><div>奖励</div><div>可提现</div><div>状态</div></div>${affiliateRows.map(r=>`<div class="affiliate-row" title="${esc(r.note)}"><strong><a href="${esc(safeUrl(providers.find(p=>p.name.toLowerCase().includes(r.name.toLowerCase()))?.url))}" target="_blank" rel="noopener noreferrer">${esc(r.name)} ↗</a></strong><div>${esc(r.type)}</div><div>${esc(r.reward)}</div><div>${esc(r.cash)}</div><div><span class="aff-status ${r.state==='ok'?'ok':r.state==='warn'?'warn':''}">${r.state==='ok'?'已发现':r.state==='warn'?'待核验':'生态'}</span></div></div>`).join('')}</div></section><section class="section"><div class="section-head"><div><h2>联盟后台下一阶段</h2><p>当前目录已把收录推广机会与官方申请入口。</p></div></div><div class="journey-grid"><div class="journey-card"><span class="n">TRACK</span><h3>推广链接</h3><p>每个推广者生成 ref / click_id，记录来源、落地页与转化路径。</p></div><div class="journey-card"><span class="n">ATTRIBUTION</span><h3>充值归因</h3><p>通过回调/API/人工对账，把首充、复购与 API 消费归因到推广者。</p></div><div class="journey-card"><span class="n">PAYOUT</span><h3>佣金结算</h3><p>支持 Credits、现金 CPS、CPA、商务渠道四套结算模型。</p></div></div></section></div>`;
+  const opportunities=affiliatePrograms.filter(r=>r.status==='documented'&&r.kind!=='enterprise').length;
+  const order={documented:0,limited:1,login:2,unknown:3,unreachable:4};
+  const rows=[...affiliatePrograms].sort((a,b)=>order[a.status]-order[b.status]||(a.kind==='enterprise')-(b.kind==='enterprise'));
+  return `<div class="page"><section class="affiliate-hero"><div class="aff-intro"><div class="eyebrow"><span class="eyebrow-dot"></span>VIBEBASE ALLIANCE</div><h1>先看清规则，<br>再开始推广。</h1><p>从现金佣金、站内额度到企业合作，逐项核对奖励与申请条件。每条结果保留来源，方便你自己复核。</p><div class="aff-flow"><span class="flow-step">查看条件</span><span class="flow-arrow">→</span><span class="flow-step">前往官方入口</span><span class="flow-arrow">→</span><span class="flow-step">按审核结果参与</span></div></div><div class="aff-widget"><div class="wallet-label">本次公开资料核查</div><div class="wallet-number">${affiliatePrograms.length}<small> 个平台入口</small></div><div class="aff-review-stats"><div><b>50</b><span>目录编号 #1–50 中转站</span></div><div><b>37</b><span>已收录的官方入口</span></div><div><b>${opportunities}</b><span>有公开奖励说明</span></div></div><p class="aff-review-date">核查日期 ${affiliateCheckedAt} · 规则可能随时调整</p></div></section>
+  <section class="section"><div class="section-head"><div><h2>推广计划核查</h2><p>“官方有说明”代表找到了公开规则，不代表 VibeBase 已获批加入。未确认的项目保持普通官网链接。</p></div></div>
+  <div class="aff-controls"><label>搜索平台<input id="affiliateQ" type="search" placeholder="例如：MiMo、阿里云、Volt" value="${esc(state.affiliateQuery)}"></label><label>平台范围<select id="affiliateScope"><option value="all" ${state.affiliateScope==='all'?'selected':''}>全部 87 个入口</option><option value="official" ${state.affiliateScope==='official'?'selected':''}>37 个官方入口</option><option value="relay" ${state.affiliateScope==='relay'?'selected':''}>前 50 个中转站</option></select></label><label>奖励类型<select id="affiliateKind">${[['all','全部类型'],['cash','现金 / 多类奖励'],['credits','站内额度'],['enterprise','企业合作'],['unknown','待核验']].map(([v,t])=>`<option value="${v}" ${state.affiliateKind===v?'selected':''}>${t}</option>`).join('')}</select></label></div>
+  <p id="affiliateCount" class="aff-count" aria-live="polite"></p><div class="aff-program-grid">${rows.map(r=>{const ref=activeReferral(r);return `<article class="aff-program" data-aff-scope="${r.scope}" data-aff-kind="${r.kind}"><div class="aff-program-head"><span class="eyebrow">${r.scope==='official'?'官方平台':`中转站 #${r.rank}`}</span><span class="aff-status ${r.status==='documented'?'ok':'warn'}">${esc(affiliateStatusLabels[r.status])}</span></div><h3>${esc(r.name)}</h3><p class="aff-type">${esc(affiliateKindLabels[r.kind])}</p><p class="aff-reward">${esc(r.reward)}</p><p class="aff-note">${esc(r.note)}</p><div class="aff-program-links"><a href="${esc(safeUrl(ref||r.entryUrl))}" target="_blank" rel="${ref?'sponsored ':''}noopener noreferrer">${ref?'通过推广链接访问 ↗':'查看官方入口 ↗'}</a><a href="${esc(safeUrl(r.sourceUrl))}" target="_blank" rel="noopener noreferrer">核查来源</a></div>${ref?'<p class="aff-disclosure">推广链接：符合平台条件时，VibeBase 可能获得奖励。</p>':''}</article>`}).join('')}</div><p id="affiliateEmpty" class="notice" hidden>没有匹配的平台，请调整搜索或筛选条件。</p></section>
+  <section class="section"><div class="notice"><strong>如何理解这些结果</strong><br>站内额度和赠金通常有使用范围与有效期，不应当作现金。企业合作通常需要主体资质、审核和另行协商。需登录的计划尚未核实比例；访问失败和未确认公开计划也不等于平台没有计划。推广链接由 VibeBase 账号持有人提供，并核对公开规则；存在明确公开传播限制的计划不接入。</div></section></div>`;
+}
+function filterAffiliate(){
+  let count=0; const q=state.affiliateQuery.toLowerCase().trim();
+  $$('[data-aff-scope]').forEach(el=>{
+    const kind=el.dataset.affKind;
+    const visible=(state.affiliateScope==='all'||el.dataset.affScope===state.affiliateScope)&&
+      (state.affiliateKind==='all'||kind===state.affiliateKind||(state.affiliateKind==='cash'&&kind==='mixed'))&&
+      (!q||el.textContent.toLowerCase().includes(q));
+    el.hidden=!visible;if(visible)count++;
+  });
+  if($('#affiliateCount'))$('#affiliateCount').textContent=`显示 ${count} / ${affiliatePrograms.length} 个入口`;
+  if($('#affiliateEmpty'))$('#affiliateEmpty').hidden=count!==0;
 }
 
 function render(){
   const route=state.route;
   app.innerHTML= route==='home'?home():route==='explore'?explore():route==='apps'?appsPage():route==='compare'?comparePage():route==='calculator'?calculatorPage():route==='affiliate'?affiliatePage():home();
   $$('.topnav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route));
-  bind(); renderDock(); if(route==='apps')filterApps();
+  bind(); renderDock(); if(route==='apps')filterApps(); if(route==='affiliate')filterAffiliate();
 }
 
 function renderDock(){
@@ -209,6 +238,9 @@ function renderDock(){
 }
 
 function bind(){
+  $('#affiliateQ')?.addEventListener('input',e=>{state.affiliateQuery=e.target.value;filterAffiliate()});
+  $('#affiliateScope')?.addEventListener('change',e=>{state.affiliateScope=e.target.value;filterAffiliate()});
+  $('#affiliateKind')?.addEventListener('change',e=>{state.affiliateKind=e.target.value;filterAffiliate()});
   $$('[data-route]').forEach(el=>el.onclick=e=>{e.preventDefault();setRoute(el.dataset.route)});
   $$('[data-provider]').forEach(el=>el.onclick=()=>openProvider(el.dataset.provider));
   $$('[data-compare]').forEach(el=>el.onclick=()=>toggleCompare(el.dataset.compare));
@@ -234,8 +266,9 @@ function toggleCompare(id){if(state.compare.has(id))state.compare.delete(id);els
 
 function openProvider(id){
  const p=providers.find(x=>x.id===id); if(!p)return;
+ const program=affiliateFor(p), destination=providerDestination(p);
  modalLayer.classList.add('open');modalLayer.setAttribute('aria-hidden','false');
- modalLayer.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="平台详情"><div class="modal-head"><div class="provider-logo">${esc(p.short)}</div><div><h2>${esc(p.name)}</h2><p>${esc(p.type)} · ${esc(p.region)} · ${p.official?'官方入口':p.verified?'已核验':'未验证线索'} · ${esc(p.fresh)}</p></div><button class="modal-close" id="modalClose">×</button></div><div class="modal-body"><div class="detail-grid"><div class="detail-block"><h4>服务定位</h4><p>${esc(p.desc)}</p></div><div class="detail-block"><h4>推广状态</h4><p>${esc(p.affiliate)}</p></div><div class="detail-block"><h4>模型家族</h4><div class="tag-row">${p.models.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="detail-block"><h4>协议</h4><div class="tag-row">${p.protocols.map(x=>`<span class="tag">${esc(x)} compatible</span>`).join('')}</div></div><div class="detail-block"><h4>应用匹配</h4><p>${p.android?'✓ Android BYOK 客户端<br>':''}${p.saas?'✓ SaaS / Agent / Workflow':''}<br>${matchingApps(p).length} 个协议匹配应用<br>${matchingApps(p).map(a=>esc(a.name)).join(" / ") || "暂无已收录的协议匹配"}<br>实际功能需在客户端测试</p></div><div class="detail-block"><h4>支付 & 价格</h4><p>${esc(p.payments.join(' / '))}<br>${esc(p.pricing)}</p></div></div><div class="detail-block" style="margin-top:12px"><h4>API Endpoint</h4><div class="endpoint"><span>${esc(p.endpoint)}</span><button data-copy="${esc(p.endpoint)}" style="background:transparent;color:var(--accent);font-weight:800">复制</button></div></div>${p.rank||p.uptime!=null?`<div class="detail-block" style="margin-top:12px"><h4>索引附带字段</h4><p>${p.rank?`公开索引序号 #${p.rank}<br>`:''}${p.uptime!=null?`Uptime ${esc(p.uptime)}% · 延迟 ${esc(p.latencyMs??'—')}ms<br>`:''}${p.userRating!=null?`用户评分 ${esc(p.userRating)} / 5 (${esc(p.ratingCount||0)} 条)<br>`:''}${p.supportsRefund!=null?`退款：${p.supportsRefund?'有标记':'无标记'} · `:''}${p.supportsInvoice!=null?`发票：${p.supportsInvoice?'有标记':'无标记'}`:''}</p></div>`:''}<div class="notice" style="margin-top:12px"><b style="color:var(--ink)">${p.official?'使用提示':'风险提示'}：</b> ${esc(p.risk)}</div>${p.source?`<div class="source-line">数据来源：${esc(p.source)} ${p.sourceUrl?`<a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noreferrer">查看来源 ↗</a>`:''}</div>`:''}<div style="display:flex;gap:10px;margin-top:16px"><a class="primary-btn" href="${esc(safeUrl(p.url))}" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;text-decoration:none">${p.official?'打开官方平台 ↗':'打开站点 / 来源 ↗'}</a><button class="soft-btn" id="modalApps">匹配应用</button><button class="soft-btn" id="modalCompare">加入对比</button></div></div></div>`;
+ modalLayer.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="平台详情"><div class="modal-head"><div class="provider-logo">${esc(p.short)}</div><div><h2>${esc(p.name)}</h2><p>${esc(p.type)} · ${esc(p.region)} · ${p.official?'官方入口':p.verified?'已核验':'未验证线索'} · ${esc(p.fresh)}</p></div><button class="modal-close" id="modalClose">×</button></div><div class="modal-body"><div class="detail-grid"><div class="detail-block"><h4>服务定位</h4><p>${esc(p.desc)}</p></div><div class="detail-block"><h4>推广状态</h4><p>${esc(p.affiliate)}</p>${program?`<p>${esc(program.note)}</p><a href="${esc(safeUrl(program.sourceUrl))}" target="_blank" rel="noopener noreferrer">查看推广规则来源 ↗</a>`:''}</div><div class="detail-block"><h4>模型家族</h4><div class="tag-row">${p.models.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="detail-block"><h4>协议</h4><div class="tag-row">${p.protocols.map(x=>`<span class="tag">${esc(x)} compatible</span>`).join('')}</div></div><div class="detail-block"><h4>应用匹配</h4><p>${p.android?'✓ Android BYOK 客户端<br>':''}${p.saas?'✓ SaaS / Agent / Workflow':''}<br>${matchingApps(p).length} 个协议匹配应用<br>${matchingApps(p).map(a=>esc(a.name)).join(" / ") || "暂无已收录的协议匹配"}<br>实际功能需在客户端测试</p></div><div class="detail-block"><h4>支付 & 价格</h4><p>${esc(p.payments.join(' / '))}<br>${esc(p.pricing)}</p></div></div><div class="detail-block" style="margin-top:12px"><h4>API Endpoint</h4><div class="endpoint"><span>${esc(p.endpoint)}</span><button data-copy="${esc(p.endpoint)}" style="background:transparent;color:var(--accent);font-weight:800">复制</button></div></div>${p.rank||p.uptime!=null?`<div class="detail-block" style="margin-top:12px"><h4>索引附带字段</h4><p>${p.rank?`公开索引序号 #${p.rank}<br>`:''}${p.uptime!=null?`Uptime ${esc(p.uptime)}% · 延迟 ${esc(p.latencyMs??'—')}ms<br>`:''}${p.userRating!=null?`用户评分 ${esc(p.userRating)} / 5 (${esc(p.ratingCount||0)} 条)<br>`:''}${p.supportsRefund!=null?`退款：${p.supportsRefund?'有标记':'无标记'} · `:''}${p.supportsInvoice!=null?`发票：${p.supportsInvoice?'有标记':'无标记'}`:''}</p></div>`:''}<div class="notice" style="margin-top:12px"><b style="color:var(--ink)">${p.official?'使用提示':'风险提示'}：</b> ${esc(p.risk)}</div>${p.source?`<div class="source-line">数据来源：${esc(p.source)} ${p.sourceUrl?`<a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noreferrer">查看来源 ↗</a>`:''}</div>`:''}<div style="display:flex;gap:10px;margin-top:16px"><a class="primary-btn" href="${esc(safeUrl(destination.url))}" target="_blank" rel="${destination.sponsored?'sponsored ':''}noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none">${destination.sponsored?'通过推广链接访问 ↗':p.official?'打开官方平台 ↗':'打开站点 / 来源 ↗'}</a>${destination.sponsored?'<span class="aff-disclosure">符合平台条件时，VibeBase 可能获得推广奖励。</span>':''}<button class="soft-btn" id="modalApps">匹配应用</button><button class="soft-btn" id="modalCompare">加入对比</button></div></div></div>`;
  $('#modalApps').onclick=()=>{state.appProtocol=p.protocols[0]||'';closeModal();setRoute('apps')}; $('#modalClose').onclick=closeModal; modalLayer.onclick=e=>{if(e.target===modalLayer)closeModal()}; $('#modalCompare').onclick=()=>{toggleCompare(p.id);closeModal()}; $('[data-copy]')?.addEventListener('click',async e=>{await navigator.clipboard?.writeText(e.currentTarget.dataset.copy);toast('已复制 Endpoint')});
 }
 function closeModal(){modalLayer.classList.remove('open');modalLayer.setAttribute('aria-hidden','true')}

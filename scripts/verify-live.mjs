@@ -26,9 +26,11 @@ async function verify() {
   const results = await Promise.all([
     get('index.html', /text\/html/i), get('styles.css', /text\/css/i),
     get('app.js', /(?:javascript|ecmascript)/i), get('data/providers.js', /(?:javascript|ecmascript)/i),
-    get('data/relays.json', /application\/json/i)
+    get('data/relays.json', /application\/json/i),
+    get('data/affiliate-programs.js', /(?:javascript|ecmascript)/i),
+    get('data/affiliate-links.js', /(?:javascript|ecmascript)/i)
   ]);
-  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json'];
+  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js'];
   results.forEach((result, index) => {
     // Cloudflare may inject analytics into HTML; other static files must match exactly.
     if (index > 0) assert.equal(result.hash, manifest.assets[paths[index]], `${paths[index]}: stale or modified asset`);
