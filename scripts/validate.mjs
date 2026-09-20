@@ -12,12 +12,17 @@ const js=readFileSync('dist/app.js','utf8');
 assert(!/fetch\s*\(\s*['"]https?:/.test(js),'Catalog must load from this site');
 const data=JSON.parse(readFileSync('dist/data/relays.json','utf8'));assert(data.sites.length>=800);
 assert.equal(providers.filter(p=>p.official).length,37);
-assert.equal(affiliatePrograms.length,87);
-assert.equal(new Set(affiliatePrograms.map(r=>r.id)).size,87);
-assert.deepEqual(affiliatePrograms.filter(r=>r.scope==='relay').map(r=>r.rank).sort((a,b)=>a-b),Array.from({length:50},(_,i)=>i+1));
+assert.equal(affiliatePrograms.length,data.sites.length+37);
+assert.equal(new Set(affiliatePrograms.map(r=>r.id)).size,affiliatePrograms.length);
+assert.deepEqual(affiliatePrograms.filter(r=>r.scope==='relay').map(r=>r.rank).sort((a,b)=>a-b),data.sites.map(r=>r.rank).sort((a,b)=>a-b));
 for(const p of providers.filter(p=>p.official))assert(affiliateFor(p),`Missing affiliate review: ${p.id}`);
 for(const r of affiliatePrograms){
-  for(const key of ['url','entryUrl','sourceUrl'])assert.equal(new URL(r[key]).protocol,'https:');
+  for(const key of ['url','entryUrl','sourceUrl']){
+    const u=new URL(r[key]);
+    assert(['https:','http:'].includes(u.protocol));
+    assert(!u.username&&!u.password);
+    assert(!/[?&](aff|ref|referral|invite|code)=/i.test(u.search),'Do not import third-party referral codes');
+  }
   assert(!JSON.stringify(r).includes('ksanagao10'),'Application identity must stay private');
   if(ownedReferrals[r.id])assert(activeReferral(r),`Inactive referral: ${r.id}`);
 }

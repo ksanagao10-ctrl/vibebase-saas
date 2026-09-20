@@ -5,7 +5,7 @@ export const affiliateStatusLabels = {
   unknown: '未确认公开计划', unreachable: '暂时无法访问'
 };
 export const affiliateKindLabels = {
-  cash: '现金奖励', credits: '站内额度', mixed: '多类奖励',
+  cash: '佣金／可提现奖励', credits: '站内额度', mixed: '多类奖励',
   enterprise: '企业合作', unknown: '类型待核验'
 };
 export function affiliateFor(provider) {
