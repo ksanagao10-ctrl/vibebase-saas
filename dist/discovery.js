@@ -20,7 +20,42 @@ function offerCard(o){
 }
 function newsCard(n){return '<article class="discovery-card"><div class="discovery-card-top"><span class="tag">'+esc(n.label)+'</span><time>'+esc(n.date)+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.desc)+'</p><div class="discovery-card-foot">'+sourceLink(n.source,'阅读官方公告 ↗')+'</div></article>';}
 function articleCard(a,featured=false){return '<article class="story-card '+(featured?'story-featured':'')+'"><span class="eyebrow">'+esc(a.category)+' · '+esc(a.difficulty)+'</span><h3>'+link('read/'+a.id,a.title,'story-title')+'</h3><p>'+esc(a.summary)+'</p><div class="story-meta"><span>'+esc(a.author)+'</span><span>约 '+a.minutes+' 分钟 · '+a.date+'</span></div>'+link('read/'+a.id,'阅读全文 ↗')+'</article>';}
-function industryCard(i){return '<a class="industry-card" href="#industry/'+i.id+'" data-route="industry/'+i.id+'"><span class="eyebrow">'+esc(i.tag)+'</span><h3>'+esc(i.name)+' <span>↗</span></h3><p>'+esc(i.desc)+'</p></a>';}
+
+const industryModel=id=>d.industryModels.find(m=>m.id===id);
+export function industryPlanCost(plan,tasks=d.industryPricing.tasks){
+ const p=d.industryPricing;
+ return plan.recipe.reduce((total,r)=>{const m=industryModel(r.model);return total+tasks*r.share*(p.inputTokens*m.input+p.outputTokens*m.output)/1e6;},0);
+}
+export function industryMatches(group='all',query=''){
+ const q=query.trim().toLowerCase();
+ return d.industries.filter(i=>(group==='all'||i.group===group)&&(!q||(i.name+' '+i.persona+' '+i.inputs+' '+i.deliverable).toLowerCase().includes(q)));
+}
+function industryCard(i){
+ return '<a class="industry-card" href="#industry/'+i.id+'" data-route="industry/'+i.id+'"><span class="eyebrow">'+esc(i.group)+'</span><h3>'+esc(i.name)+' <span>↗</span></h3><p>'+esc(i.desc)+'</p><div class="tag-row">'+i.plans.map(p=>'<span class="tag">'+esc(p.label)+'</span>').join('')+' </div><p class="mini-meta">3 套方案 · '+esc(i.persona)+'</p></a>';
+}
+function industryExtra(i,tier){
+ if(i.extra==='none')return '';
+ const ids={image:{quality:'img-flash',value:'img-flux'},audio:{quality:'audio-tts-pro',value:'audio-tts'},knowledge:{quality:'embed-voyage-4-large',value:'embed-voyage-4-lite'}};
+ if(tier==='budget'){
+ const text={image:'视觉先使用授权实拍或现有素材；若要生成图片，可查看硅基流动 Kolors 免费条目。',audio:'音频可选择 Groq Orpheus 免费计划，需核对语种和账号限额。',knowledge:'检索可从本地关键词检索开始；需要向量化时查看硅基流动 BAAI/bge-m3 免费条目。'}[i.extra];
+ return '<div class="industry-extra"><h4>配套能力</h4><p>'+esc(text)+'</p>'+link('boards/free/'+(i.extra==='audio'?'groq':'siliconflow'),'查看免费模型及限制 →')+'</div>';
+ }
+ const q=d.mediaQuotes.find(q=>q.id===ids[i.extra][tier]);
+ return '<div class="industry-extra"><h4>可选配套 · 另计费</h4><p>'+esc(model(q.model).name)+' · '+money(q.cost)+' / '+esc(q.unit)+'</p><p class="mini-meta">'+esc(q.spec)+'。'+esc(q.note)+'</p>'+sourceLink(q.source,'核对配套价格 ↗')+'</div>';
+}
+function industryPlanCard(i,p){
+ const bill=industryPlanCost(p);
+ const fallback=p.fallback?industryModel(p.fallback):null;
+ return '<article class="discovery-card industry-plan '+(p.id==='value'?'industry-plan-value':'')+'"><span class="eyebrow">'+esc(p.fit)+'</span><h2>'+esc(p.label)+(p.id==='value'?' · 日常起点':'')+'</h2><p>'+esc(p.strategy)+'</p><div class="industry-budget"><strong>'+money(bill)+'</strong><span> / 100 次文本任务估算</span></div><p class="mini-meta">'+(p.id==='budget'?'仅免费配额内模型调用费为零；人工与基础设施仍有成本。':p.id==='value'?'100 次主任务 + 20 次升级复核。':'100 次主任务 + 100 次独立复核。')+'</p><ul class="industry-models">'+p.recipe.map(r=>{const m=industryModel(r.model);return '<li><strong>'+esc(r.role)+'</strong><br>'+sourceLink(m.url,m.name+' ↗')+'<div class="mini-meta">'+esc(m.channel)+' · 输入 '+money(m.input)+' / 输出 '+money(m.output)+' 每百万 Token</div></li>';}).join('')+'</ul><h3>执行步骤</h3><ol class="industry-actions">'+p.actions.map(a=>'<li><strong>'+esc(a.label)+'</strong><p>'+esc(a.text)+'</p></li>').join('')+'</ol><h3>取舍</h3><p>'+esc(p.tradeoff)+'</p>'+(fallback?'<details><summary>免费额度不足时的付费备选</summary><p>'+sourceLink(fallback.url,fallback.name)+' · 同样 100 次文本任务约 '+money(industryPlanCost({recipe:[{model:p.fallback,share:1}]}))+'。这是另行选择的付费渠道，不自动切换。</p></details>':'')+industryExtra(i,p.id)+'</article>';
+}
+function industryDirectory(group='all',query=''){
+ const rows=industryMatches(group,query);
+ return header('INDUSTRY PLAYBOOKS','24 个行业，三种落地方案','先确定交付物，再按质量、最低 API 支出或长期性价比选择工作流。')+tabs([['all','全部行业'],...[...new Set(d.industries.map(i=>i.group))].map(g=>[encodeURIComponent(g),g])],encodeURIComponent(group),'industries/')+'<form id="industrySearch" class="hero-search" data-group="'+esc(group)+'"><input id="industryQuery" aria-label="搜索行业方案" placeholder="搜索行业、岗位或交付物" value="'+esc(query)+'"><button>搜索方案</button></form><p role="status">'+rows.length+' 个行业 · 每个行业 3 套方案</p><div class="discovery-grid three">'+(rows.length?rows.map(industryCard).join(''):'<p class="empty">没有匹配行业，试试其他岗位或关键词。</p>')+'</div>';
+}
+function industryPage(i){
+ return link('industries','← 全部行业方案')+header(i.group,i.name,i.desc)+'<div class="discovery-grid two"><section class="notice"><h2>开始前准备</h2><p>'+esc(i.inputs)+'</p></section><section class="notice"><h2>交付与验收</h2><p>'+esc(i.deliverable)+'</p><p>'+esc(i.acceptance)+'</p></section></div><div class="notice"><strong>同一口径比较三档</strong><p>'+esc(d.industryPricing.note)+'</p><p>“质量优先”为工作流与模型选型建议，未做行业效果实测；“绝对低价”指这里的模型 API 支出优先，不代表全项目零成本。先以 10–30 个真实样本检查交付质量，再扩大用量。</p>'+sourceLink('https://openrouter.ai/api/v1/models','模型与价格来源 ↗')+' · '+link('boards/free','免费模型条件 →')+'<p class="mini-meta">报价核验 '+esc(d.industryPricing.checkedAt)+'</p></div><div class="discovery-grid three industry-plans">'+i.plans.map(p=>industryPlanCard(i,p)).join('')+'</div><div class="tool-links">'+link('calculator','自定义文本预算','tool-link')+link('apps','选择接入工具','tool-link')+link('read/'+i.article,'阅读使用教程','tool-link')+'</div>';
+}
+
 function quoteTable(id,inputs=1,outputs=.2,compact=false){
  const rows=sortedQuotes(id,inputs,outputs);
  return '<div class="price-table-wrap"><table class="price-table"><caption>'+esc(model(id)?.name||id)+' · USD / 百万 Token · '+d.checkedAt+' 核验</caption><thead><tr><th scope="col">渠道</th><th scope="col">输入</th><th scope="col">输出</th><th scope="col">估算费用</th><th scope="col">下一步</th></tr></thead><tbody>'+rows.map(q=>'<tr><th scope="row">'+esc(q.channel)+'</th><td>'+money(q.input)+'</td><td>'+money(q.output)+'</td><td class="quote-total" data-quote-id="'+q.id+'">'+money(quoteCost(q,inputs,outputs))+'</td><td>'+(compact?link('boards/price/'+id,'比较 →'): '<button class="small-action" data-estimate="'+q.id+'">带入计算器</button> '+sourceLink(q.source,'来源 ↗'))+'</td></tr>').join('')+'</tbody></table></div>';
@@ -92,7 +127,7 @@ export function homeDiscovery(){
  section('榜单与选型','透明的价格样本，清楚的筛选条件。质量榜待统一实测后开放。','boards/price','<div class="board-panel"><div class="discovery-tabs" role="group" aria-label="首页榜单">' +boardItems.map(([id,label])=>'<button data-board-tab="'+id+'" aria-pressed="'+(id==='price')+'">'+label+'</button>').join('')+'</div><div id="home-board-content">'+boardPreview()+'</div></div>')+
  section('免费与限时福利','先看资格、范围和有效期，再决定是否领取。','offers','<div class="discovery-grid four">'+activeOffers().slice(0,4).map(offerCard).join('')+'</div>')+
  section('模型动态与预告','保留官方来源与事件日期，区分预览、上线和生命周期变化。','news','<div class="discovery-grid three">'+d.news.map(newsCard).join('')+'</div>')+
- section('你的行业，怎样用 AI','从具体交付物出发，把模型、API 和教程连成方案。','industries','<div class="discovery-grid four">'+d.industries.map(industryCard).join('')+'</div>')+
+ section('你的行业，怎样用 AI','从具体交付物出发，把模型、API 和教程连成方案。','industries','<div class="discovery-grid four">'+d.industries.slice(0,4).map(industryCard).join('')+'</div>')+
  section('从选择，到第一次成功调用','接入、对比和预算，继续使用你熟悉的工具。','apps','<div class="tool-links">'+link('explore','01 / 找 API 平台','tool-link')+link('compare','02 / 对比供应商','tool-link')+link('calculator','03 / 估算调用成本','tool-link')+link('apps','04 / 匹配应用','tool-link')+'</div>')+
  '<section class="section covibe-home"><div class="section-head"><div><span class="eyebrow">LEARN · BUILD · SHARE</span><h2 class="covibe-wordmark">CoVibe<span>一起，把 AI 用起来。</span></h2><p>选模型、找限免、选 API。把经验变成下一次更好的选择。</p></div>'+link('covibe','进入 CoVibe →')+'</div><div class="story-layout">'+articleCard(d.articles[0],true)+'<div class="story-stack">'+d.articles.slice(1,4).map(a=>articleCard(a)).join('')+'</div></div></section>';
 }
@@ -132,10 +167,10 @@ export function renderDiscovery(route,providers=[]){
  const kind=arg||'all';body=header('MODEL RADAR','模型动态与预告','核验日期 '+d.checkedAt+'。信息快照，不是自动更新的实时新闻流。')+tabs([['all','全部'],['live','已上线'],['preview','预览'],['upcoming','预告']],kind,'news/');
  const rows=d.news.filter(n=>kind==='all'||n.status===kind);
  body+='<div class="discovery-grid three">'+rows.map(newsCard).join('')+'</div>';
- }else if(page==='industries'){body=header('BUILT FOR YOUR WORK','按行业找到使用方案','这是工作流建议，不代表模型厂商对特定行业的认证。')+'<div class="discovery-grid two">'+d.industries.map(industryCard).join('')+'</div>';}
+ }else if(page==='industries'){body=industryDirectory(decodeSafe(arg||'all'),decodeSafe(value||''));}
  else if(page==='industry'){
  const i=d.industries.find(x=>x.id===arg);
- body=i?header('INDUSTRY PLAYBOOK',i.name,i.desc)+'<div class="industry-steps">'+i.steps.map(([title,desc,id],n)=>'<article class="discovery-card"><span class="step-number">0'+(n+1)+'</span><h2>'+esc(title)+'</h2><p>'+esc(desc)+'</p>'+link('model/'+id,model(id).name+' →')+'</article>').join('')+'</div><div class="notice">'+esc(i.budget)+'</div><div class="tool-links">'+link('calculator','估算文本成本','tool-link')+link('apps','选择接入工具','tool-link')+link('read/'+i.article,'阅读配套教程','tool-link')+'</div>':header('NOT FOUND','方案未收录','请返回行业列表。')+link('industries','行业方案');
+ body=i?industryPage(i):header('NOT FOUND','方案未收录','请返回行业列表。')+link('industries','行业方案');
  }else if(page==='covibe'){
  const cat=arg?decodeSafe(arg):'全部';body=header('LEARN · BUILD · SHARE','CoVibe','一起选好模型，把 AI 真正用起来。')+tabs(['全部',...new Set(d.articles.map(a=>a.category))].map(x=>[encodeURIComponent(x),x]),encodeURIComponent(cat),'covibe/')+'<div class="discovery-grid two">'+d.articles.filter(a=>cat==='全部'||a.category===cat).map(a=>articleCard(a)).join('')+'</div>';
  }else if(page==='read'){
@@ -159,6 +194,7 @@ export function bindDiscovery({navigate,openProvider,estimate}){
  document.querySelector('#home-board-content').innerHTML=boardPreview(el.dataset.boardTab);
  document.querySelectorAll('#home-board-content [data-route]').forEach(a=>a.onclick=e=>{e.preventDefault();navigate(a.dataset.route)});
  });
+ document.querySelector('#industrySearch')?.addEventListener('submit',e=>{e.preventDefault();navigate('industries/'+encodeURIComponent(e.currentTarget.dataset.group)+'/'+encodeURIComponent(document.querySelector('#industryQuery').value.trim()));});
  const freeForm=document.querySelector('#freeModelSearch');
  const navigateFree=()=>navigate('boards/free/'+freeForm.dataset.platform+'/'+freeForm.dataset.cap+'/'+encodeURIComponent(document.querySelector('#freeModelQuery').value.trim())+'/'+document.querySelector('#freeModelSort').value);
  freeForm?.addEventListener('submit',e=>{e.preventDefault();navigateFree();});

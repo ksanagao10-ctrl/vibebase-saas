@@ -236,3 +236,6 @@ input:focus,select:focus{border-color:var(--focus)}
 .discovery-card p,.discovery-card h3{overflow-wrap:anywhere}
 
 .free-model-id{overflow-wrap:anywhere;font-size:12px;line-height:1.6}.free-model-card{min-width:0}.free-model-card h3{overflow-wrap:anywhere}
+
+.industry-plans{align-items:start}.industry-plan{min-width:0}.industry-plan-value{border-color:var(--accent)}.industry-budget{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:18px}.industry-budget strong{font-size:32px;letter-spacing:-1px}.industry-budget span{display:block;color:var(--muted);font-size:12px;margin-top:6px}.industry-models,.industry-actions{padding-left:20px}.industry-models li,.industry-actions li{margin-bottom:16px;overflow-wrap:anywhere}.industry-plan h3{margin-top:22px;font-size:16px}.industry-extra{margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}.industry-extra h4{margin-bottom:10px}.industry-plan a{overflow-wrap:anywhere}.industry-actions p{margin:8px 0}.industry-plans .eyebrow{line-height:1.8}
+@media(min-width:721px) and (max-width:1100px){.industry-plans.three{grid-template-columns:1fr}.industry-plans .industry-plan{padding:28px}}

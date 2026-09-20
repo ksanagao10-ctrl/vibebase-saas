@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {discovery as d} from '../dist/data/discovery.js';
 import {providers} from '../dist/data/providers.js';
-import {rankedFreeModels,freeOffers,quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
+import {industryPlanCost,industryMatches,rankedFreeModels,freeOffers,quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
 
 const ids=xs=>new Set(xs.map(x=>x.id));
 for(const key of ['tasks','models','quotes','offers','news','industries','articles'])assert.equal(ids(d[key]).size,d[key].length,`Duplicate ${key}`);
@@ -84,3 +84,27 @@ assert(freeRows.filter(m=>m.platform==='relay-215').every(m=>m.limits.includes('
 assert.equal((renderDiscovery('boards/free').match(/class="discovery-card free-model-card"/g)||[]).length,24);
 assert.equal((renderDiscovery('boards/free/all/all//name/7').match(/class="discovery-card free-model-card"/g)||[]).length,rankedFreeModels().length-144);
 console.log('Relay group eligibility, exclusions and pagination passed.');
+
+assert.equal(d.industries.length,24);
+assert.equal(d.industries.flatMap(i=>i.plans).length,72);
+for(const i of d.industries){
+ assert.deepEqual(i.plans.map(p=>p.id),['quality','budget','value']);
+ assert(i.inputs&&i.deliverable&&i.acceptance);
+ for(const p of i.plans){
+  assert(p.actions.length===3&&p.tradeoff&&p.strategy);
+  for(const r of p.recipe){assert(d.industryModels.some(m=>m.id===r.model));assert(r.share>0&&r.share<=1);}
+  assert(Number.isFinite(industryPlanCost(p)));
+ }
+ const [quality,budget,value]=i.plans.map(p=>industryPlanCost(p));
+ assert(quality>value&&value>budget);
+ assert.equal(budget,0);
+ assert.equal((renderDiscovery('industry/'+i.id).match(/industry-plan /g)||[]).length,3);
+}
+assert(Math.abs(industryPlanCost(d.industries[0].plans[0])-6.5)<1e-9);
+assert(Math.abs(industryPlanCost(d.industries[0].plans[2])-1.575)<1e-9);
+assert(Math.abs(industryPlanCost({recipe:[{model:'google/gemini-2.5-flash-lite',share:1}]})-.08)<1e-9);
+assert.equal(industryMatches('all','SKU').length,0);
+assert.equal(industryMatches('all','\u7535\u5546').length,1);
+assert(!renderDiscovery('industries/all/'+encodeURIComponent(attack)).includes(attack));
+assert.equal((homeDiscovery().match(/class="industry-card"/g)||[]).length,4);
+console.log('24 industries / 72 plans: model references, shared cost basis, search and routes passed.');
