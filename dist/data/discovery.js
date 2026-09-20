@@ -49,7 +49,9 @@ export const discovery = {
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "gemini-2.5-flash-lite"
+      "modelId": "gemini-2.5-flash-lite",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "flash",
@@ -63,7 +65,9 @@ export const discovery = {
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "gemini-2.5-flash"
+      "modelId": "gemini-2.5-flash",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "deepseek",
@@ -76,7 +80,9 @@ export const discovery = {
       "source": "https://openrouter.ai/deepseek/deepseek-chat-v3.1",
       "provider": "openrouter",
       "checkedAt": "2026-09-21",
-      "modelId": "deepseek/deepseek-chat-v3.1"
+      "modelId": "deepseek/deepseek-chat-v3.1",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "sonnet",
@@ -89,7 +95,9 @@ export const discovery = {
       "source": "https://openrouter.ai/anthropic/claude-sonnet-4",
       "provider": "openrouter",
       "checkedAt": "2026-09-21",
-      "modelId": "anthropic/claude-sonnet-4"
+      "modelId": "anthropic/claude-sonnet-4",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "image",
@@ -97,11 +105,12 @@ export const discovery = {
       "tasks": [
         "image"
       ],
-      "desc": "支持图像生成与编辑。先固定尺寸、参考图和质量要求，再比较报价。",
+      "desc": "商品参考图编辑、角色一致性与日常视觉制作；支持多参考输入，比 Lite 更适合连续修改。",
       "source": "https://ai.google.dev/gemini-api/docs/image-generation",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "gemini-3.1-flash-image"
+      "modelId": "gemini-3.1-flash-image",
+      "guideCount": 3
     },
     {
       "id": "veo",
@@ -109,11 +118,13 @@ export const discovery = {
       "tasks": [
         "video"
       ],
-      "desc": "视频生成候选。比较时固定分辨率、时长与音频规格。",
+      "desc": "生成带声音的短镜头，适合创意分镜；长片需要分镜、剪辑和一致性检查。",
       "source": "https://ai.google.dev/gemini-api/docs/video",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "veo-3.1-generate-preview"
+      "modelId": "veo-3.1-generate-preview",
+      "status": "预览版本",
+      "guideCount": 2
     },
     {
       "id": "tts",
@@ -121,11 +132,13 @@ export const discovery = {
       "tasks": [
         "audio"
       ],
-      "desc": "文本转语音候选，处于预览阶段。音频输出按 Token 计费，不直接等同于每分钟单价。",
+      "desc": "已审核文案的单人或多角色配音；可作为费用敏感的合成备选，不是实时对话模型。",
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "gemini-2.5-flash-preview-tts"
+      "modelId": "gemini-2.5-flash-preview-tts",
+      "status": "预览版本",
+      "guideCount": 1
     },
     {
       "id": "embedding",
@@ -133,11 +146,12 @@ export const discovery = {
       "tasks": [
         "knowledge"
       ],
-      "desc": "用于检索的向量表示。需要配合文档切分、索引与回答模型；不是独立问答应用。",
+      "desc": "多模态向量表示候选；用于检索索引，不是直接回答问题或生成图片的模型。",
       "source": "https://ai.google.dev/gemini-api/docs/embeddings",
       "provider": "official-gemini",
       "checkedAt": "2026-09-21",
-      "modelId": "gemini-embedding-2"
+      "modelId": "gemini-embedding-2",
+      "guideCount": 0
     },
     {
       "id": "qwen-coder",
@@ -148,8 +162,9 @@ export const discovery = {
       ],
       "source": "https://openrouter.ai/qwen/qwen3-coder",
       "provider": "openrouter",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "开源权重编码模型的托管候选；用于仓库理解与工具调用，调用表现取决于工具环境。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 0
     },
     {
       "id": "qwen-instruct",
@@ -160,8 +175,10 @@ export const discovery = {
       ],
       "source": "https://openrouter.ai/qwen/qwen3-235b-a22b-2507",
       "provider": "openrouter",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "保留用于已有项目兼容与专项评估；新任务请优先查看按具体交付物整理的模型方案。",
+      "checkedAt": "2026-09-21",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "gpt-oss",
@@ -173,8 +190,10 @@ export const discovery = {
       ],
       "source": "https://openrouter.ai/openai/gpt-oss-120b",
       "provider": "openrouter",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "保留用于已有项目兼容与专项评估；新任务请优先查看按具体交付物整理的模型方案。",
+      "checkedAt": "2026-09-21",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "mistral-small",
@@ -185,8 +204,10 @@ export const discovery = {
       ],
       "source": "https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct",
       "provider": "openrouter",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "保留用于已有项目兼容与专项评估；新任务请优先查看按具体交付物整理的模型方案。",
+      "checkedAt": "2026-09-21",
+      "status": "历史 / 专项备选",
+      "guideCount": 0
     },
     {
       "id": "free-qwen",
@@ -198,7 +219,9 @@ export const discovery = {
       "source": "https://openrouter.ai/qwen/qwen3.8-27b:free",
       "provider": "openrouter",
       "desc": "目录中输入、输出单价为零。可用性与账号限额需在调用时确认。",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-21",
+      "status": "免费实验候选",
+      "guideCount": 0
     },
     {
       "id": "free-gemma",
@@ -210,7 +233,9 @@ export const discovery = {
       "source": "https://openrouter.ai/google/gemma-4-31b-it:free",
       "provider": "openrouter",
       "desc": "目录中输入、输出单价为零。可用性与账号限额需在调用时确认。",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-21",
+      "status": "免费实验候选",
+      "guideCount": 0
     },
     {
       "id": "free-nemotron",
@@ -222,7 +247,9 @@ export const discovery = {
       "source": "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free",
       "provider": "openrouter",
       "desc": "目录中输入、输出单价为零。可用性与账号限额需在调用时确认。",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-21",
+      "status": "免费实验候选",
+      "guideCount": 0
     },
     {
       "id": "free-cohere",
@@ -234,7 +261,9 @@ export const discovery = {
       "source": "https://openrouter.ai/cohere/north-mini-code:free",
       "provider": "openrouter",
       "desc": "目录中输入、输出单价为零。可用性与账号限额需在调用时确认。",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-21",
+      "status": "免费实验候选",
+      "guideCount": 0
     },
     {
       "id": "image-lite",
@@ -245,8 +274,9 @@ export const discovery = {
       ],
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "快速单次文生图和创意草图；官方明确不针对多参考图及多轮连续编辑优化。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 2
     },
     {
       "id": "flux",
@@ -257,8 +287,9 @@ export const discovery = {
       ],
       "source": "https://fal.ai/models/fal-ai/flux/schnell",
       "provider": null,
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "快速文生图草稿与气氛探索；不把该文生图接口推荐给保留商品身份的精细修图任务。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 1
     },
     {
       "id": "veo-fast",
@@ -269,8 +300,10 @@ export const discovery = {
       ],
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "视频快速迭代候选；用已确认的分镜生成短镜头，检查物体形变和音画一致性。",
+      "checkedAt": "2026-09-21",
+      "status": "预览版本",
+      "guideCount": 2
     },
     {
       "id": "veo-lite",
@@ -281,8 +314,10 @@ export const discovery = {
       ],
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "适合预算敏感的短镜头试稿；不因单价低就推荐给所有视频任务。",
+      "checkedAt": "2026-09-21",
+      "status": "预览版本",
+      "guideCount": 2
     },
     {
       "id": "tts-pro",
@@ -293,8 +328,10 @@ export const discovery = {
       ],
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "对语气、停顿与多角色编排要求较高的配音候选；版本与效果按样稿对照评估。",
+      "checkedAt": "2026-09-21",
+      "status": "预览版本",
+      "guideCount": 2
     },
     {
       "id": "tts-31",
@@ -305,8 +342,10 @@ export const discovery = {
       ],
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "provider": "official-gemini",
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "支持流式合成的新版 TTS 预览候选；适合旁白、角色对话和边生成边播放，不能替代双向 Live API。",
+      "checkedAt": "2026-09-21",
+      "status": "预览版本",
+      "guideCount": 2
     },
     {
       "id": "voyage-4-lite",
@@ -317,8 +356,9 @@ export const discovery = {
       ],
       "source": "https://docs.voyageai.com/docs/pricing",
       "provider": null,
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "低延迟与成本导向的文本向量检索；适合大量文档建索引，需评估召回损失。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 1
     },
     {
       "id": "voyage-4",
@@ -329,8 +369,9 @@ export const discovery = {
       ],
       "source": "https://docs.voyageai.com/docs/pricing",
       "provider": null,
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "通用多语言文本向量检索主力候选；需要索引、权限与引用流程配合。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 1
     },
     {
       "id": "voyage-4-large",
@@ -341,8 +382,246 @@ export const discovery = {
       ],
       "source": "https://docs.voyageai.com/docs/pricing",
       "provider": null,
-      "desc": "按任务与规格选择；本页记录来源资料，不代表本站实测质量排名。",
-      "checkedAt": "2026-09-21"
+      "desc": "通用多语言检索质量优先候选；输出向量，不会直接给出问答结果。",
+      "checkedAt": "2026-09-21",
+      "guideCount": 1
+    },
+    {
+      "id": "opus5",
+      "name": "Claude Opus 5",
+      "modelId": "anthropic/claude-opus-5",
+      "tasks": [
+        "text",
+        "code",
+        "knowledge"
+      ],
+      "desc": "复杂推理、代码审查与多步骤交付；适合需要反复检查约束的工作。",
+      "source": "https://openrouter.ai/anthropic/claude-opus-5",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $5.0 / 输出 $25.0 每百万 Token；缓存、工具、重试与渠道附加费另计。",
+      "context": 1000000,
+      "status": "渠道目录已核对",
+      "guideCount": 4
+    },
+    {
+      "id": "sonnet5",
+      "name": "Claude Sonnet 5",
+      "modelId": "anthropic/claude-sonnet-5",
+      "tasks": [
+        "text",
+        "code",
+        "knowledge"
+      ],
+      "desc": "常规专业写作与持续开发的主力候选，可按任务调整推理投入。",
+      "source": "https://openrouter.ai/anthropic/claude-sonnet-5",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $2.0 / 输出 $10.0 每百万 Token；缓存、工具、重试与渠道附加费另计。",
+      "context": 1000000,
+      "status": "渠道目录已核对",
+      "guideCount": 6
+    },
+    {
+      "id": "fable51",
+      "name": "Claude Fable 5.1",
+      "modelId": "anthropic/claude-fable-5.1",
+      "tasks": [
+        "code",
+        "text"
+      ],
+      "desc": "长代码重构、前端实现与较长的知识工作流程候选。",
+      "source": "https://openrouter.ai/anthropic/claude-fable-5.1",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $10.0 / 输出 $50.0 每百万 Token；缓存、工具、重试与渠道附加费另计。",
+      "context": 1000000,
+      "status": "渠道目录已核对",
+      "guideCount": 1
+    },
+    {
+      "id": "sol56",
+      "name": "GPT-5.6 Sol",
+      "modelId": "openai/gpt-5.6-sol",
+      "tasks": [
+        "code",
+        "text",
+        "knowledge"
+      ],
+      "desc": "命令行、多步骤编码和复杂推理候选；代码执行需要开发工具提供环境。",
+      "source": "https://openrouter.ai/openai/gpt-5.6-sol",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $2.0 / 输出 $10.0 每百万 Token；存在阶梯或时段覆盖价，按请求核对最终费率。",
+      "context": 1050000,
+      "status": "渠道目录已核对",
+      "guideCount": 4
+    },
+    {
+      "id": "flash38",
+      "name": "Gemini 3.8 Flash",
+      "modelId": "google/gemini-3.8-flash",
+      "tasks": [
+        "text",
+        "code",
+        "knowledge"
+      ],
+      "desc": "文本、文件、图片、音频和视频理解候选；这里的渠道版本输出文本，不用于生成图片或音频。",
+      "source": "https://openrouter.ai/google/gemini-3.8-flash",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $0.75 / 输出 $3.75 每百万 Token；缓存、工具、重试与渠道附加费另计。",
+      "context": 1048576,
+      "status": "渠道目录已核对",
+      "guideCount": 5
+    },
+    {
+      "id": "pro31",
+      "name": "Gemini 3.1 Pro Preview",
+      "modelId": "google/gemini-3.1-pro-preview",
+      "tasks": [
+        "text",
+        "knowledge"
+      ],
+      "desc": "复杂推理与多模态资料分析候选，预览版本须先验证稳定性。",
+      "source": "https://openrouter.ai/google/gemini-3.1-pro-preview",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $2.0 / 输出 $12.0 每百万 Token；存在阶梯或时段覆盖价，按请求核对最终费率。",
+      "context": 1048576,
+      "status": "预览版本",
+      "guideCount": 3
+    },
+    {
+      "id": "deepseek41",
+      "name": "DeepSeek V4.1 Flash",
+      "modelId": "deepseek/deepseek-v4.1-flash",
+      "tasks": [
+        "text",
+        "code"
+      ],
+      "desc": "文本和图像理解候选，适合大批量结构化处理；渠道存在时段价格差异。",
+      "source": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $0.15 / 输出 $0.6 每百万 Token；存在阶梯或时段覆盖价，按请求核对最终费率。",
+      "context": 1048576,
+      "status": "渠道目录已核对",
+      "guideCount": 1
+    },
+    {
+      "id": "coderplus",
+      "name": "Qwen3 Coder Plus",
+      "modelId": "qwen/qwen3-coder-plus",
+      "tasks": [
+        "code"
+      ],
+      "desc": "面向工具调用和仓库级编码；文本输入，不把截图直接送给这个型号。",
+      "source": "https://openrouter.ai/qwen/qwen3-coder-plus",
+      "provider": "openrouter",
+      "checkedAt": "2026-09-21",
+      "pricingNote": "OpenRouter 目录文本输入 $0.65 / 输出 $3.25 每百万 Token；存在阶梯或时段覆盖价，按请求核对最终费率。",
+      "context": 1000000,
+      "status": "渠道目录已核对",
+      "guideCount": 1
+    },
+    {
+      "id": "image-pro",
+      "name": "Gemini 3 Pro Image",
+      "modelId": "gemini-3-pro-image",
+      "tasks": [
+        "image"
+      ],
+      "desc": "参考图、多轮修改、品牌视觉与复杂构图。",
+      "source": "https://ai.google.dev/gemini-api/docs/image-generation",
+      "provider": "official-gemini",
+      "checkedAt": "2026-09-21",
+      "status": "正式型号",
+      "guideCount": 2
+    },
+    {
+      "id": "kling-o3",
+      "name": "Kling O3 Standard · fal",
+      "modelId": "fal-ai/kling-video/o3/standard/image-to-video",
+      "tasks": [
+        "video"
+      ],
+      "desc": "以首帧及可选尾帧约束图生视频，适合确认了画面的产品或空间镜头。",
+      "source": "https://fal.ai/models/fal-ai/kling-video/o3/standard/image-to-video",
+      "provider": null,
+      "checkedAt": "2026-09-21",
+      "status": "渠道接口",
+      "guideCount": 1
+    },
+    {
+      "id": "live38",
+      "name": "Gemini 3.8 Live",
+      "modelId": "gemini-3.8-live",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "双向实时语音、视觉输入与工具交互；需接入 Live API 会话。",
+      "source": "https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk",
+      "provider": "official-gemini",
+      "checkedAt": "2026-09-21",
+      "status": "实时会话接口",
+      "guideCount": 1
+    },
+    {
+      "id": "whisper",
+      "name": "Whisper Large V3 · Groq",
+      "modelId": "whisper-large-v3",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "多语言录音转写；翻译接口输出英语，不能作为任意语言互译接口。",
+      "source": "https://console.groq.com/docs/speech-to-text",
+      "provider": null,
+      "checkedAt": "2026-09-21",
+      "status": "托管转写接口",
+      "guideCount": 1
+    },
+    {
+      "id": "whisper-turbo",
+      "name": "Whisper Large V3 Turbo · Groq",
+      "modelId": "whisper-large-v3-turbo",
+      "tasks": [
+        "audio"
+      ],
+      "desc": "偏吞吐与成本的多语言录音转写，不支持该接口的音频翻译。",
+      "source": "https://console.groq.com/docs/speech-to-text",
+      "provider": null,
+      "checkedAt": "2026-09-21",
+      "status": "托管转写接口",
+      "guideCount": 1
+    },
+    {
+      "id": "rerank25",
+      "name": "Voyage rerank-2.5",
+      "modelId": "rerank-2.5",
+      "tasks": [
+        "knowledge"
+      ],
+      "desc": "对已有候选文档重排序，提高相关证据靠前的机会；不生成答案。",
+      "source": "https://docs.voyageai.com/docs/reranker",
+      "provider": null,
+      "checkedAt": "2026-09-21",
+      "status": "重排模型",
+      "guideCount": 1
+    },
+    {
+      "id": "ocr15",
+      "name": "PaddleOCR-VL-1.5",
+      "modelId": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "tasks": [
+        "knowledge"
+      ],
+      "desc": "识别扫描文档版面、表格与公式，先结构化再做检索与问答。",
+      "source": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5",
+      "provider": null,
+      "checkedAt": "2026-09-21",
+      "status": "文档视觉模型",
+      "guideCount": 1
     }
   ],
   "quotes": [
@@ -9373,5 +9652,535 @@ export const discovery = {
     "currency": "USD",
     "checkedAt": "2026-09-21",
     "note": "统一假设：100 次文本任务，每轮 4000 输入 + 1000 输出 Token；复核轮也按相同用量估算。按目录标准起价、不使用缓存折扣；推理额外输出、长上下文阶梯、搜索工具、平台费用和重试另计。不是完成 100 个项目的总价，也不保证全网最低。"
-  }
+  },
+  "taskGuides": [
+    {
+      "id": "copy",
+      "category": "text",
+      "name": "品牌文案与长文写作",
+      "goal": "交付有明确受众、结构和语气的文稿",
+      "criteria": "用同一份品牌资料检查事实、语气和长文一致性",
+      "avoid": "免费小模型只适合试稿；不要用低价标签代替复杂文稿的质量判断",
+      "picks": [
+        {
+          "model": "sonnet5",
+          "role": "日常主力",
+          "why": "专业写作与多轮修订候选，适合按品牌约束反复改稿",
+          "setup": "提供受众、语气样文、必含事实与禁用词。"
+        },
+        {
+          "model": "opus5",
+          "role": "复杂交付",
+          "why": "多约束长文与论证需要更多推理和复核时升级",
+          "setup": "先确认提纲，再逐节写作并逐项核对引用。"
+        },
+        {
+          "model": "flash38",
+          "role": "批量变体",
+          "why": "适合快速生成渠道版本和摘要，保留统一原始事实",
+          "setup": "在审核过的母稿上生成标题和长度变体。"
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "category": "text",
+      "name": "研究分析与方案推演",
+      "goal": "基于材料得出带证据和假设的建议",
+      "criteria": "检查引用对应、反例覆盖和计算复核",
+      "avoid": "模型没有自动查遍互联网；检索工具和资料来源需另行提供",
+      "picks": [
+        {
+          "model": "opus5",
+          "role": "复杂推演",
+          "why": "推理与长流程候选，用于多条件方案比较",
+          "setup": "提供证据包，要求区分事实、假设与建议。"
+        },
+        {
+          "model": "sol56",
+          "role": "计算与工具协作",
+          "why": "适合需要多步分析及工具执行的研究流程",
+          "setup": "由应用提供计算与检索工具，结论回查工具结果。"
+        },
+        {
+          "model": "pro31",
+          "role": "多模态资料",
+          "why": "适合同时分析文件、图像或音视频证据的候选",
+          "setup": "按资料类型确认渠道输入格式，并保留证据位置。"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "category": "text",
+      "name": "长文档摘要与会议整理",
+      "goal": "输出可回查原文的摘要、决策和待办",
+      "criteria": "检查遗漏、时间、人名与原文定位",
+      "avoid": "长上下文不代表自动做到精确引用；录音先转写或确认音频输入",
+      "picks": [
+        {
+          "model": "flash38",
+          "role": "日常整理",
+          "why": "支持文件与音视频输入的文本输出候选，适合资料归纳",
+          "setup": "把决策、行动人、截止日拆成独立字段。"
+        },
+        {
+          "model": "pro31",
+          "role": "复杂材料",
+          "why": "跨文件推理与多模态核对候选",
+          "setup": "分别记录原文页码或音视频时间戳再汇总。"
+        },
+        {
+          "model": "sonnet5",
+          "role": "文字资料精编",
+          "why": "适合已有转写稿或文档的结构重组和行动清单",
+          "setup": "只根据已提供文字提取任务，不补猜未明确承诺。"
+        }
+      ]
+    },
+    {
+      "id": "extract",
+      "category": "text",
+      "name": "字段抽取与批量分类",
+      "goal": "将非结构化内容转成可验证字段",
+      "criteria": "检查 JSON 格式、字段准确率和空值处理",
+      "avoid": "需要确定数值计算时使用规则或程序；不要让语言模型补全未知字段",
+      "picks": [
+        {
+          "model": "deepseek41",
+          "role": "批量候选",
+          "why": "渠道支持结构化输出与工具参数，适合字段抽取样本验证",
+          "setup": "固定 schema，缺失值返回 null，并用程序验证。"
+        },
+        {
+          "model": "flash38",
+          "role": "图文混合",
+          "why": "当输入包含图片和文档时使用多模态理解",
+          "setup": "复杂扫描表格先 OCR，关键字段回查原件。"
+        },
+        {
+          "model": "sol56",
+          "role": "复杂规则",
+          "why": "适合跨字段约束和多步骤工具校验",
+          "setup": "让代码执行校验规则，将失败字段单独复核。"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "category": "code",
+      "name": "完整功能与多文件开发",
+      "goal": "完成可运行功能和必要测试",
+      "criteria": "验收构建、测试、需求覆盖与变更范围",
+      "avoid": "模型本身不等于开发环境；必须连接仓库、终端和测试工具",
+      "picks": [
+        {
+          "model": "sol56",
+          "role": "工具协作",
+          "why": "面向命令行与多步开发的候选，适合连通完整开发流程",
+          "setup": "提供仓库约定、验收条件与可执行测试。"
+        },
+        {
+          "model": "sonnet5",
+          "role": "持续开发",
+          "why": "适合常规功能迭代与编码代理工作流",
+          "setup": "从最小改动开始，检查真实运行结果。"
+        },
+        {
+          "model": "coderplus",
+          "role": "编码专项",
+          "why": "工具调用和仓库编码候选；适合文本需求驱动开发",
+          "setup": "传入代码而非截图，明确允许修改的文件。"
+        }
+      ]
+    },
+    {
+      "id": "debug",
+      "category": "code",
+      "name": "复杂排错与代码审查",
+      "goal": "定位根因、复现缺陷并验证修复",
+      "criteria": "检查复现证据、回归测试及隐藏副作用",
+      "avoid": "不要只看解释流畅或补丁长度，也不能保证找出全部安全问题",
+      "picks": [
+        {
+          "model": "opus5",
+          "role": "疑难排错",
+          "why": "代码审查、缺陷查找和长链推理候选",
+          "setup": "提交复现步骤、日志与相关代码，先论证根因。"
+        },
+        {
+          "model": "sol56",
+          "role": "执行验证",
+          "why": "用工具运行复现和回归，适合证据驱动排错",
+          "setup": "将失败测试固定下来，再应用修复并重跑。"
+        },
+        {
+          "model": "sonnet5",
+          "role": "日常审查",
+          "why": "适合常规提交审查和范围较明确的修复",
+          "setup": "重点检查本次差异、边界输入和调用者。"
+        }
+      ]
+    },
+    {
+      "id": "frontend",
+      "category": "code",
+      "name": "前端界面与视觉还原",
+      "goal": "从参考图或设计要求实现可交互页面",
+      "criteria": "检查截图差异、响应式和真实交互",
+      "avoid": "纯文本编码型号不能直接理解截图；生成静态图片也不等于网页实现",
+      "picks": [
+        {
+          "model": "fable51",
+          "role": "复杂前端",
+          "why": "渠道描述明确包含前端和视觉工作，适合较长实现流程",
+          "setup": "提供参考图、组件规范、交互与验收尺寸。"
+        },
+        {
+          "model": "sonnet5",
+          "role": "日常页面",
+          "why": "图像输入与专业编码候选，适合持续界面迭代",
+          "setup": "逐屏实现，实际截图后修正布局。"
+        },
+        {
+          "model": "flash38",
+          "role": "快速原型",
+          "why": "多模态与编码能力适合快速验证界面方向",
+          "setup": "先完成关键用户流程，再逐项检查样式。"
+        }
+      ]
+    },
+    {
+      "id": "brand-image",
+      "category": "image",
+      "name": "海报与品牌主视觉",
+      "goal": "输出带指定构图和品牌元素的视觉稿",
+      "criteria": "检查品牌一致性、文字与画面细节",
+      "avoid": "精确 Logo、价格和大段文字最好使用原素材与排版工具",
+      "picks": [
+        {
+          "model": "image-pro",
+          "role": "复杂视觉",
+          "why": "官方定位偏复杂视觉、品牌一致性和精细控制",
+          "setup": "提供品牌参考、构图与需要保留的元素。"
+        },
+        {
+          "model": "image",
+          "role": "日常制作",
+          "why": "支持参考图与编辑，适合多尺寸物料迭代",
+          "setup": "先确定一张母版，再改变尺寸和文案。"
+        },
+        {
+          "model": "image-lite",
+          "role": "草图探索",
+          "why": "单次创意图探索的速度与成本候选",
+          "setup": "只用于前期构图，不承担多轮主体一致性任务。"
+        }
+      ]
+    },
+    {
+      "id": "product-edit",
+      "category": "image",
+      "name": "商品修图与角色一致性",
+      "goal": "保留主体并修改背景、姿态或局部元素",
+      "criteria": "检查外观、标识、材质和跨图一致性",
+      "avoid": "FLUX schnell 文生图或 Lite 单次生成不作为精细参考图编辑的默认推荐",
+      "picks": [
+        {
+          "model": "image",
+          "role": "多参考编辑",
+          "why": "官方明确强调多参考输入与一致性，匹配该任务",
+          "setup": "输入真实主体参考图，明确禁止改动的区域。"
+        },
+        {
+          "model": "image-pro",
+          "role": "高要求修订",
+          "why": "复杂品牌一致性与精细修改的候选",
+          "setup": "逐次修改局部，用原参考图回查累积偏差。"
+        }
+      ]
+    },
+    {
+      "id": "concept-image",
+      "category": "image",
+      "name": "概念草图与批量灵感",
+      "goal": "快速探索画面方向后挑选精修",
+      "criteria": "检查风格覆盖、构图可用率与单张重试成本",
+      "avoid": "草图候选不等同于成品视觉质量排序",
+      "picks": [
+        {
+          "model": "image-lite",
+          "role": "快速探索",
+          "why": "官方面向速度与规模的单次视觉生成",
+          "setup": "每轮只改变一个视觉变量，筛选后再精修。"
+        },
+        {
+          "model": "flux",
+          "role": "轻量草图",
+          "why": "快速文生图接口适合背景和氛围图探索",
+          "setup": "固定比例与风格，避免依赖精确文字。"
+        },
+        {
+          "model": "image",
+          "role": "进入精修",
+          "why": "需要保留被选中的主体并继续修改时使用",
+          "setup": "从草图切换到参考图编辑，控制人物和物品变化。"
+        }
+      ]
+    },
+    {
+      "id": "video-create",
+      "category": "video",
+      "name": "广告短片与分镜生成",
+      "goal": "依据脚本生成可剪辑短镜头",
+      "criteria": "检查运动、音画同步、主体与跨镜头连续性",
+      "avoid": "短镜头生成不等于一键完成长片；仍需剪辑与字幕",
+      "picks": [
+        {
+          "model": "veo",
+          "role": "复杂短镜头",
+          "why": "带音频的视频生成候选，适合先验证关键创意镜头",
+          "setup": "逐镜提供动作、构图与声音要求。"
+        },
+        {
+          "model": "veo-fast",
+          "role": "迭代版本",
+          "why": "快速分镜迭代与日常短视频素材候选",
+          "setup": "先锁定分镜后生成，减少无效重试。"
+        },
+        {
+          "model": "veo-lite",
+          "role": "草案控制预算",
+          "why": "适合预算敏感的试镜头，不作为无条件质量首选",
+          "setup": "只为关键一镜付费，其他部分用现有素材拼接。"
+        }
+      ]
+    },
+    {
+      "id": "animate-image",
+      "category": "video",
+      "name": "商品图与空间图动起来",
+      "goal": "以确认的图片约束镜头运动",
+      "criteria": "检查首尾帧、商品形变和空间关系",
+      "avoid": "不要把普通文生视频当作严格主体一致性的替代",
+      "picks": [
+        {
+          "model": "kling-o3",
+          "role": "首尾帧约束",
+          "why": "该接口专门接收起始图和可选结束图，匹配图生视频",
+          "setup": "准备审核过的首帧与尾帧，指定镜头轨迹。"
+        },
+        {
+          "model": "veo",
+          "role": "图像引导备选",
+          "why": "使用官方视频接口支持的图像引导方式制作短镜头",
+          "setup": "核对当前型号的输入规格，逐镜检查主体保真。"
+        }
+      ]
+    },
+    {
+      "id": "video-draft",
+      "category": "video",
+      "name": "低成本视频试稿",
+      "goal": "验证节奏和分镜后再做成片",
+      "criteria": "检查每个镜头的可用率与重试次数",
+      "avoid": "便宜但持续重试未必节省总成本",
+      "picks": [
+        {
+          "model": "veo-lite",
+          "role": "先验证脚本",
+          "why": "预算有限时验证单个关键镜头",
+          "setup": "用静态分镜确认后再生成，不直接大量抽卡。"
+        },
+        {
+          "model": "veo-fast",
+          "role": "提高迭代效率",
+          "why": "需要更频繁地试动作和节奏时作为候选",
+          "setup": "记录成功率和每个可用镜头的真实费用。"
+        }
+      ]
+    },
+    {
+      "id": "narration",
+      "category": "audio",
+      "name": "旁白与有声内容",
+      "goal": "把已审定文稿合成为可发布音频",
+      "criteria": "检查读音、停顿、情绪和长段稳定性",
+      "avoid": "TTS 负责朗读，不负责实时理解用户并回答",
+      "picks": [
+        {
+          "model": "tts-31",
+          "role": "新版流式候选",
+          "why": "支持流式合成，适合长文旁白分段播放与自然语言控制",
+          "setup": "先试听专名和数字，预览接口保留版本迁移安排。"
+        },
+        {
+          "model": "tts-pro",
+          "role": "细致配音备选",
+          "why": "对语气与停顿要求高时用同一文稿对照试听",
+          "setup": "按段落导出干声，再做响度与背景音乐处理。"
+        },
+        {
+          "model": "tts",
+          "role": "费用敏感备选",
+          "why": "适合固定模板播报与批量素材",
+          "setup": "缓存已合格片段，只重生成变化内容。"
+        }
+      ]
+    },
+    {
+      "id": "dialogue-audio",
+      "category": "audio",
+      "name": "多角色配音与对话素材",
+      "goal": "输出角色可区分的剧本或教学对话",
+      "criteria": "检查角色切换、语气与字幕对齐",
+      "avoid": "多角色 TTS 是预写剧本配音，不是多人实时会议代理",
+      "picks": [
+        {
+          "model": "tts-31",
+          "role": "角色对话",
+          "why": "官方提供多角色生成示例与流式输出",
+          "setup": "为每名角色固定标识和声音，按段落试听。"
+        },
+        {
+          "model": "tts-pro",
+          "role": "样稿对照",
+          "why": "多角色配音候选，用于比较语气和长段稳定性",
+          "setup": "保持相同文本和角色设置，盲听选择更合适的版本。"
+        }
+      ]
+    },
+    {
+      "id": "transcribe",
+      "category": "audio",
+      "name": "录音转写与会议字幕",
+      "goal": "将录音转成可复核文字与时间位置",
+      "criteria": "检查专名、数字、噪声段与时间戳",
+      "avoid": "转写不等于说话人身份识别；Turbo 不承担音频翻译",
+      "picks": [
+        {
+          "model": "whisper",
+          "role": "准确性优先候选",
+          "why": "Groq 文档建议对错误敏感的多语言场景使用该型号",
+          "setup": "提供术语提示，逐段复核关键金额和姓名。"
+        },
+        {
+          "model": "whisper-turbo",
+          "role": "高吞吐候选",
+          "why": "Groq 文档定位偏速度和费用的多语言转写",
+          "setup": "先抽查口音与背景噪声，再处理整批录音。"
+        }
+      ]
+    },
+    {
+      "id": "realtime",
+      "category": "audio",
+      "name": "实时语音助手",
+      "goal": "实现双向语音理解、回复和工具交互",
+      "criteria": "检查端到端延迟、打断、会话恢复与工具结果",
+      "avoid": "配音 TTS、Whisper 转写和文本模型都不能单独代替双向语音接口",
+      "picks": [
+        {
+          "model": "live38",
+          "role": "原生实时接口",
+          "why": "官方 Live API 使用此型号，提供连续音频输入与语音输出",
+          "setup": "建立 Live 会话，接入麦克风、播放、工具回传和重连。"
+        }
+      ]
+    },
+    {
+      "id": "retrieve",
+      "category": "knowledge",
+      "name": "知识库向量检索",
+      "goal": "从文档中找到相关证据片段",
+      "criteria": "使用标注问题比较召回与漏检",
+      "avoid": "向量模型只生成表示，不会直接给出带引用的答案",
+      "picks": [
+        {
+          "model": "voyage-4-large",
+          "role": "检索质量候选",
+          "why": "官方定位通用多语言检索质量优先",
+          "setup": "固定切片和评估问题，检查 top-k 证据覆盖。"
+        },
+        {
+          "model": "voyage-4",
+          "role": "日常索引",
+          "why": "通用多语言检索主力候选",
+          "setup": "匹配 query/document 输入类型并维护文档权限。"
+        },
+        {
+          "model": "voyage-4-lite",
+          "role": "大规模索引",
+          "why": "官方定位延迟与成本优先",
+          "setup": "先评估复杂问题召回损失，再决定是否降档。"
+        }
+      ]
+    },
+    {
+      "id": "rerank",
+      "category": "knowledge",
+      "name": "搜索结果重排",
+      "goal": "让更相关的候选证据排到前面",
+      "criteria": "检查前几条相关性和新增延迟",
+      "avoid": "重排不能找回第一阶段完全没召回的文档，也不生成最终答案",
+      "picks": [
+        {
+          "model": "rerank25",
+          "role": "专用重排",
+          "why": "对查询与已召回文档进行相关性排序，任务直接匹配",
+          "setup": "先用向量或关键词召回，再重排候选并保留来源。"
+        }
+      ]
+    },
+    {
+      "id": "rag-answer",
+      "category": "knowledge",
+      "name": "带引用的知识问答",
+      "goal": "基于检索结果回答问题并引用证据",
+      "criteria": "检查引用对应、拒答和权限隔离",
+      "avoid": "不能把 embedding 模型直接当聊天模型；没有证据时不能硬答",
+      "picks": [
+        {
+          "model": "sonnet5",
+          "role": "文字证据问答",
+          "why": "对检索后的文字证据进行专业解释与多轮问答",
+          "setup": "只向模型提供获授权片段，逐条验证引用。"
+        },
+        {
+          "model": "flash38",
+          "role": "多模态证据",
+          "why": "当证据含文件、图像或音视频时作为回答候选",
+          "setup": "检索与回答分两步，引用由应用校验。"
+        },
+        {
+          "model": "opus5",
+          "role": "复杂综合",
+          "why": "多份证据存在冲突或需要复杂推理时升级",
+          "setup": "展示冲突与来源，不自动把一份材料当唯一事实。"
+        }
+      ]
+    },
+    {
+      "id": "scan",
+      "category": "knowledge",
+      "name": "扫描件与表格入库",
+      "goal": "先把原始页面变成结构化可检索材料",
+      "criteria": "检查页码、表格行列、金额和识别置信度",
+      "avoid": "OCR 不负责最终知识问答；复杂数字还需规则检查",
+      "picks": [
+        {
+          "model": "ocr15",
+          "role": "文档专用",
+          "why": "面向文档版面、表格与公式识别，适合知识库入库前处理",
+          "setup": "保留原页和坐标，关键字段人工复核后再索引。"
+        },
+        {
+          "model": "pro31",
+          "role": "复杂页面复核",
+          "why": "多模态推理可辅助解释异常页面和跨页关系",
+          "setup": "只处理 OCR 失败片段，数字和表格回查原件。"
+        }
+      ]
+    }
+  ]
 };

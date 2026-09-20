@@ -14,7 +14,24 @@ export const offerExpired=(o,now=new Date())=>Boolean(o.endsAt&&now.toISOString(
 export const activeOffers=(now=new Date())=>d.offers.filter(o=>!offerExpired(o,now));
 const money=n=>'$'+Number(n.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 export function sortedQuotes(id,inputM=1,outputM=.2){return d.quotes.filter(q=>q.model===id).sort((a,b)=>quoteCost(a,inputM,outputM)-quoteCost(b,inputM,outputM)||a.channel.localeCompare(b.channel));}
-function modelCard(m){return '<article class="discovery-card"><div class="discovery-card-top"><span class="eyebrow">MODEL SHORTLIST</span><span class="tag">编辑候选</span></div><h3>'+esc(m.name)+'</h3><p>'+esc(m.desc)+'</p><div class="tag-row">'+m.tasks.map(t=>'<span class="tag">'+esc(task(t).name)+'</span>').join('')+'</div><div class="discovery-card-foot">'+link('model/'+m.id,'查看模型与渠道 →')+'</div></article>';}
+function modelCard(m){return '<article class="discovery-card"><div class="discovery-card-top"><span class="eyebrow">MODEL GUIDE</span><span class="tag">'+esc(m.status||(m.guideCount?'任务候选':'目录备选'))+'</span></div><h3>'+esc(m.name)+'</h3><p>'+esc(m.desc)+'</p><div class="tag-row">'+m.tasks.map(t=>'<span class="tag">'+esc(task(t).name)+'</span>').join('')+'</div><div class="discovery-card-foot">'+link('model/'+m.id,'查看模型与渠道 →')+'</div></article>';}
+export function taskMatches(category='all'){return d.taskGuides.filter(g=>category==='all'||g.category===category);}
+function taskGuideCard(g){
+ return '<a class="discovery-card task-guide-card" href="#models/'+g.category+'/'+g.id+'" data-route="models/'+g.category+'/'+g.id+'"><span class="eyebrow">'+esc(task(g.category).name)+' · '+g.picks.length+' 个针对性候选</span><h3>'+esc(g.name)+'</h3><p>'+esc(g.goal)+'</p><p class="mini-meta">'+g.picks.slice(0,2).map(p=>esc(model(p.model).name)).join(' / ')+'</p><span class="text-link">查看匹配理由与用法 →</span></a>';
+}
+function taskPickCard(g,p){
+ const m=model(p.model);
+ return '<article class="discovery-card task-pick"><span class="eyebrow">'+esc(p.role)+'</span><h2>'+esc(m.name)+'</h2><span class="tag">'+esc(m.status||'资料已核对')+'</span><h3>为什么匹配这个任务</h3><p>'+esc(p.why)+'</p><h3>怎样使用</h3><p>'+esc(p.setup)+'</p><p class="model-id">'+esc(m.modelId)+'</p><div class="discovery-card-foot">'+link('model/'+m.id,'型号与接入详情 →')+' · '+sourceLink(m.source,'能力依据 ↗')+'</div></article>';
+}
+function taskDirectory(category='all',guideId){
+ if(category==='catalog')return header('MODEL CATALOG','全部型号资料','保留历史版本与免费实验型号，便于已接入项目查阅；新任务优先使用任务选型。')+link('models','← 按具体任务选择')+'<div class="discovery-grid three">'+[...d.models].sort((a,b)=>(b.guideCount||0)-(a.guideCount||0)).map(modelCard).join('')+'</div>';
+ if(!d.tasks.some(t=>t.id===category))category='all';
+ const rows=taskMatches(category),g=rows.find(g=>g.id===guideId);
+ const intro=header('MATCH THE JOB','按具体任务，找到合适模型','6 大类 · 21 个具体任务。按输入、交付物与能力匹配，主力、专项和节省成本的备选分别说明。')+tabs([['all','全部任务'],...d.tasks.map(t=>[t.id,t.name])],category,'models/');
+ if(!g)return intro+'<div class="discovery-grid three">'+rows.map(taskGuideCard).join('')+'</div><div class="notice"><p>选型依据官方能力文档与渠道目录；推荐理由是编辑判断，未进行本站统一效果实测。免费与价格最低不等于适合当前任务。</p>'+link('models/catalog','查阅全部型号（含历史与免费备选） →')+' · '+link('boards/free','查看免费模型条件 →')+'</div>';
+ return intro+'<nav class="discovery-tabs" aria-label="具体任务">'+rows.map(x=>link('models/'+category+'/'+x.id,x.name,x.id===g.id?'task-choice active':'task-choice')).join('')+'</nav><section class="notice"><span class="eyebrow">你要完成的任务</span><h2>'+esc(g.name)+'</h2><p>'+esc(g.goal)+'</p><p><strong>选择与验收：</strong>'+esc(g.criteria)+'</p></section><div class="discovery-grid '+(g.picks.length>=3?'three':'two')+' task-picks">'+g.picks.map(p=>taskPickCard(g,p)).join('')+'</div><section class="notice"><h3>哪些情况不要这样选</h3><p>'+esc(g.avoid)+'</p><p class="mini-meta">2026-09-21 核对型号与能力来源；这是任务适配建议，不是付费调用实测排名。最终效果用自己的样本比较。</p></section><div class="tool-links">'+link('models/'+category,'查看本类其他任务','tool-link')+((g.picks.some(p=>d.quotes.some(q=>q.model===p.model)||d.mediaQuotes.some(q=>q.model===p.model)))?link('boards/'+category,'查看已收录的成本样本','tool-link'):'')+'</div>';
+}
+
 function offerCard(o){
  const relay=o.scope==='relay',ref=relay?activeReferral({id:'relay-'+o.relayRank}):null;
  return '<article class="discovery-card"><div class="discovery-card-top"><span class="tag">'+esc(o.category)+'</span><span class="mini-meta">'+(offerExpired(o)?'已结束':o.endsAt?'至 '+esc(o.endsAt):'截止未公布')+'</span></div><h3>'+esc(o.title)+'</h3><p>'+esc(o.desc)+'</p>'+(relay?'<p class="mini-meta">'+esc(o.modelScope)+'</p>':'')+'<details><summary>领取条件与适用范围</summary><p>'+esc(o.terms)+'</p></details>'+(relay?'<p class="mini-meta">'+esc(o.checkedAt)+' · '+esc(o.evidence)+'</p>':'')+'<div class="discovery-card-foot">'+sourceLink(o.source,relay?'查看站方领取说明 ↗':'查看官方规则 ↗')+(ref?' · '+sourceLink(ref,'前往领取（推广链接）↗'):'')+'</div></article>';
@@ -132,11 +149,11 @@ function taskBoard(id){
 function boardPreview(tab='price'){
  if(d.tasks.some(t=>t.id===tab))return taskBoard(tab);
  if(tab==='free')return freeBoard('all',true);
- if(tab==='picks')return '<div class="discovery-grid three">'+d.models.slice(0,3).map(modelCard).join('')+'</div>';
+ if(tab==='picks')return '<div class="discovery-grid three">'+d.taskGuides.filter(g=>['copy','build','product-edit'].includes(g.id)).map(taskGuideCard).join('')+'</div>';
  return quoteTable('flash',1,.2,true)+'<p class="mini-meta">同模型标准文本报价；聚合渠道为目录起价。按输入 100 万、输出 20 万 Token 估算；同价不分高低，附加费用另计。</p>';
 }
 export function homeDiscovery(){
- return section('先选任务，再选模型','从你的实际需求出发，找到模型、接入方式和上手路径。','models','<div class="task-grid">'+d.tasks.map(t=>'<a href="#models/'+t.id+'" data-route="models/'+t.id+'" class="task-card"><span class="task-symbol" aria-hidden="true">'+esc(t.icon)+'</span><h3>'+esc(t.name)+'</h3><p>'+esc(t.desc)+'</p><span class="task-arrow" aria-hidden="true">↗</span></a>').join('')+'</div>')+
+ return section('先选任务，再选模型','从你的实际需求出发，找到模型、接入方式和上手路径。','models','<div class="task-grid">'+d.tasks.map(t=>'<a href="#models/'+t.id+'" data-route="models/'+t.id+'" class="task-card"><span class="task-symbol" aria-hidden="true">'+esc(t.icon)+'</span><h3>'+esc(t.name)+'</h3><p>'+esc(taskMatches(t.id).map(g=>g.name).join(' / '))+'</p><span class="task-arrow" aria-hidden="true">↗</span></a>').join('')+'</div>')+
  section('榜单与选型','透明的价格样本，清楚的筛选条件。质量榜待统一实测后开放。','boards/price','<div class="board-panel"><div class="discovery-tabs" role="group" aria-label="首页榜单">' +boardItems.map(([id,label])=>'<button data-board-tab="'+id+'" aria-pressed="'+(id==='price')+'">'+label+'</button>').join('')+'</div><div id="home-board-content">'+boardPreview()+'</div></div>')+
  section('免费与限时福利','先看资格、范围和有效期，再决定是否领取。','offers','<div class="discovery-grid four">'+activeOffers().slice(0,4).map(offerCard).join('')+'</div>')+
  section('模型动态与预告','保留官方来源与事件日期，区分预览、上线和生命周期变化。','news','<div class="discovery-grid three">'+d.news.map(newsCard).join('')+'</div>')+
@@ -148,8 +165,9 @@ function tabs(items,current,prefix){return '<div class="discovery-tabs" aria-lab
 function modelPage(m){
  const quotes=d.quotes.filter(q=>q.model===m.id);
  return header('MODEL GUIDE',m.name,m.desc)+'<p class="model-id">模型 ID：'+esc(m.modelId)+'</p>'+'<div class="tag-row">'+m.tasks.map(t=>link('models/'+t,task(t).name,'tag')).join('')+'</div><div class="notice">编辑候选，不是质量排名。能力按来源资料整理；渠道实际功能仍需接入验证。资料核验 '+d.checkedAt+' · '+sourceLink(m.source)+'</div>'+
- '<section class="section"><div class="section-head"><h2>报价与接入</h2>'+link('boards/'+(d.mediaQuotes.find(q=>q.model===m.id)?.task||'price/'+m.id),'查看比价 →')+'</div>'+(quotes.length?quoteTable(m.id):d.mediaQuotes.some(q=>q.model===m.id)?rankedTable(d.mediaQuotes.filter(q=>q.model===m.id)):'<div class="empty"><b>标准化报价待补齐</b>该模态还需对齐尺寸、时长等规格。'+sourceLink(m.source,'查看官方规格 ↗')+'</div>')+(m.provider?'<button class="soft-btn" data-discover-provider="'+m.provider+'">查看接入平台</button>':sourceLink(m.source,'查看接入与计费说明 ↗'))+'</section>'+
- section('相关教程','先理解工作流，再开始调用。','covibe','<div class="discovery-grid two">'+d.articles.filter(a=>a.models.includes(m.id)||a.tasks.some(t=>m.tasks.includes(t))).slice(0,2).map(a=>articleCard(a)).join('')+'</div>');
+ (m.guideCount?'<section class="section"><h2>适合哪些具体任务</h2><div class="discovery-grid two">'+d.taskGuides.filter(g=>g.picks.some(p=>p.model===m.id)).map(taskGuideCard).join('')+'</div></section>':'<div class="notice">此型号保留用于已有项目或专项评估，未列为新任务的默认推荐。'+link('models','查看当前任务选型 →')+'</div>')+(m.pricingNote?'<div class="notice"><strong>当前渠道报价说明</strong><p>'+esc(m.pricingNote)+'</p>'+sourceLink(m.source,'核对当前费率 ↗')+'</div>':'')+
+ '<section class="section"><div class="section-head"><h2>报价与接入</h2>'+link('boards/'+(d.mediaQuotes.find(q=>q.model===m.id)?.task||'price/'+m.id),'查看比价 →')+'</div>'+(quotes.length?quoteTable(m.id):d.mediaQuotes.some(q=>q.model===m.id)?rankedTable(d.mediaQuotes.filter(q=>q.model===m.id)):'<div class="empty"><b>标准化报价待补齐</b>该型号尚未加入统一成本样本；请按任务用量核对来源报价。'+sourceLink(m.source,'查看官方规格 ↗')+'</div>')+(m.provider?'<button class="soft-btn" data-discover-provider="'+m.provider+'">查看接入平台</button>':sourceLink(m.source,'查看接入与计费说明 ↗'))+'</section>'+
+ section('相关教程','先理解工作流，再开始调用。','covibe','<div class="discovery-grid two">'+d.articles.filter(a=>m.id==='live38'?['first-api','choose-model'].includes(a.id):a.models.includes(m.id)||a.tasks.some(t=>m.tasks.includes(t))).slice(0,2).map(a=>articleCard(a)).join('')+'</div>');
 }
 export function searchDiscovery(query,providers=[]){
  const q=query.trim().toLowerCase();
@@ -161,8 +179,7 @@ export function renderDiscovery(route,providers=[]){
  const [page,arg,value,freeCap,freeQuery,freeSort,freePage]=route.split('/');
  let body='';
  if(page==='models'){
- const current=arg||'all';
- body=header('MODEL DISCOVERY','按任务找到模型','候选按编辑顺序展示，不代表实测质量排名。')+tabs([['all','全部'],...d.tasks.map(t=>[t.id,t.name])],current,'models/')+'<div class="discovery-grid three">'+d.models.filter(m=>current==='all'||m.tasks.includes(current)).map(modelCard).join('')+'</div>';
+ body=taskDirectory(arg||'all',value);
  }else if(page==='model'){body=model(arg)?modelPage(model(arg)):header('NOT FOUND','模型未收录','请返回模型列表。')+link('models','查看全部模型');}
  else if(page==='boards'){
  const kind=arg||'price',id=model(value)?value:'flash';
@@ -170,7 +187,7 @@ export function renderDiscovery(route,providers=[]){
  if(d.tasks.some(t=>t.id===kind))body+=taskBoard(kind);
  else if(kind==='free')body+=freeBoard(value||'all',false,freeCap||'all',decodeSafe(freeQuery||''),freeSort==='context'?'context':'name',freePage);
  else if(kind==='trials')body+=trialBoard(value||'all');
- else if(kind==='picks')body+='<div class="discovery-grid three">'+d.models.map(modelCard).join('')+'</div>';
+ else if(kind==='picks')body+='<div class="discovery-grid three">'+d.taskGuides.map(taskGuideCard).join('')+'</div>';
  else body+='<div class="board-panel"><div class="price-controls"><label>选择同一模型<select id="priceModel">'+d.models.filter(m=>m.id===id||d.quotes.some(q=>q.model===m.id)).map(m=>'<option value="'+m.id+'" '+(m.id===id?'selected':'')+'>'+esc(m.name)+'</option>').join('')+'</select></label><label>输入量（百万 Token）<input id="priceInput" type="number" min="0" max="1000000" step="0.1" value="1"></label><label>输出量（百万 Token）<input id="priceOutput" type="number" min="0" max="1000000" step="0.1" value="0.2"></label></div><div id="priceResults">'+(d.quotes.some(q=>q.model===id)?quoteTable(id):'<div class="empty"><b>暂无可比报价</b>正在补齐同规格数据，暂不生成排名。'+sourceLink(model(id).source,'查看模型规格 ↗')+'</div>')+'</div><p class="mini-meta">按估算文本费用升序排列。同价并列；渠道费用可能不同。USD，不换算人民币。此处缓存命中按 0 计算。</p>'+d.quotes.filter(q=>q.model===id).map(q=>'<p class="mini-meta">'+esc(q.channel)+'：'+esc(q.note)+'</p>').join('')+'</div>';
  }else if(page==='offers'){
  const kind=arg||'all';body=header('FREE & LIMITED','免费与限时福利','免费、付费促销与邀请奖励分开展示。有效期以官方规则为准。')+tabs([['all','有效活动'],['free','免费'],['promo','付费优惠'],['reward','邀请奖励'],['expired','已结束']],kind,'offers/');

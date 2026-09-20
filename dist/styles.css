@@ -255,3 +255,12 @@ input:focus,select:focus{border-color:var(--focus)}
 .industry-chain{margin:24px 0}
 @media(max-width:1100px){.industry-dimension-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.industry-dimension-grid{grid-template-columns:minmax(0,1fr);gap:14px}.dimension-card h2{font-size:21px}}
+
+.task-guide-card{display:flex;flex-direction:column;color:inherit;text-decoration:none;gap:8px;min-width:0}
+.task-guide-card .text-link{margin-top:auto;padding-top:12px}
+.task-guide-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.task-picks{align-items:start;margin:24px 0}
+.task-pick h2{font-size:24px;line-height:1.4;overflow-wrap:anywhere}
+.task-pick h3{font-size:15px;margin-top:24px}
+.task-pick .model-id{font-size:12px;overflow-wrap:anywhere;margin-top:24px}
+.discovery-tabs .task-choice.active{background:var(--accent);color:var(--accent-ink)}

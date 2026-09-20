@@ -140,3 +140,29 @@ assert.equal(capabilityModels.cosy.billing,'self-host');
 assert.equal(capabilityModels.med.billing,'research');
 assert(dimensionPlans(d.industries.find(i=>i.id==='health-ops'),'specialty')[1].models.every(id=>id!=='med'));
 console.log('24 industries, 120 distinct modality briefs and 360 tier plans validated.');
+
+const guides=d.taskGuides;
+assert.equal(guides.length,21);
+assert.equal(new Set(guides.map(g=>g.id)).size,21);
+assert.equal(guides.reduce((n,g)=>n+g.picks.length,0),53);
+for(const t of d.tasks)assert(guides.some(g=>g.category===t.id));
+for(const g of guides){
+ assert(g.goal&&g.criteria&&g.avoid);
+ assert.equal(new Set(g.picks.map(p=>p.model)).size,g.picks.length);
+ for(const p of g.picks){
+  const m=d.models.find(m=>m.id===p.model);
+  assert(m?.tasks.includes(g.category),g.id+'/'+p.model);
+  assert(p.why.length>10&&p.setup.length>10);
+  assert(!m.id.startsWith('free-'));
+ }
+ const html=renderDiscovery('models/'+g.category+'/'+g.id);
+ assert.equal((html.match(/class="discovery-card task-pick"/g)||[]).length,g.picks.length);
+ assert(!/undefined|NaN|\[object Object\]/.test(html));
+}
+assert.deepEqual(guides.find(g=>g.id==='realtime').picks.map(p=>p.model),['live38']);
+assert(!guides.find(g=>g.id==='product-edit').picks.some(p=>['flux','image-lite'].includes(p.model)));
+assert(guides.find(g=>g.id==='rerank').picks.every(p=>p.model==='rerank25'));
+assert(!renderDiscovery('models/text').includes('Gemini 2.5 Flash-Lite'));
+assert(renderDiscovery('models/catalog').includes('Gemini 2.5 Flash-Lite'));
+assert(renderDiscovery('models/unknown/unknown').includes('具体任务'));
+console.log('21 task guides / 53 model matches: coverage, modality boundaries, source references and routes passed.');
