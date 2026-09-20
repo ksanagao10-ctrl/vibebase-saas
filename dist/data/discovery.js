@@ -631,6 +631,134 @@ export const discovery = {
       "source": "https://docs.voyageai.com/docs/pricing",
       "endsAt": null,
       "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "relay-free-18",
+      "relayRank": 18,
+      "scope": "relay",
+      "benefitKind": "trial",
+      "title": "BuyToken",
+      "category": "注册赠额",
+      "type": "free",
+      "desc": "¥1 站内体验额度",
+      "terms": "邮箱注册。适用模型、有效期和限流未在本次公开页面明确，领取后以控制台为准。",
+      "modelScope": "站方公开说明为 Claude / GPT API 网关，免费额度适用的具体模型名单未明确。",
+      "source": "https://buytoken.work/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-19",
+      "relayRank": 19,
+      "scope": "relay",
+      "benefitKind": "trial",
+      "title": "OneHop",
+      "category": "注册试用",
+      "type": "free",
+      "desc": "试用额度，金额未公布",
+      "terms": "站方提供注册试用额度，但金额、有效期和适用范围未公布；请先确认到账，再发起调用。",
+      "modelScope": "多模型 API 网关；不将平台全部模型自动视为免费可用。",
+      "source": "https://onehop.ai/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-179",
+      "relayRank": 179,
+      "scope": "relay",
+      "benefitKind": "trial",
+      "title": "PatewayAI",
+      "category": "注册赠额",
+      "type": "free",
+      "desc": "$1 站内体验额度",
+      "terms": "注册赠 $1；首购赠 $3、邀请奖励属于其他活动，不计入无充值试用。有效期与限流未公布。",
+      "modelScope": "Claude / Codex API 中转；试用适用分组以控制台为准。",
+      "source": "https://pateway.ai/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-594",
+      "relayRank": 594,
+      "scope": "relay",
+      "benefitKind": "trial",
+      "title": "云马 AI",
+      "category": "注册赠额",
+      "type": "free",
+      "desc": "$2 站内体验额度",
+      "terms": "站方写明注册赠 $2、无需信用卡；具体模型分组、额度期限与限流以控制台为准。",
+      "modelScope": "模型 API 网关，站方提供获取 Key 和替换接入地址的流程。",
+      "source": "https://yunma.ai/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-711",
+      "relayRank": 711,
+      "scope": "relay",
+      "benefitKind": "trial",
+      "title": "玄枢API",
+      "category": "注册赠额",
+      "type": "free",
+      "desc": "1 站内余额，币种未明确",
+      "terms": "仅按当前首页的“注册 1 余额”记录；不将目录中的特定来源赠 $5 当作通用福利。期限与适用模型未公布。",
+      "modelScope": "多模型 API 入口；站内余额不是现金，不跨站比较面值。",
+      "source": "https://xuanshuapi.com/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-611",
+      "relayRank": 611,
+      "scope": "relay",
+      "benefitKind": "conditional",
+      "title": "HohoAI",
+      "category": "邮箱验证领取",
+      "type": "free",
+      "desc": "¥10 站内体验额度",
+      "terms": "注册并验证邮箱。首页称体验额度全模型可用；实际分组、到账与限流仍以账号为准。期限未公布。",
+      "modelScope": "站方公开范围为 Claude / GPT API；未做付费推理验证。",
+      "source": "https://hohocode.ai/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-47",
+      "relayRank": 47,
+      "scope": "relay",
+      "benefitKind": "conditional",
+      "title": "Volt",
+      "category": "绑定 Telegram 领取",
+      "type": "free",
+      "desc": "$10 站内体验额度",
+      "terms": "注册后绑定 Telegram；并非只注册就送。首页写明所有渠道可用，具体资格、有效期和限流需账号内确认。",
+      "modelScope": "Claude / GPT / Gemini API；保留已确认的本站推广入口。",
+      "source": "https://voltapi.ai/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+    },
+    {
+      "id": "relay-free-248",
+      "relayRank": 248,
+      "scope": "relay",
+      "benefitKind": "conditional",
+      "title": "球球Token",
+      "category": "进群领取",
+      "type": "free",
+      "desc": "$5 站内测试额度",
+      "terms": "加入官方交流群，按站方流程向管理员或机器人领取；不是自动注册到账。页面称全线模型可用，期限未公布。",
+      "modelScope": "AI API 网关；先核对领取方式与账号额度，再创建 Key 使用。",
+      "source": "https://qiuqiutoken.com/",
+      "endsAt": null,
+      "checkedAt": "2026-09-21",
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
     }
   ],
   "news": [
@@ -1477,5 +1605,44 @@ export const discovery = {
       "checkedAt": "2026-09-21",
       "currency": "USD"
     }
-  ]
+  ],
+  "relayFreeReview": {
+    "checkedAt": "2026-09-21",
+    "catalogCount": 847,
+    "leadsCount": 77,
+    "confirmedCount": 8,
+    "method": "对目录描述进行关键词筛选，再核对线索站点公开页面。未入选不代表没有免费活动；登录后规则、动态页面和无法访问的内容仍可能需要补查。",
+    "pending": [
+      {
+        "name": "xiaoxuapi",
+        "source": "https://api.xiaoxuapi.com/",
+        "reason": "公开公告未列当前免费模型，价格目录未返回可核验数据；暂不入榜。"
+      },
+      {
+        "name": "Agent Router",
+        "source": "https://agentrouter.org/",
+        "reason": "目录公益说明未能从当前入口确认；企业试用不能直接当作个人免费配额。"
+      },
+      {
+        "name": "卡拉 Khala",
+        "source": "https://khala.online/",
+        "reason": "本次可读页面确认首充赠送，未确认目录里的注册及签到赠额。"
+      },
+      {
+        "name": "Cubence",
+        "source": "https://cubence.com/",
+        "reason": "当前页面写按量计费；免费创建 Key 不等于免费模型调用。"
+      },
+      {
+        "name": "智流 FluxLane",
+        "source": "https://fluxlane.cn/",
+        "reason": "未在当前公开首页确认目录中的注册赠 $2。"
+      },
+      {
+        "name": "EasyToken",
+        "source": "https://easy-token.com/",
+        "reason": "页面同时写免费体验和充值后调用，免费 API 额度与范围未明确。"
+      }
+    ]
+  }
 };

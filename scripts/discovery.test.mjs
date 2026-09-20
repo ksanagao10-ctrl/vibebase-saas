@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {discovery as d} from '../dist/data/discovery.js';
 import {providers} from '../dist/data/providers.js';
-import {quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
+import {freeOffers,quoteCost,sortedQuotes,offerExpired,activeOffers,renderDiscovery,searchDiscovery,homeDiscovery,taskQuotes,boardItems} from '../dist/discovery.js';
 
 const ids=xs=>new Set(xs.map(x=>x.id));
 for(const key of ['tasks','models','quotes','offers','news','industries','articles'])assert.equal(ids(d[key]).size,d[key].length,`Duplicate ${key}`);
@@ -42,3 +42,17 @@ assert(renderDiscovery('model/image').includes('0.0672'));
 assert(renderDiscovery('boards/price/sonnet').includes('value="sonnet" selected'));
 assert(!renderDiscovery('boards/price/sonnet').includes('data-quote-id="google-flash"'));
 console.log('Discovery: references, quote arithmetic, expiry boundaries, search escaping and routes passed.');
+
+const relayFree=freeOffers('relay');
+assert.equal(relayFree.length,8);
+assert.equal(freeOffers('trial').length,5);
+assert.equal(freeOffers('conditional').length,3);
+assert.equal(freeOffers('other').length,7);
+assert.equal(new Set(relayFree.map(o=>o.relayRank)).size,8);
+assert.equal(d.relayFreeReview.confirmedCount,relayFree.length);
+assert(freeOffers().every(o=>o.type==='free'));
+for(const o of relayFree){assert(o.terms);assert(o.modelScope);assert(o.evidence);assert.equal(new URL(o.source).protocol,'https:');}
+assert(relayFree.find(o=>o.relayRank===47).terms.includes('Telegram'));
+assert(renderDiscovery('boards/free/relay').includes('https://voltapi.ai/register?aff=WPCLXQ43AQHV'));
+assert(!renderDiscovery('boards/free/other').includes('WPCLXQ43AQHV'));
+console.log('Free relay filters, evidence and referral routing passed.');
