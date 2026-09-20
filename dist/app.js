@@ -1,4 +1,5 @@
 import { providers, apps } from './data/providers.js';
+import {homeDiscovery,renderDiscovery,bindDiscovery,relatedTutorials} from './discovery.js';
 import { affiliatePrograms, affiliateCheckedAt } from './data/affiliate-programs.js';
 import { affiliateFor, activeReferral, providerDestination, affiliateStatusLabels, affiliateKindLabels } from './data/affiliate-links.js';
 
@@ -119,20 +120,14 @@ function home(){
         <div class="eyebrow"><span class="eyebrow-dot"></span>AI API DISCOVERY · APPLICATION MAP · AFFILIATE</div>
         <h1>找到 API<br><span class="accent-word">马上用起来</span></h1>
         <p>全球主流官方 API + 当前公开索引可发现的中转/聚合线索，再连接真正能使用它们的 Android APP 与 SaaS。VibeBase 把“找 API”变成完整的使用与赚钱路径。</p>
-        <form class="hero-search" id="heroSearch"><span class="search-icon">⌕</span><input id="heroQ" placeholder="搜索 Claude、DeepSeek、OpenRouter、支持安卓的 API…"><button>搜索 API</button></form>
+        <form class="hero-search" id="heroSearch"><span class="search-icon">⌕</span><input id="heroQ" aria-label="搜索模型、API 与教程" placeholder="搜索模型、API 平台、免费额度与教程…"><button>搜索</button></form>
         <div class="quick-tags"><button data-quick="Claude">Claude</button><button data-quick="DeepSeek">DeepSeek</button><button data-quick="OpenAI">OpenAI Compatible</button><button data-quick="Android">Android 可用</button></div>
       </div>
       <div class="hero-side">
         <div class="pulse-card"><div class="pulse-grid"></div><div class="pulse-orb"></div><div class="pulse-top"><span>API MARKET PULSE</span><span class="live-pill">● CATALOG SNAPSHOT</span></div><div class="pulse-number">${providers.length}<span style="font-size:22px;letter-spacing:-1px"> APIs</span></div><div class="pulse-label">官方 API + 中转 / Router / Gateway 全量线索</div><div class="pulse-bottom"><div class="pulse-bars">${[34,64,42,80,55,93,62,73,46,84,58,92].map(h=>`<span style="height:${h}%"></span>`).join('')}</div><div class="pulse-stats"><div><b>${providers.filter(x=>x.android).length}</b><span>ANDROID READY</span></div><div><b>${apps.length}</b><span>APP / SAAS</span></div><div><b>${affiliatePrograms.filter(x=>x.status==='documented'&&x.kind!=='enterprise').length}</b><span>PROMO LEADS</span></div></div></div></div>
       </div>
     </section>
-    <section class="journey-grid">
-      <button class="journey-card" data-route="explore"><span class="n">01 · DISCOVER</span><span class="arrow">↗</span><h3>我想找 API</h3><p>按模型、协议、国内直连、支付方式和平台类型筛选。</p></button>
-      <button class="journey-card" data-route="apps"><span class="n">02 · USE</span><span class="arrow">↗</span><h3>我已经有 Key</h3><p>告诉我 Base URL / 协议，找到能直接用的 Android APP 与 SaaS。</p></button>
-      <button class="journey-card" data-route="affiliate"><span class="n">03 · EARN</span><span class="arrow">↗</span><h3>我想推广赚钱</h3><p>集中查看返佣、推荐奖励、渠道合作与待核验机会。</p></button>
-    </section>
-    <section class="stat-strip"><div class="stat-item"><b>${providers.filter(p=>p.official).length}</b><span>主流官方 API / 云推理入口</span></div><div class="stat-item"><b>${state.catalog.relayCount}</b><span>中转 / 聚合 / Router 线索</span></div><div class="stat-item"><b>${apps.length}</b><span>Android 与 SaaS 集成目标</span></div><div class="stat-item"><b>${providers.length}</b><span>当前 Provider 总条目</span></div></section>
-    <section class="section"><div class="section-head"><div><h2>值得先看的 API</h2><p>先把“平台是什么”讲清楚，再谈价格和返佣。</p></div><a class="text-link" href="#explore" data-route="explore">查看全部 →</a></div><div class="provider-grid">${featured.map(providerCard).join('')}</div></section>
+    ${homeDiscovery()}
   </div>`;
 }
 
@@ -227,8 +222,8 @@ function filterAffiliate(){
 
 function render(){
   const route=state.route;
-  app.innerHTML= route==='home'?home():route==='explore'?explore():route==='apps'?appsPage():route==='compare'?comparePage():route==='calculator'?calculatorPage():route==='affiliate'?affiliatePage():home();
-  $$('.topnav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route));
+  app.innerHTML= route==='home'?home():route==='explore'?explore():route==='apps'?appsPage():route==='compare'?comparePage():route==='calculator'?calculatorPage():route==='affiliate'?affiliatePage():(renderDiscovery(route,providers)||home());
+  $$('.topnav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route||(a.dataset.route==='covibe'&&/^(covibe|read)\//.test(route))));
   bind(); renderDock(); if(route==='apps')filterApps(); if(route==='affiliate')filterAffiliate();
 }
 
@@ -240,6 +235,7 @@ function renderDock(){
 }
 
 function bind(){
+  bindDiscovery({navigate:setRoute,openProvider,estimate:(q,input,output)=>{state.calc={input:input*1e6,output:output*1e6,inputPrice:q.input,outputPrice:q.output,calls:1};setRoute('calculator')}});
   $('#affiliateQ')?.addEventListener('input',e=>{state.affiliateQuery=e.target.value;filterAffiliate()});
   $('#affiliateScope')?.addEventListener('change',e=>{state.affiliateScope=e.target.value;filterAffiliate()});
   $('#affiliateKind')?.addEventListener('change',e=>{state.affiliateKind=e.target.value;filterAffiliate()});
@@ -248,7 +244,7 @@ function bind(){
   $$('[data-compare]').forEach(el=>el.onclick=()=>toggleCompare(el.dataset.compare));
   $$('[data-scope]').forEach(el=>el.onclick=()=>{state.filters.scope=el.dataset.scope;state.filters.type='all';state.filters.verified=false;state.page=1;render()});
   $$('[data-page]').forEach(el=>el.onclick=()=>{state.page=Math.max(1,state.page+(el.dataset.page==='next'?1:-1));render();window.scrollTo({top:170,behavior:'smooth'})});
-  $('#heroSearch')?.addEventListener('submit',e=>{e.preventDefault();state.filters.q=$('#heroQ').value;setRoute('explore')});
+  $('#heroSearch')?.addEventListener('submit',e=>{e.preventDefault();setRoute('search/'+encodeURIComponent($('#heroQ').value.trim()))});
   $$('[data-quick]').forEach(el=>el.onclick=()=>{const q=el.dataset.quick; if(q==='Android'){state.filters.q='';state.filters.android=true;state.filters.china=false}else{state.filters.q=q;state.filters.android=false} setRoute('explore')});
   const search=$('#exploreQ');
   let searchTimer;
@@ -271,6 +267,8 @@ function openProvider(id){
  const program=affiliateFor(p), destination=providerDestination(p);
  modalLayer.classList.add('open');modalLayer.setAttribute('aria-hidden','false');
  modalLayer.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="平台详情"><div class="modal-head"><div class="provider-logo">${esc(p.short)}</div><div><h2>${esc(p.name)}</h2><p>${esc(p.type)} · ${esc(p.region)} · ${p.official?'官方入口':p.verified?'已核验':'未验证线索'} · ${esc(p.fresh)}</p></div><button class="modal-close" id="modalClose">×</button></div><div class="modal-body"><div class="detail-grid"><div class="detail-block"><h4>服务定位</h4><p>${esc(p.desc)}</p></div><div class="detail-block"><h4>推广状态</h4><p>${esc(p.affiliate)}</p>${program?`<p>${esc(program.note)}</p><a href="${esc(safeUrl(program.sourceUrl))}" target="_blank" rel="noopener noreferrer">查看推广规则来源 ↗</a>`:''}</div><div class="detail-block"><h4>模型家族</h4><div class="tag-row">${p.models.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="detail-block"><h4>协议</h4><div class="tag-row">${p.protocols.map(x=>`<span class="tag">${esc(x)} compatible</span>`).join('')}</div></div><div class="detail-block"><h4>应用匹配</h4><p>${p.android?'✓ Android BYOK 客户端<br>':''}${p.saas?'✓ SaaS / Agent / Workflow':''}<br>${matchingApps(p).length} 个协议匹配应用<br>${matchingApps(p).map(a=>esc(a.name)).join(" / ") || "暂无已收录的协议匹配"}<br>实际功能需在客户端测试</p></div><div class="detail-block"><h4>支付 & 价格</h4><p>${esc(p.payments.join(' / '))}<br>${esc(p.pricing)}</p></div></div><div class="detail-block" style="margin-top:12px"><h4>API Endpoint</h4><div class="endpoint"><span>${esc(p.endpoint)}</span><button data-copy="${esc(p.endpoint)}" style="background:transparent;color:var(--accent);font-weight:800">复制</button></div></div>${p.rank||p.uptime!=null?`<div class="detail-block" style="margin-top:12px"><h4>索引附带字段</h4><p>${p.rank?`公开索引序号 #${p.rank}<br>`:''}${p.uptime!=null?`Uptime ${esc(p.uptime)}% · 延迟 ${esc(p.latencyMs??'—')}ms<br>`:''}${p.userRating!=null?`用户评分 ${esc(p.userRating)} / 5 (${esc(p.ratingCount||0)} 条)<br>`:''}${p.supportsRefund!=null?`退款：${p.supportsRefund?'有标记':'无标记'} · `:''}${p.supportsInvoice!=null?`发票：${p.supportsInvoice?'有标记':'无标记'}`:''}</p></div>`:''}<div class="notice" style="margin-top:12px"><b style="color:var(--ink)">${p.official?'使用提示':'风险提示'}：</b> ${esc(p.risk)}</div>${p.source?`<div class="source-line">数据来源：${esc(p.source)} ${p.sourceUrl?`<a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noreferrer">查看来源 ↗</a>`:''}</div>`:''}<div style="display:flex;gap:10px;margin-top:16px"><a class="primary-btn" href="${esc(safeUrl(destination.url))}" target="_blank" rel="${destination.sponsored?'sponsored ':''}noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none">${destination.sponsored?'通过推广链接访问 ↗':p.official?'打开官方平台 ↗':'打开站点 / 来源 ↗'}</a>${destination.sponsored?'<span class="aff-disclosure">符合平台条件时，VibeBase 可能获得推广奖励。</span>':''}<button class="soft-btn" id="modalApps">匹配应用</button><button class="soft-btn" id="modalCompare">加入对比</button></div></div></div>`;
+ modalLayer.querySelector('.modal-body').insertAdjacentHTML('beforeend',relatedTutorials(p));
+ modalLayer.querySelectorAll('[data-route]').forEach(el=>el.onclick=e=>{e.preventDefault();setRoute(el.dataset.route)});
  $('#modalApps').onclick=()=>{state.appProtocol=p.protocols[0]||'';closeModal();setRoute('apps')}; $('#modalClose').onclick=closeModal; modalLayer.onclick=e=>{if(e.target===modalLayer)closeModal()}; $('#modalCompare').onclick=()=>{toggleCompare(p.id);closeModal()}; $('[data-copy]')?.addEventListener('click',async e=>{await navigator.clipboard?.writeText(e.currentTarget.dataset.copy);toast('已复制 Endpoint')});
 }
 function closeModal(){modalLayer.classList.remove('open');modalLayer.setAttribute('aria-hidden','true')}

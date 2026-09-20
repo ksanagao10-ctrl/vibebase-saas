@@ -4,6 +4,8 @@ import assert from 'node:assert/strict';
 import {providers} from '../dist/data/providers.js';
 import {affiliatePrograms, ownedReferrals} from '../dist/data/affiliate-programs.js';
 import {activeReferral, affiliateFor, providerDestination} from '../dist/data/affiliate-links.js';
+import './discovery.test.mjs';
+for(const f of ['dist/discovery.js','dist/data/discovery.js'])execFileSync(process.execPath,['--check',f]);
 for(const f of ['dist/app.js','dist/data/providers.js','dist/data/affiliate-programs.js','dist/data/affiliate-links.js'])execFileSync(process.execPath,['--check',f]);
 const html=readFileSync('dist/index.html','utf8');
 assert(html.includes('charset="UTF-8"')&&html.includes('VibeBase'));
