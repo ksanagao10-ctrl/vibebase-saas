@@ -36,7 +36,7 @@ assert.equal(d.mediaQuotes.find(q=>q.id==='img-flash').cost,1120*60/1e6);
 assert.equal(taskQuotes('video')[0].cost,.4);
 assert.equal(taskQuotes('audio')[0].cost,.1005);
 assert.equal(taskQuotes('knowledge')[0].cost,.02);
-assert.equal(taskQuotes('audio')[1].cost,taskQuotes('audio')[2].cost);
+assert.equal(taskQuotes('audio').find(q=>q.model==='openai-tts').cost,.1206);
 assert(!renderDiscovery('model/flux').includes('data-discover-provider="null"'));
 assert(renderDiscovery('model/image').includes('0.0672'));
 assert(renderDiscovery('boards/price/sonnet').includes('value="sonnet" selected'));
@@ -100,8 +100,8 @@ for(const i of d.industries){
  assert.equal(budget,0);
  assert.equal((renderDiscovery('industry/'+i.id+'/text').match(/industry-plan /g)||[]).length,3);
 }
-assert(Math.abs(industryPlanCost(d.industries[0].plans[0])-6.5)<1e-9);
-assert(Math.abs(industryPlanCost(d.industries[0].plans[2])-1.575)<1e-9);
+assert(Math.abs(industryPlanCost(d.industries[0].plans[0])-13.5)<1e-9);
+assert(Math.abs(industryPlanCost(d.industries[0].plans[2])-3.8)<1e-9);
 assert(Math.abs(industryPlanCost({recipe:[{model:'google/gemini-2.5-flash-lite',share:1}]})-.08)<1e-9);
 assert.equal(industryMatches('all','SKU').length,0);
 assert.equal(industryMatches('all','\u7535\u5546').length,1);
@@ -177,3 +177,35 @@ assert(renderDiscovery('models/openai').includes('GPT Image 2.5 Sunburst'));
 assert(renderDiscovery('models/image').includes('OpenAI'));
 assert(d.openaiReview.exclusions.some(e=>e.task==='video'));
 console.log('OpenAI task coverage, visible brand labels, ChatGPT search and lifecycle exclusions passed.');
+
+// Prevent the former split catalogs from hiding OpenAI outside the task selector.
+for(const task of ['text','code']) {
+ const rows=taskQuotes(task);
+ assert(rows.some(q=>q.model==='astra6'),task+' must include OpenAI flagship');
+ assert(rows.some(q=>q.model==='terra56'),task+' must include economical OpenAI candidate');
+ assert(rows.some(q=>q.model==='opus5'||q.model==='sonnet5'));
+ assert(rows.every(q=>d.models.find(m=>m.id===q.model).guideCount));
+}
+for(const [board,id] of [['image','openai-sunburst'],['video','kling-o3'],['audio','openai-transcribe'],['knowledge','openai-embedding']])
+ assert(renderDiscovery('boards/'+board).includes(d.models.find(m=>m.id===id).name),board);
+assert(!taskQuotes('image').some(q=>q.model==='openai-sunburst'),'No invented per-image price');
+assert(!taskQuotes('audio').some(q=>q.model==='openai-transcribe'),'Per-minute transcription is not TTS token pricing');
+assert.equal(sortedQuotes('sol56').length,2);
+assert.equal(sortedQuotes('sol56')[0].channel,'OpenRouter');
+assert.equal(sortedQuotes('sol56')[1].input,4);
+assert(renderDiscovery('boards/price/sol56').includes('272K'));
+for(const i of d.industries){
+ const text=renderDiscovery('industry/'+i.id+'/text');
+ assert(text.includes('OpenAI'));
+ assert(!text.includes('Gemini 3.7'));
+ const audio=dimensionPlans(i,'audio');
+ assert(audio[1].models.every(id=>capabilityModels[id].billing!=='self-host'));
+ for(const dim of dimensions.map(x=>x[0]).filter(x=>x!=='text'))
+  for(const plan of dimensionPlans(i,dim))
+   for(const alt of plan.alternatives)assert(capabilityModels[alt]);
+ assert(renderDiscovery('industry/'+i.id+'/image').includes('OpenAI'));
+}
+assert.equal(d.freeModels.filter(m=>m.reviewStatus==='confirmed').length,152);
+assert.equal(d.freeModels.filter(m=>m.reviewStatus==='pending').length,8);
+assert(renderDiscovery('boards/free/relay-162').includes('待复核'));
+console.log('Site-wide audit: channel prices, separated billing units, all industry tiers and pending free evidence passed.');

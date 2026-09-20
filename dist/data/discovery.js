@@ -751,7 +751,7 @@ export const discovery = {
         "audio"
       ],
       "desc": "把审核过的文字转为语音，可通过指令控制语气和表达；不是双向语音对话。",
-      "pricingNote": "按官方文本输入与音频输出用量计费；配乐、剪辑与重试另计。",
+      "pricingNote": "文本输入 $0.60 / 百万 Token、音频输出 $12 / 百万 Token；1000 输入 + 10000 输出样本为 $0.1206，不换算未经核实的分钟数。",
       "source": "https://developers.openai.com/api/docs/models/gpt-4o-mini-tts",
       "provider": null,
       "vendor": "OpenAI",
@@ -767,7 +767,7 @@ export const discovery = {
         "knowledge"
       ],
       "desc": "用于文本向量检索，适合在 OpenAI 接入体系中建立文档索引；不生成答案。",
-      "pricingNote": "按官方当前输入 Token 报价计算，向量库、索引、重排与回答生成另计。",
+      "pricingNote": "$0.13 / 百万文本输入 Token；向量库、重排与生成费用另计。",
       "source": "https://developers.openai.com/api/docs/models/text-embedding-3-large",
       "provider": null,
       "vendor": "OpenAI",
@@ -953,6 +953,240 @@ export const discovery = {
         "completion": "0.00000025"
       },
       "note": "目录展示起价；路由、缓存及附加费用需按实际账单复核。"
+    },
+    {
+      "id": "audit-router-opus5",
+      "model": "opus5",
+      "modelId": "anthropic/claude-opus-5",
+      "channel": "OpenRouter",
+      "input": 5.0,
+      "output": 25.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000005",
+        "input_cache_write": "0.00000625",
+        "input_cache_write_1h": "0.00001"
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。"
+    },
+    {
+      "id": "audit-router-sonnet5",
+      "model": "sonnet5",
+      "modelId": "anthropic/claude-sonnet-5",
+      "channel": "OpenRouter",
+      "input": 2.0,
+      "output": 10.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000002",
+        "input_cache_write": "0.0000025",
+        "input_cache_write_1h": "0.000004"
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。"
+    },
+    {
+      "id": "audit-router-fable51",
+      "model": "fable51",
+      "modelId": "anthropic/claude-fable-5.1",
+      "channel": "OpenRouter",
+      "input": 10.0,
+      "output": 50.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。"
+    },
+    {
+      "id": "audit-router-sol56",
+      "model": "sol56",
+      "modelId": "openai/gpt-5.6-sol",
+      "channel": "OpenRouter",
+      "input": 2.0,
+      "output": 10.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000002",
+        "input_cache_write": "0.0000025",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.000004",
+            "completion": "0.000015",
+            "input_cache_read": "0.0000004",
+            "input_cache_write": "0.000005"
+          }
+        ]
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。阶梯门槛：272000 输入 Token"
+    },
+    {
+      "id": "audit-router-flash38",
+      "model": "flash38",
+      "modelId": "google/gemini-3.8-flash",
+      "channel": "OpenRouter",
+      "input": 0.75,
+      "output": 3.75,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.00000075",
+        "completion": "0.00000375",
+        "image": "0.00000075",
+        "audio": "0.00000075",
+        "input_audio_cache": "0.000000075",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00000375",
+        "input_cache_read": "0.000000075",
+        "input_cache_write": "0.0000000416666666666667"
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。"
+    },
+    {
+      "id": "audit-router-pro31",
+      "model": "pro31",
+      "modelId": "google/gemini-3.1-pro-preview",
+      "channel": "OpenRouter",
+      "input": 2.0,
+      "output": 12.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.000002",
+        "completion": "0.000012",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000002",
+        "web_search": "0.014",
+        "internal_reasoning": "0.000012",
+        "input_cache_read": "0.0000002",
+        "input_cache_write": "0.000000375",
+        "overrides": [
+          {
+            "min_prompt_tokens": 200000,
+            "prompt": "0.000004",
+            "completion": "0.000018",
+            "audio": "0.000004",
+            "input_audio_cache": "0.0000004",
+            "input_cache_read": "0.0000004"
+          }
+        ]
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。阶梯门槛：200000 输入 Token"
+    },
+    {
+      "id": "audit-router-coderplus",
+      "model": "coderplus",
+      "modelId": "qwen/qwen3-coder-plus",
+      "channel": "OpenRouter",
+      "input": 0.65,
+      "output": 3.25,
+      "source": "https://openrouter.ai/api/v1/models",
+      "provider": "openrouter",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "rawPricing": {
+        "prompt": "0.00000065",
+        "completion": "0.00000325",
+        "input_cache_read": "0.00000013",
+        "input_cache_write": "0.0000008125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 32000,
+            "prompt": "0.00000117",
+            "completion": "0.00000585",
+            "input_cache_read": "0.000000234",
+            "input_cache_write": "0.0000014625"
+          },
+          {
+            "min_prompt_tokens": 128000,
+            "prompt": "0.00000195",
+            "completion": "0.00000975",
+            "input_cache_read": "0.00000039",
+            "input_cache_write": "0.0000024375"
+          }
+        ]
+      },
+      "note": "目录渠道起价；样本每次输入 4000 Token，长上下文阶梯、实际路由、工具与重试另计。阶梯门槛：32000 输入 Token / 128000 输入 Token"
+    },
+    {
+      "id": "audit-official-astra6",
+      "model": "astra6",
+      "modelId": "gpt-6-astra",
+      "channel": "OpenAI 官方",
+      "input": 10,
+      "output": 50,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "provider": "official-openai",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "note": "每次输入不超过 272K Token 的标准价；超过后输入单价 ×2、输出 ×1.5。工具、重试及税费另计。官方与聚合渠道独立报价。"
+    },
+    {
+      "id": "audit-official-terra56",
+      "model": "terra56",
+      "modelId": "gpt-5.6-terra",
+      "channel": "OpenAI 官方",
+      "input": 2,
+      "output": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "provider": "official-openai",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "note": "每次输入不超过 272K Token 的标准价；超过后输入单价 ×2、输出 ×1.5。工具、重试及税费另计。官方与聚合渠道独立报价。"
+    },
+    {
+      "id": "audit-official-sol56",
+      "model": "sol56",
+      "modelId": "gpt-5.6-sol",
+      "channel": "OpenAI 官方",
+      "input": 4,
+      "output": 20,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "provider": "official-openai",
+      "currency": "USD",
+      "unit": "1M tokens",
+      "checkedAt": "2026-09-21",
+      "note": "每次输入不超过 272K Token 的标准价；超过后输入单价 ×2、输出 ×1.5。工具、重试及税费另计。官方与聚合渠道独立报价。"
     }
   ],
   "offers": [
@@ -1077,7 +1311,7 @@ export const discovery = {
       "source": "https://buytoken.work/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-19",
@@ -1093,7 +1327,7 @@ export const discovery = {
       "source": "https://onehop.ai/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-179",
@@ -1109,7 +1343,7 @@ export const discovery = {
       "source": "https://pateway.ai/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-594",
@@ -1125,7 +1359,7 @@ export const discovery = {
       "source": "https://yunma.ai/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-711",
@@ -1141,7 +1375,7 @@ export const discovery = {
       "source": "https://xuanshuapi.com/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-611",
@@ -1157,7 +1391,7 @@ export const discovery = {
       "source": "https://hohocode.ai/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-47",
@@ -1173,7 +1407,7 @@ export const discovery = {
       "source": "https://voltapi.ai/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     },
     {
       "id": "relay-free-248",
@@ -1189,7 +1423,7 @@ export const discovery = {
       "source": "https://qiuqiutoken.com/",
       "endsAt": null,
       "checkedAt": "2026-09-21",
-      "evidence": "站方公开说明已核对；未注册领取、未调用测试。"
+      "evidence": "站方公开说明已核对；未注册领取、未调用测试。 本轮已再次对照站方公开页面，未登录领取或实测。"
     }
   ],
   "news": [
@@ -1239,17 +1473,17 @@ export const discovery = {
         [
           "提取规格",
           "围绕已核验资料完成提取规格。",
-          "flash-lite"
+          "terra56"
         ],
         [
           "生成卖点",
           "围绕已核验资料完成生成卖点。",
-          "flash-lite"
+          "terra56"
         ],
         [
           "复核承诺",
           "围绕已核验资料完成复核承诺。",
-          "flash-lite"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -1262,14 +1496,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对商品规格、售后条件与宣传承诺"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1287,7 +1521,8 @@ export const discovery = {
               "label": "复核承诺",
               "text": "抽查 20 个 SKU；规格、价格与售后政策逐项一致；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对商品规格、售后条件与宣传承诺。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1325,12 +1560,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对商品规格、售后条件与宣传承诺"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -1350,7 +1585,8 @@ export const discovery = {
               "label": "复核承诺",
               "text": "抽查 20 个 SKU；规格、价格与售后政策逐项一致；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对商品规格、售后条件与宣传承诺。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -1370,17 +1606,17 @@ export const discovery = {
         [
           "拆解受众",
           "围绕已核验资料完成拆解受众。",
-          "flash"
+          "flash38"
         ],
         [
           "生成创意",
           "围绕已核验资料完成生成创意。",
-          "flash"
+          "flash38"
         ],
         [
           "审校证据",
           "围绕已核验资料完成审校证据。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -1393,14 +1629,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：比较创意变体并校对品牌语气"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1418,7 +1654,8 @@ export const discovery = {
               "label": "审校证据",
               "text": "对 10 条素材核对事实、字数与品牌语气；A/B 结果上线后另测；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "比较创意变体并校对品牌语气。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1456,12 +1693,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：比较创意变体并校对品牌语气"
             },
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -1481,7 +1718,8 @@ export const discovery = {
               "label": "审校证据",
               "text": "对 10 条素材核对事实、字数与品牌语气；A/B 结果上线后另测；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "比较创意变体并校对品牌语气。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -1501,17 +1739,17 @@ export const discovery = {
         [
           "明确验收",
           "围绕已核验资料完成明确验收。",
-          "sonnet"
+          "sonnet5"
         ],
         [
           "实现补丁",
           "围绕已核验资料完成实现补丁。",
-          "sonnet"
+          "sonnet5"
         ],
         [
           "运行测试",
           "围绕已核验资料完成运行测试。",
-          "sonnet"
+          "sonnet5"
         ]
       ],
       "article": "first-api",
@@ -1524,14 +1762,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：修复跨文件代码并通过真实项目测试"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1549,7 +1787,8 @@ export const discovery = {
               "label": "运行测试",
               "text": "以编译、单元测试、回归和人工差异审查验收，不按代码行数打分；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "修复跨文件代码并通过真实项目测试。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1587,12 +1826,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "qwen/qwen3-coder",
+              "model": "anthropic/claude-sonnet-5",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：修复跨文件代码并通过真实项目测试"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -1612,7 +1851,8 @@ export const discovery = {
               "label": "运行测试",
               "text": "以编译、单元测试、回归和人工差异审查验收，不按代码行数打分；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "修复跨文件代码并通过真实项目测试。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -1632,17 +1872,17 @@ export const discovery = {
         [
           "整理资料",
           "围绕已核验资料完成整理资料。",
-          "embedding"
+          "terra56"
         ],
         [
           "检索片段",
           "围绕已核验资料完成检索片段。",
-          "embedding"
+          "terra56"
         ],
         [
           "生成引用",
           "围绕已核验资料完成生成引用。",
-          "embedding"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -1655,14 +1895,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：基于检索证据回答并保留引用"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1680,7 +1920,8 @@ export const discovery = {
               "label": "生成引用",
               "text": "准备 30 个已知答案问题，记录引用正确率与无法回答比例；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "基于检索证据回答并保留引用。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1718,12 +1959,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：基于检索证据回答并保留引用"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -1743,7 +1984,8 @@ export const discovery = {
               "label": "生成引用",
               "text": "准备 30 个已知答案问题，记录引用正确率与无法回答比例；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "基于检索证据回答并保留引用。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -1763,17 +2005,17 @@ export const discovery = {
         [
           "定位目标",
           "围绕已核验资料完成定位目标。",
-          "flash"
+          "terra56"
         ],
         [
           "生成教材",
           "围绕已核验资料完成生成教材。",
-          "flash"
+          "terra56"
         ],
         [
           "教师审题",
           "围绕已核验资料完成教师审题。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -1786,14 +2028,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：检查推导步骤与教学难度"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1811,7 +2053,8 @@ export const discovery = {
               "label": "教师审题",
               "text": "抽检 20 道题，教师核查答案、难度和年龄适配；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查推导步骤与教学难度。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1849,12 +2092,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：检查推导步骤与教学难度"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -1874,7 +2117,8 @@ export const discovery = {
               "label": "教师审题",
               "text": "抽检 20 道题，教师核查答案、难度和年龄适配；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查推导步骤与教学难度。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "audio",
@@ -1894,17 +2138,17 @@ export const discovery = {
         [
           "核对房源",
           "围绕已核验资料完成核对房源。",
-          "flash"
+          "flash38"
         ],
         [
           "生成介绍",
           "围绕已核验资料完成生成介绍。",
-          "flash"
+          "flash38"
         ],
         [
           "准备问答",
           "围绕已核验资料完成准备问答。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -1917,14 +2161,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对房源参数、位置与看房条件"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -1942,7 +2186,8 @@ export const discovery = {
               "label": "准备问答",
               "text": "核验 10 套房源的面积、价格和位置；不添加未提供配套；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对房源参数、位置与看房条件。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -1980,12 +2225,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对房源参数、位置与看房条件"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2005,7 +2250,8 @@ export const discovery = {
               "label": "准备问答",
               "text": "核验 10 套房源的面积、价格和位置；不添加未提供配套；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对房源参数、位置与看房条件。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -2025,17 +2271,17 @@ export const discovery = {
         [
           "汇总日报",
           "围绕已核验资料完成汇总日报。",
-          "flash"
+          "flash38"
         ],
         [
           "归纳异常",
           "围绕已核验资料完成归纳异常。",
-          "flash"
+          "flash38"
         ],
         [
           "生成行动单",
           "围绕已核验资料完成生成行动单。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -2048,14 +2294,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对门店活动规则与库存信息"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2073,7 +2319,8 @@ export const discovery = {
               "label": "生成行动单",
               "text": "抽查 7 天日报，检查原始数值、门店归属与待办负责人；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对门店活动规则与库存信息。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2111,12 +2358,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对门店活动规则与库存信息"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2136,7 +2383,8 @@ export const discovery = {
               "label": "生成行动单",
               "text": "抽查 7 天日报，检查原始数值、门店归属与待办负责人；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对门店活动规则与库存信息。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -2156,17 +2404,17 @@ export const discovery = {
         [
           "整理菜单",
           "围绕已核验资料完成整理菜单。",
-          "flash"
+          "flash38"
         ],
         [
           "编写介绍",
           "围绕已核验资料完成编写介绍。",
-          "flash"
+          "flash38"
         ],
         [
           "核查配料",
           "围绕已核验资料完成核查配料。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -2179,14 +2427,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对菜品、价格与过敏原信息"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2204,7 +2452,8 @@ export const discovery = {
               "label": "核查配料",
               "text": "逐项核对菜单价格、配料和过敏原，不能由模型补猜；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对菜品、价格与过敏原信息。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2242,12 +2491,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对菜品、价格与过敏原信息"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2267,7 +2516,8 @@ export const discovery = {
               "label": "核查配料",
               "text": "逐项核对菜单价格、配料和过敏原，不能由模型补猜；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对菜品、价格与过敏原信息。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -2287,17 +2537,17 @@ export const discovery = {
         [
           "汇总约束",
           "围绕已核验资料完成汇总约束。",
-          "flash"
+          "flash38"
         ],
         [
           "编排行程",
           "围绕已核验资料完成编排行程。",
-          "flash"
+          "flash38"
         ],
         [
           "核查可行性",
           "围绕已核验资料完成核查可行性。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -2310,14 +2560,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：检查行程约束与交通时间依据"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2335,7 +2585,8 @@ export const discovery = {
               "label": "核查可行性",
               "text": "检查 5 条路线的时间冲突、交通衔接和费用包含项；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查行程约束与交通时间依据。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2373,12 +2624,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：检查行程约束与交通时间依据"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2398,7 +2649,8 @@ export const discovery = {
               "label": "核查可行性",
               "text": "检查 5 条路线的时间冲突、交通衔接和费用包含项；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查行程约束与交通时间依据。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -2418,17 +2670,17 @@ export const discovery = {
         [
           "整理政策",
           "围绕已核验资料完成整理政策。",
-          "flash"
+          "terra56"
         ],
         [
           "生成答复",
           "围绕已核验资料完成生成答复。",
-          "flash"
+          "terra56"
         ],
         [
           "检查口径",
           "围绕已核验资料完成检查口径。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -2441,14 +2693,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：按住客需求生成多语入住说明"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2466,7 +2718,8 @@ export const discovery = {
               "label": "检查口径",
               "text": "对 20 个常见问题检查政策一致性及无法兑现的承诺；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "按住客需求生成多语入住说明。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2504,12 +2757,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：按住客需求生成多语入住说明"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2529,7 +2782,8 @@ export const discovery = {
               "label": "检查口径",
               "text": "对 20 个常见问题检查政策一致性及无法兑现的承诺；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "按住客需求生成多语入住说明。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "audio",
@@ -2549,17 +2803,17 @@ export const discovery = {
         [
           "定位版本",
           "围绕已核验资料完成定位版本。",
-          "flash"
+          "terra56"
         ],
         [
           "整理步骤",
           "围绕已核验资料完成整理步骤。",
-          "flash"
+          "terra56"
         ],
         [
           "工程师复核",
           "围绕已核验资料完成工程师复核。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -2572,14 +2826,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：从工艺记录提取可追溯操作要求"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2597,7 +2851,8 @@ export const discovery = {
               "label": "工程师复核",
               "text": "以工程师批准稿为准，逐项检查单位、版本与先后顺序；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "从工艺记录提取可追溯操作要求。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2635,12 +2890,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：从工艺记录提取可追溯操作要求"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2660,7 +2915,8 @@ export const discovery = {
               "label": "工程师复核",
               "text": "以工程师批准稿为准，逐项检查单位、版本与先后顺序；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "从工艺记录提取可追溯操作要求。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -2680,17 +2936,17 @@ export const discovery = {
         [
           "提取事件",
           "围绕已核验资料完成提取事件。",
-          "flash"
+          "terra56"
         ],
         [
           "匹配规则",
           "围绕已核验资料完成匹配规则。",
-          "flash"
+          "terra56"
         ],
         [
           "生成通知",
           "围绕已核验资料完成生成通知。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -2703,14 +2959,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：梳理异常节点与责任交接"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2728,7 +2984,8 @@ export const discovery = {
               "label": "生成通知",
               "text": "抽查 30 票，核对运单关联、时区和承诺日期；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "梳理异常节点与责任交接。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2766,12 +3023,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：梳理异常节点与责任交接"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2791,7 +3048,8 @@ export const discovery = {
               "label": "生成通知",
               "text": "抽查 30 票，核对运单关联、时区和承诺日期；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "梳理异常节点与责任交接。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -2811,17 +3069,17 @@ export const discovery = {
         [
           "对齐制度",
           "围绕已核验资料完成对齐制度。",
-          "flash"
+          "terra56"
         ],
         [
           "定位凭证",
           "围绕已核验资料完成定位凭证。",
-          "flash"
+          "terra56"
         ],
         [
           "整理说明",
           "围绕已核验资料完成整理说明。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -2834,14 +3092,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对制度依据；金额交给确定性计算"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2859,7 +3117,8 @@ export const discovery = {
               "label": "整理说明",
               "text": "逐项检查凭证号、币种和会计期间；不自动审批付款；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对制度依据；金额交给确定性计算。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -2897,12 +3156,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对制度依据；金额交给确定性计算"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -2922,7 +3181,8 @@ export const discovery = {
               "label": "整理说明",
               "text": "逐项检查凭证号、币种和会计期间；不自动审批付款；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对制度依据；金额交给确定性计算。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -2942,17 +3202,17 @@ export const discovery = {
         [
           "标注版本",
           "围绕已核验资料完成标注版本。",
-          "flash"
+          "terra56"
         ],
         [
           "对照条款",
           "围绕已核验资料完成对照条款。",
-          "flash"
+          "terra56"
         ],
         [
           "交法务审阅",
           "围绕已核验资料完成交法务审阅。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -2965,14 +3225,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：对照原条款提示差异并交律师审阅"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -2990,7 +3250,8 @@ export const discovery = {
               "label": "交法务审阅",
               "text": "核对条款定位、版本与漏项；不把生成内容当成法律结论；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "对照原条款提示差异并交律师审阅。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3028,12 +3289,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：对照原条款提示差异并交律师审阅"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3053,7 +3314,8 @@ export const discovery = {
               "label": "交法务审阅",
               "text": "核对条款定位、版本与漏项；不把生成内容当成法律结论；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "对照原条款提示差异并交律师审阅。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -3073,17 +3335,17 @@ export const discovery = {
         [
           "整理流程",
           "围绕已核验资料完成整理流程。",
-          "flash"
+          "terra56"
         ],
         [
           "生成指南",
           "围绕已核验资料完成生成指南。",
-          "flash"
+          "terra56"
         ],
         [
           "行政确认",
           "围绕已核验资料完成行政确认。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -3096,14 +3358,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：按审核材料生成行政说明，不做诊断"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3121,7 +3383,8 @@ export const discovery = {
               "label": "行政确认",
               "text": "逐项核对窗口、时段和联系方式；不生成诊断用药建议；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "按审核材料生成行政说明，不做诊断。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3159,12 +3422,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：按审核材料生成行政说明，不做诊断"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3184,7 +3447,8 @@ export const discovery = {
               "label": "行政确认",
               "text": "逐项核对窗口、时段和联系方式；不生成诊断用药建议；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "按审核材料生成行政说明，不做诊断。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -3204,17 +3468,17 @@ export const discovery = {
         [
           "整理岗位",
           "围绕已核验资料完成整理岗位。",
-          "flash"
+          "terra56"
         ],
         [
           "生成材料",
           "围绕已核验资料完成生成材料。",
-          "flash"
+          "terra56"
         ],
         [
           "HR 审校",
           "围绕已核验资料完成HR 审校。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -3227,14 +3491,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：从岗位事实提取职责与入职要求"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3252,7 +3516,8 @@ export const discovery = {
               "label": "HR 审校",
               "text": "检查职责与岗位一致性；不由模型决定录用、薪资或淘汰；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "从岗位事实提取职责与入职要求。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3290,12 +3555,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：从岗位事实提取职责与入职要求"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3315,7 +3580,8 @@ export const discovery = {
               "label": "HR 审校",
               "text": "检查职责与岗位一致性；不由模型决定录用、薪资或淘汰；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "从岗位事实提取职责与入职要求。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -3335,17 +3601,17 @@ export const discovery = {
         [
           "整理设定",
           "围绕已核验资料完成整理设定。",
-          "flash"
+          "sonnet5"
         ],
         [
           "编写分支",
           "围绕已核验资料完成编写分支。",
-          "flash"
+          "sonnet5"
         ],
         [
           "检查冲突",
           "围绕已核验资料完成检查冲突。",
-          "flash"
+          "sonnet5"
         ]
       ],
       "article": "choose-model",
@@ -3360,12 +3626,12 @@ export const discovery = {
             {
               "model": "anthropic/claude-fable-5.1",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：保持人物设定、对白与分支状态一致"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3383,7 +3649,8 @@ export const discovery = {
               "label": "检查冲突",
               "text": "试玩 5 条任务链，检查触发条件、剧情冲突和重复台词；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "保持人物设定、对白与分支状态一致。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3421,9 +3688,9 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "anthropic/claude-sonnet-5",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：保持人物设定、对白与分支状态一致"
             },
             {
               "model": "anthropic/claude-fable-5.1",
@@ -3446,7 +3713,8 @@ export const discovery = {
               "label": "检查冲突",
               "text": "试玩 5 条任务链，检查触发条件、剧情冲突和重复台词；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "保持人物设定、对白与分支状态一致。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -3466,17 +3734,17 @@ export const discovery = {
         [
           "整理来源",
           "围绕已核验资料完成整理来源。",
-          "flash"
+          "sonnet5"
         ],
         [
           "组织稿件",
           "围绕已核验资料完成组织稿件。",
-          "flash"
+          "sonnet5"
         ],
         [
           "编辑核实",
           "围绕已核验资料完成编辑核实。",
-          "flash"
+          "sonnet5"
         ]
       ],
       "article": "choose-model",
@@ -3489,14 +3757,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：保持作者语气并核对稿件事实"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3514,7 +3782,8 @@ export const discovery = {
               "label": "编辑核实",
               "text": "逐条核实人名、时间、数字和引语，不生成不存在的采访；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "保持作者语气并核对稿件事实。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3552,12 +3821,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "anthropic/claude-sonnet-5",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：保持作者语气并核对稿件事实"
             },
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3577,7 +3846,8 @@ export const discovery = {
               "label": "编辑核实",
               "text": "逐条核实人名、时间、数字和引语，不生成不存在的采访；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "保持作者语气并核对稿件事实。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -3597,17 +3867,17 @@ export const discovery = {
         [
           "界定问题",
           "围绕已核验资料完成界定问题。",
-          "flash"
+          "terra56"
         ],
         [
           "组织证据",
           "围绕已核验资料完成组织证据。",
-          "flash"
+          "terra56"
         ],
         [
           "形成建议",
           "围绕已核验资料完成形成建议。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -3620,14 +3890,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：区分事实与假设，核对论证链"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3645,7 +3915,8 @@ export const discovery = {
               "label": "形成建议",
               "text": "检查 20 条结论的来源链，把事实、假设、判断分开；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "区分事实与假设，核对论证链。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3683,12 +3954,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：区分事实与假设，核对论证链"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3708,7 +3979,8 @@ export const discovery = {
               "label": "形成建议",
               "text": "检查 20 条结论的来源链，把事实、假设、判断分开；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "区分事实与假设，核对论证链。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "knowledge",
@@ -3728,17 +4000,17 @@ export const discovery = {
         [
           "拆解任务书",
           "围绕已核验资料完成拆解任务书。",
-          "flash"
+          "terra56"
         ],
         [
           "构思方案",
           "围绕已核验资料完成构思方案。",
-          "flash"
+          "terra56"
         ],
         [
           "专业复核",
           "围绕已核验资料完成专业复核。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -3751,14 +4023,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：根据设计资料解释方案取舍"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3776,7 +4048,8 @@ export const discovery = {
               "label": "专业复核",
               "text": "核对尺寸与任务书；生成图不代替施工图或结构计算；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "根据设计资料解释方案取舍。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3814,12 +4087,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：根据设计资料解释方案取舍"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "gpt-6-astra",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3839,7 +4112,8 @@ export const discovery = {
               "label": "专业复核",
               "text": "核对尺寸与任务书；生成图不代替施工图或结构计算；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "根据设计资料解释方案取舍。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -3859,17 +4133,17 @@ export const discovery = {
         [
           "整理记录",
           "围绕已核验资料完成整理记录。",
-          "flash"
+          "flash38"
         ],
         [
           "生成摘要",
           "围绕已核验资料完成生成摘要。",
-          "flash"
+          "flash38"
         ],
         [
           "农技人员确认",
           "围绕已核验资料完成农技人员确认。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -3882,14 +4156,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：整理农事记录和来源，不推断病害"
             },
             {
               "model": "google/gemini-3.1-pro-preview",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -3907,7 +4181,8 @@ export const discovery = {
               "label": "农技人员确认",
               "text": "抽查 20 条记录的日期、批次与单位；不补猜农药用量；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "整理农事记录和来源，不推断病害。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -3945,12 +4220,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：整理农事记录和来源，不推断病害"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -3970,7 +4245,8 @@ export const discovery = {
               "label": "农技人员确认",
               "text": "抽查 20 条记录的日期、批次与单位；不补猜农药用量；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "整理农事记录和来源，不推断病害。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -3990,17 +4266,17 @@ export const discovery = {
         [
           "整理活动",
           "围绕已核验资料完成整理活动。",
-          "flash"
+          "flash38"
         ],
         [
           "编写报告",
           "围绕已核验资料完成编写报告。",
-          "flash"
+          "flash38"
         ],
         [
           "核对成果",
           "围绕已核验资料完成核对成果。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -4015,12 +4291,12 @@ export const discovery = {
             {
               "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对项目成果、资助条件与数字"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -4038,7 +4314,8 @@ export const discovery = {
               "label": "核对成果",
               "text": "核对受益人数、预算与活动照片授权，不编造案例；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对项目成果、资助条件与数字。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -4076,9 +4353,9 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对项目成果、资助条件与数字"
             },
             {
               "model": "anthropic/claude-opus-5",
@@ -4101,7 +4378,8 @@ export const discovery = {
               "label": "核对成果",
               "text": "核对受益人数、预算与活动照片授权，不编造案例；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对项目成果、资助条件与数字。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "image",
@@ -4121,17 +4399,17 @@ export const discovery = {
         [
           "整理服务",
           "围绕已核验资料完成整理服务。",
-          "flash"
+          "terra56"
         ],
         [
           "生成答复",
           "围绕已核验资料完成生成答复。",
-          "flash"
+          "terra56"
         ],
         [
           "确认预约",
           "围绕已核验资料完成确认预约。",
-          "flash"
+          "terra56"
         ]
       ],
       "article": "choose-model",
@@ -4144,14 +4422,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：核对服务范围、收费与售后边界"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -4169,7 +4447,8 @@ export const discovery = {
               "label": "确认预约",
               "text": "检查 20 个咨询样本，确认收费范围与预约不冲突；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对服务范围、收费与售后边界。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -4207,12 +4486,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "gpt-5.6-terra",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：核对服务范围、收费与售后边界"
             },
             {
-              "model": "anthropic/claude-opus-5",
+              "model": "openai/gpt-5.6-sol",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -4232,7 +4511,8 @@ export const discovery = {
               "label": "确认预约",
               "text": "检查 20 个咨询样本，确认收费范围与预约不冲突；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "核对服务范围、收费与售后边界。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "none",
@@ -4252,17 +4532,17 @@ export const discovery = {
         [
           "整理资源",
           "围绕已核验资料完成整理资源。",
-          "flash"
+          "flash38"
         ],
         [
           "编排流程",
           "围绕已核验资料完成编排流程。",
-          "flash"
+          "flash38"
         ],
         [
           "执行团队走查",
           "围绕已核验资料完成执行团队走查。",
-          "flash"
+          "flash38"
         ]
       ],
       "article": "choose-model",
@@ -4275,14 +4555,14 @@ export const discovery = {
           "fit": "重要对外交付、复杂约束和较高返工代价的任务",
           "recipe": [
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 1,
-              "role": "主任务生成"
+              "role": "主任务：检查议程、嘉宾信息和时段冲突"
             },
             {
-              "model": "google/gemini-3.1-pro-preview",
+              "model": "openai/gpt-5.6-sol",
               "share": 1,
-              "role": "独立复核"
+              "role": "独立复核：对照原始资料检查遗漏"
             }
           ],
           "tradeoff": "两轮模型费用和延迟更高；高阶模型也可能出错，人工验收仍保留。",
@@ -4300,7 +4580,8 @@ export const discovery = {
               "label": "执行团队走查",
               "text": "按分钟走查流程，核对人员、设备和场地交接；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查议程、嘉宾信息和时段冲突。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         },
         {
           "id": "budget",
@@ -4338,12 +4619,12 @@ export const discovery = {
           "fit": "有持续业务量，愿意用样本测试设定升级规则的团队",
           "recipe": [
             {
-              "model": "google/gemini-3.7-flash",
+              "model": "google/gemini-3.8-flash",
               "share": 1,
-              "role": "日常批量任务"
+              "role": "日常任务：检查议程、嘉宾信息和时段冲突"
             },
             {
-              "model": "anthropic/claude-fable-5.1",
+              "model": "anthropic/claude-opus-5",
               "share": 0.2,
               "role": "仅 20% 困难任务追加复核"
             }
@@ -4363,7 +4644,8 @@ export const discovery = {
               "label": "执行团队走查",
               "text": "按分钟走查流程，核对人员、设备和场地交接；记录人工修改和重试次数。"
             }
-          ]
+          ],
+          "selectionReason": "检查议程、嘉宾信息和时段冲突。质量档与日常档按此交付物选择；模型间复核不能替代最终人工验收。"
         }
       ],
       "extra": "audio",
@@ -5079,6 +5361,32 @@ export const discovery = {
       "channel": "Voyage AI",
       "checkedAt": "2026-09-21",
       "currency": "USD"
+    },
+    {
+      "id": "audit-openai-tts",
+      "model": "openai-tts",
+      "task": "audio",
+      "cost": 0.1206,
+      "spec": "1000 文本输入 + 10000 音频输出 Token",
+      "unit": "组",
+      "source": "https://developers.openai.com/api/docs/models/gpt-4o-mini-tts",
+      "channel": "OpenAI 官方",
+      "checkedAt": "2026-09-21",
+      "currency": "USD",
+      "note": "只计对应 Token 用量；分词器不同不代表相同内容或时长。工具、存储及重试另计。"
+    },
+    {
+      "id": "audit-openai-embedding",
+      "model": "openai-embedding",
+      "task": "knowledge",
+      "cost": 0.13,
+      "spec": "100 万文本输入 Token · 标准调用",
+      "unit": "百万 Token",
+      "source": "https://developers.openai.com/api/docs/models/text-embedding-3-large",
+      "channel": "OpenAI 官方",
+      "checkedAt": "2026-09-21",
+      "currency": "USD",
+      "note": "只计对应 Token 用量；分词器不同不代表相同内容或时长。工具、存储及重试另计。"
     }
   ],
   "relayFreeReview": {
@@ -5183,7 +5491,7 @@ export const discovery = {
       "type": "中转站",
       "source": "https://linkapi.ai/api/pricing",
       "rules": "https://linkapi.ai/api/pricing",
-      "coverage": "公开价格目录确认 8 个模型条目；仅限卡片所列分组，账号资格与调用可用性未实测。"
+      "coverage": "8 条历史零价记录本轮待复核：价格目录暂无法访问；未确认仍可免费调用。"
     },
     {
       "id": "relay-211",
@@ -5311,7 +5619,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5340,7 +5650,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5369,7 +5681,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5396,7 +5710,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5423,7 +5739,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5453,7 +5771,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5482,7 +5802,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": "2026-09-30"
+      "endsAt": "2026-09-30",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5509,7 +5831,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5536,7 +5860,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5567,7 +5893,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5594,7 +5922,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5625,7 +5955,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5652,7 +5984,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5679,7 +6013,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5705,7 +6041,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5733,7 +6071,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5760,7 +6100,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5792,7 +6134,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5822,7 +6166,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5852,7 +6198,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "openrouter",
@@ -5879,7 +6227,9 @@ export const discovery = {
         "completion": "0"
       },
       "limits": "需账号与 API Key；平台按账号及上游容量限流，具体日额度查看账号 Limits。仅此 :free ID 零价；付费插件等附加服务另计。",
-      "endsAt": null
+      "endsAt": null,
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5896,7 +6246,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5913,7 +6265,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5930,7 +6284,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5947,7 +6303,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5964,7 +6322,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5981,7 +6341,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -5998,7 +6360,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6015,7 +6379,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6032,7 +6398,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6049,7 +6417,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6066,7 +6436,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6083,7 +6455,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6100,7 +6474,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "siliconflow",
@@ -6117,7 +6493,9 @@ export const discovery = {
       "priceEvidence": {
         "label": "免费"
       },
-      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。"
+      "limits": "中国站价格页标为免费。需注册并创建 Key；认证资格、RPM/TPM 和可用性以控制台为准。本次来源未公开这些模型的具体限额与上下文。Pro 前缀版本不属于此免费条目。",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6135,7 +6513,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "10 RPM · 100 RPD · 1.2K TPM · 3.6K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "语音合成"
+      "note": "语音合成",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6153,7 +6533,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "10 RPM · 100 RPD · 1.2K TPM · 3.6K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "语音合成"
+      "note": "语音合成",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6171,7 +6553,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 14.4K RPD · 15K TPM · 500K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "提示安全检测"
+      "note": "提示安全检测",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6189,7 +6573,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 14.4K RPD · 15K TPM · 500K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "提示安全检测"
+      "note": "提示安全检测",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6207,7 +6593,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "文本"
+      "note": "文本",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6225,7 +6613,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "文本"
+      "note": "文本",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6243,7 +6633,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "安全检测"
+      "note": "安全检测",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6261,7 +6653,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "30 RPM · 1K RPD · 8K TPM · 200K TPD。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "文本"
+      "note": "文本",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6279,7 +6673,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "20 RPM · 2K RPD · 7.2K 音频秒/小时 · 28.8K 音频秒/日。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "语音识别"
+      "note": "语音识别",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "groq",
@@ -6297,7 +6693,9 @@ export const discovery = {
         "label": "Free Plan Limits"
       },
       "limits": "20 RPM · 2K RPD · 7.2K 音频秒/小时 · 28.8K 音频秒/日。免费计划、组织级限额；任一限额先耗尽即受限，账号可能有例外。RPM/RPD 为每分钟/日请求，TPM/TPD 为每分钟/日 Token。",
-      "note": "语音识别"
+      "note": "语音识别",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-27",
@@ -6326,7 +6724,9 @@ export const discovery = {
       "groupRatios": {
         "XiaomiMIMO": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-27",
@@ -6355,7 +6755,9 @@ export const discovery = {
       "groupRatios": {
         "XiaomiMIMO": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-27",
@@ -6384,7 +6786,9 @@ export const discovery = {
       "groupRatios": {
         "XiaomiMIMO": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-51",
@@ -6413,7 +6817,9 @@ export const discovery = {
       "groupRatios": {
         "glm-flow": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-51",
@@ -6442,7 +6848,9 @@ export const discovery = {
       "groupRatios": {
         "glm-flow": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-51",
@@ -6471,7 +6879,9 @@ export const discovery = {
       "groupRatios": {
         "glm-flow": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-51",
@@ -6501,7 +6911,9 @@ export const discovery = {
       "groupRatios": {
         "glm-flow": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6530,7 +6942,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6559,7 +6973,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6588,7 +7004,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6617,7 +7035,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6646,7 +7066,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6675,7 +7097,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6704,7 +7128,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6733,7 +7159,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6762,7 +7190,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-60",
@@ -6791,7 +7221,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor免费福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-65",
@@ -6820,7 +7252,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-162",
@@ -6849,7 +7283,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -6878,7 +7314,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -6907,7 +7345,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -6936,7 +7376,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -6965,7 +7407,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -6994,7 +7438,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -7023,7 +7469,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-162",
@@ -7052,7 +7500,9 @@ export const discovery = {
       "groupRatios": {
         "once": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "pending",
+      "reviewNote": "本轮无法获取价格目录；保留原证据，零价与分组待重新确认。"
     },
     {
       "platform": "relay-211",
@@ -7081,7 +7531,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-211",
@@ -7110,7 +7562,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-211",
@@ -7139,7 +7593,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-211",
@@ -7168,7 +7624,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-211",
@@ -7197,7 +7655,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-211",
@@ -7226,7 +7686,9 @@ export const discovery = {
       "groupRatios": {
         "default": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-213",
@@ -7255,7 +7717,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-213",
@@ -7284,7 +7748,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-213",
@@ -7313,7 +7779,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-213",
@@ -7342,7 +7810,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-215",
@@ -7371,7 +7841,9 @@ export const discovery = {
       "groupRatios": {
         "Free": 0
       },
-      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+      "availability": "仅 13:30–15:30 免费；站方未注明时区",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-215",
@@ -7400,7 +7872,9 @@ export const discovery = {
       "groupRatios": {
         "Free": 0
       },
-      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+      "availability": "仅 13:30–15:30 免费；站方未注明时区",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-215",
@@ -7429,7 +7903,9 @@ export const discovery = {
       "groupRatios": {
         "Free": 0
       },
-      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+      "availability": "仅 13:30–15:30 免费；站方未注明时区",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-215",
@@ -7458,7 +7934,9 @@ export const discovery = {
       "groupRatios": {
         "Free": 0
       },
-      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+      "availability": "仅 13:30–15:30 免费；站方未注明时区",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-215",
@@ -7487,7 +7965,9 @@ export const discovery = {
       "groupRatios": {
         "Free": 0
       },
-      "availability": "仅 13:30–15:30 免费；站方未注明时区"
+      "availability": "仅 13:30–15:30 免费；站方未注明时区",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-262",
@@ -7516,7 +7996,9 @@ export const discovery = {
       "groupRatios": {
         "Claude Code": 1.5
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-262",
@@ -7545,7 +8027,9 @@ export const discovery = {
       "groupRatios": {
         "Claude Code": 1.5
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-262",
@@ -7574,7 +8058,9 @@ export const discovery = {
       "groupRatios": {
         "Claude Code": 1.5
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-311",
@@ -7603,7 +8089,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-311",
@@ -7632,7 +8120,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-311",
@@ -7661,7 +8151,9 @@ export const discovery = {
       "groupRatios": {
         "free": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7690,7 +8182,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7719,7 +8213,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7749,7 +8245,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7779,7 +8277,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7808,7 +8308,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7837,7 +8339,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7866,7 +8370,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7895,7 +8401,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7924,7 +8432,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7953,7 +8463,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -7983,7 +8495,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8012,7 +8526,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8041,7 +8557,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8070,7 +8588,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8099,7 +8619,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8128,7 +8650,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8157,7 +8681,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8186,7 +8712,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-486",
@@ -8215,7 +8743,9 @@ export const discovery = {
       "groupRatios": {
         "基础普及通道": 0.15
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-621",
@@ -8244,7 +8774,9 @@ export const discovery = {
       "groupRatios": {
         "NBAI福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8273,7 +8805,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8302,7 +8836,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8331,7 +8867,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8360,7 +8898,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8389,7 +8929,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8418,7 +8960,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8447,7 +8991,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8476,7 +9022,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8506,7 +9054,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8535,7 +9085,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8564,7 +9116,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8593,7 +9147,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8622,7 +9178,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8651,7 +9209,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8680,7 +9240,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8709,7 +9271,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8738,7 +9302,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8767,7 +9333,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8796,7 +9364,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8825,7 +9395,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8854,7 +9426,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8883,7 +9457,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8913,7 +9489,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-638",
@@ -8942,7 +9520,9 @@ export const discovery = {
       "groupRatios": {
         "公益": 0.01
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-679",
@@ -8971,7 +9551,9 @@ export const discovery = {
       "groupRatios": {
         "DOTS": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-695",
@@ -9002,7 +9584,9 @@ export const discovery = {
         "default": 1,
         "GPT特惠": 0.5
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9031,7 +9615,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9060,7 +9646,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9089,7 +9677,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9118,7 +9708,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9147,7 +9739,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9176,7 +9770,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9205,7 +9801,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9234,7 +9832,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9263,7 +9863,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9292,7 +9894,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9321,7 +9925,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9350,7 +9956,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9379,7 +9987,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9408,7 +10018,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9437,7 +10049,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9466,7 +10080,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9495,7 +10111,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9524,7 +10142,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9553,7 +10173,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9582,7 +10204,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-716",
@@ -9611,7 +10235,9 @@ export const discovery = {
       "groupRatios": {
         "Cursor福利": 0
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     },
     {
       "platform": "relay-800",
@@ -9640,12 +10266,14 @@ export const discovery = {
       "groupRatios": {
         "Free免费通道": 1
       },
-      "availability": "仅指定分组；账号资格待确认"
+      "availability": "仅指定分组；账号资格待确认",
+      "reviewStatus": "confirmed",
+      "reviewNote": "本轮已复查公开价格 / 免费配额目录；未登录实测调用。"
     }
   ],
   "freeModelAudit": {
     "checkedAt": "2026-09-21",
-    "scope": "已对目录内 847 家中转站逐站尝试公开 /api/pricing 入口，246 家返回可解析目录（含空目录），其余未获得可用价格数据。结合 OpenRouter、硅基流动、Groq 的公开目录，按具体模型和免费条件收录。接口不可读或未入榜不等于没有免费模型；未登录或执行推理。",
+    "scope": "已对目录内 847 家中转站逐站尝试公开 /api/pricing 入口，246 家返回可解析目录（含空目录），其余未获得可用价格数据。结合 OpenRouter、硅基流动、Groq 的公开目录，按具体模型和免费条件收录。接口不可读或未入榜不等于没有免费模型；未登录或执行推理。 本轮复查已有 160 条：152 条公开价格或免费配额信息一致，LinkAPI 的 8 条暂无法重新获取目录，卡片标记待复核；不等于账号已具备调用资格。",
     "pending": [
       {
         "name": "xiaoxuapi",
@@ -9795,6 +10423,56 @@ export const discovery = {
       "source": "https://openrouter.ai/api/v1/models",
       "url": "https://openrouter.ai/google/gemma-4-31b-it:free",
       "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "gpt-6-astra",
+      "name": "OpenAI · GPT-6 Astra",
+      "channel": "OpenAI 官方",
+      "input": 10,
+      "output": 50,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "name": "OpenAI · GPT-5.6 Terra",
+      "channel": "OpenAI 官方",
+      "input": 2,
+      "output": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "openai/gpt-5.6-sol",
+      "name": "OpenAI · GPT-5.6 Sol",
+      "channel": "OpenAI 官方",
+      "input": 4,
+      "output": 20,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "google/gemini-3.8-flash",
+      "name": "Gemini 3.8 Flash",
+      "channel": "OpenRouter",
+      "input": 0.75,
+      "output": 3.75,
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/google/gemini-3.8-flash",
+      "checkedAt": "2026-09-21"
+    },
+    {
+      "id": "anthropic/claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "channel": "OpenRouter",
+      "input": 2.0,
+      "output": 10.0,
+      "source": "https://openrouter.ai/api/v1/models",
+      "url": "https://openrouter.ai/anthropic/claude-sonnet-5",
+      "checkedAt": "2026-09-21"
     }
   ],
   "industryPricing": {
@@ -9803,7 +10481,7 @@ export const discovery = {
     "tasks": 100,
     "currency": "USD",
     "checkedAt": "2026-09-21",
-    "note": "统一假设：100 次文本任务，每轮 4000 输入 + 1000 输出 Token；复核轮也按相同用量估算。按目录标准起价、不使用缓存折扣；推理额外输出、长上下文阶梯、搜索工具、平台费用和重试另计。不是完成 100 个项目的总价，也不保证全网最低。"
+    "note": "统一假设：100 次文本任务，每轮 4000 输入 + 1000 输出 Token；复核轮也按相同用量估算。按各模型卡所列官方或渠道标准价、不使用缓存折扣；推理额外输出、长上下文阶梯、搜索工具、平台费用和重试另计。不是完成 100 个项目的总价，也不保证全网最低。"
   },
   "taskGuides": [
     {
@@ -10457,5 +11135,94 @@ export const discovery = {
         "reason": "没有在本次官方目录中确认可直接替代专用重排接口的 OpenAI 型号；向量模型与生成模型不冒充专用重排模型。"
       }
     ]
+  },
+  "boardRateCards": [
+    {
+      "model": "openai-sunburst",
+      "tasks": [
+        "image"
+      ],
+      "note": "文本输入 $5、图像输入 $8、图像输出 $30 每百万 Token；不能用旧版图片计算器直接推算本版单张成本。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+    },
+    {
+      "model": "openai-flare",
+      "tasks": [
+        "image"
+      ],
+      "note": "文本输入 $5、图像输入 $8、图像输出 $30 每百万 Token；实际用量随尺寸与质量设置变化。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare"
+    },
+    {
+      "model": "kling-o3",
+      "tasks": [
+        "video"
+      ],
+      "note": "$0.56 / 5 秒含音频，$0.42 / 5 秒无音频；规格不同，未混入 8 秒 Veo 样本。",
+      "source": "https://fal.ai/models/fal-ai/kling-video/o3/standard/image-to-video"
+    },
+    {
+      "model": "openai-live",
+      "tasks": [
+        "audio"
+      ],
+      "note": "语音会话 $0.05 / 分钟，按秒计费；后端模型与工具调用另外计费。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-live-1"
+    },
+    {
+      "model": "openai-transcribe",
+      "tasks": [
+        "audio"
+      ],
+      "note": "官方转写音频时长价 $0.0045 / 分钟。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-transcribe"
+    },
+    {
+      "model": "whisper",
+      "tasks": [
+        "audio"
+      ],
+      "note": "Groq 标准转写 $0.111 / 小时；计费取整、文件限制与实际用量以渠道规则为准。",
+      "source": "https://console.groq.com/docs/speech-to-text"
+    },
+    {
+      "model": "whisper-turbo",
+      "tasks": [
+        "audio"
+      ],
+      "note": "Groq 标准转写 $0.04 / 小时；不用于音频翻译，计费取整与文件限制另核。",
+      "source": "https://console.groq.com/docs/speech-to-text"
+    },
+    {
+      "model": "openai-realtime",
+      "tasks": [
+        "audio"
+      ],
+      "note": "音频与文本的输入输出分别计费，按官方当前报价和会话用量试算。",
+      "source": "https://developers.openai.com/api/docs/models/gpt-realtime-2.1"
+    },
+    {
+      "model": "deepseek41",
+      "tasks": [
+        "text",
+        "code"
+      ],
+      "note": "OpenRouter 分时起价：输入 $0.15–0.30、输出 $0.60–1.20 / 百万 Token；按 UTC 时段变化，不用低谷价冒充全天价格。",
+      "source": "https://openrouter.ai/deepseek/deepseek-v4.1-flash"
+    },
+    {
+      "model": "rerank25",
+      "tasks": [
+        "knowledge"
+      ],
+      "note": "对已有候选文档重排序，提高相关证据靠前的机会；不生成答案。",
+      "source": "https://docs.voyageai.com/docs/reranker"
+    }
+  ],
+  "sitewideReview": {
+    "date": "2026-09-21",
+    "note": "覆盖 10 类榜单、24 行业 × 5 维度 × 3 档；核查来源、型号、计费与任务适配，未做付费模型效果实测。",
+    "freeRechecked": 152,
+    "freePending": 8
   }
 };

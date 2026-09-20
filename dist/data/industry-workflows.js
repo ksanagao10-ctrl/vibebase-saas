@@ -1,3 +1,4 @@
+import {discovery} from './discovery.js';
 // Public capability documentation checked 2026-09-21; workflows are editorial proposals, not benchmarks.
 export const dimensions = [['text','生文'],['image','生图 / 修图'],['video','生视频'],['audio','生音频'],['specialty','行业专用能力']];
 export const capabilityModels = {
@@ -27,6 +28,38 @@ export const capabilityModels = {
 };
 const imagePricing='https://ai.google.dev/gemini-api/docs/pricing';
 for(const id of ['image-pro','image-flash','veo','veo-fast','veo-lite','tts-pro','tts'])capabilityModels[id].priceSource=imagePricing;
+// Reuse the audited model record so board and industry pricing cannot silently diverge.
+for(const id of ['openai-sunburst','openai-flare','openai-tts','openai-embedding','openai-live','openai-transcribe']){
+ const m=discovery.models.find(m=>m.id===id);
+ capabilityModels[id]={name:'OpenAI · '+m.name,type:m.tasks.includes('image')?'图像生成与编辑 API':m.tasks.includes('knowledge')?'向量检索 API':'语音 API',source:m.source,price:m.pricingNote,billing:'paid',note:m.desc};
+}
+capabilityModels['tts-31']={name:'Gemini 3.1 Flash TTS Preview',type:'流式 / 多角色语音合成',source:imagePricing,price:'$0.201 / 1000 文本输入 + 10000 音频输出 Token',billing:'paid',note:'预览版；适合逐段试听与多角色表达，先确认稳定性与发音。'};
+const industryChoices={
+ commerce:['openai-sunburst','openai-flare','openai-tts','商品主体与规格保持一致'],
+ marketing:['openai-sunburst','image-flash','tts-31','品牌版式与多尺寸广告延展'],
+ development:['image-pro','flux','openai-tts','技术示意与产品演示素材'],
+ knowledge:['image-pro','image-flash','openai-tts','有依据的流程图与培训插图'],
+ education:['image-pro','openai-flare','tts-31','教材图示与角色化讲解'],
+ 'real-estate':['openai-sunburst','image-flash','openai-tts','保留真实空间结构，标注效果示意'],
+ retail:['openai-sunburst','openai-flare','openai-tts','保留包装与价格牌，促销文案后排版'],
+ restaurant:['openai-sunburst','image-flash','openai-tts','保留菜品真实外观与份量'],
+ travel:['image-pro','openai-flare','tts-31','真实景点素材与多语解说'],
+ hospitality:['openai-sunburst','image-flash','openai-tts','真实客房与可复用入住提示'],
+ manufacturing:['image-pro','image-flash','openai-tts','图示与工艺记录逐项对应'],
+ logistics:['image-pro','flux','openai-tts','交接流程示意与异常提示'],
+ 'finance-ops':['image-pro','image-flash','openai-tts','报表数字用图表工具，不让生图模型生成数值'],
+ 'legal-ops':['image-pro','image-flash','openai-tts','流程示意与经审阅培训讲解'],
+ 'health-ops':['image-pro','image-flash','openai-tts','行政流程示意，不生成诊断影像'],
+ recruitment:['openai-sunburst','openai-flare','tts-31','招聘视觉与入职课程配音'],
+ gaming:['image-pro','flux','tts-31','角色设定探索与多角色对白'],
+ publishing:['openai-sunburst','openai-flare','tts-31','封面编辑与章节旁白'],
+ consulting:['image-pro','image-flash','openai-tts','方案图示与提案讲解'],
+ architecture:['openai-sunburst','image-flash','tts-31','效果示意保持空间，不当作施工图'],
+ agriculture:['image-pro','openai-flare','openai-tts','记录图解与农产品介绍'],
+ nonprofit:['openai-sunburst','openai-flare','tts-31','授权项目素材与成果叙事'],
+ 'local-services':['openai-sunburst','image-flash','openai-tts','真实服务素材与售后说明'],
+ events:['openai-sunburst','openai-flare','tts-31','活动视觉与多角色串场']
+};
 export const workflowBriefs = {
 "commerce": {"image": {"title": "商品视觉", "inputs": "白底实拍、材质和包装参考", "output": "主图、场景图与卖点图", "method": "锁定商品主体，只替换背景，再用排版工具加价格", "acceptance": "标识、颜色、规格与实物逐项相符", "family": "edit"}, "video": {"title": "带货镜头", "inputs": "主图、卖点脚本与真实演示", "output": "开箱、细节和使用场景短片", "method": "用实拍承载功能证明，生成背景转场与氛围镜头", "acceptance": "无虚构功效；商品在各镜头外观一致", "family": "kling"}, "audio": {"title": "商品口播", "inputs": "已审核详情页、读音和促销日期", "output": "不同平台的短口播与无配乐干声", "method": "按卖点分段录制，价格和规格采用可替换片段", "acceptance": "价格单位、品牌读音正确，语音与字幕一致"}, "specialty": {"title": "商品抠图与区域编辑", "inputs": "商品多角度照片和边界样本", "output": "主体掩膜与背景替换素材", "method": "先分割主体，再人工检查透明、毛发和反光边缘", "acceptance": "边缘无明显缺口，包装文字不被修改", "family": "sam"}},
 "marketing": {"image": {"title": "品牌广告视觉", "inputs": "品牌规范、授权人物和版式", "output": "横竖版广告与活动主视觉", "method": "先确认构图，再锁定字体、色板和安全区扩展尺寸", "acceptance": "Logo 不重绘，平台尺寸和品牌规范合格", "family": "edit"}, "video": {"title": "广告分镜", "inputs": "脚本、主视觉和落地页", "output": "多个开头版本与一条剪辑成片", "method": "先做分镜样张，再仅为候选开头生成动态镜头", "acceptance": "承诺与落地页一致，前三秒信息可辨", "family": "veo"}, "audio": {"title": "广告声音", "inputs": "已批准文案、时长和语气", "output": "电台广告、短视频配音和结束语", "method": "试听不同节奏，品牌名称单独校音，再与画面混音", "acceptance": "不超时，行动指令听得清，响度一致"}, "specialty": {"title": "品牌素材检索", "inputs": "往期投放、品牌手册与素材权限", "output": "带来源的创意参考库", "method": "按活动和授权范围建索引，用创意简报召回素材", "acceptance": "引用可回到原稿，过期素材不进入建议", "family": "embed"}},
@@ -91,11 +124,13 @@ export function dimensionPlans(industry,dimension){
  if(dimension==='text')return industry.plans;
  const b=dimensionBrief(industry,dimension);
  if(!b)return [];
- let recipes,approaches;
+ let recipes,approaches,alternatives=[[],[],[]];
+ const choice=industryChoices[industry.id];
  if(dimension==='image'){
-  recipes=b.family==='edit'?[['image-pro'],['kolors'],['image-flash']]:[['image-pro'],['kolors'],['flux']];
+  recipes=[[choice[0]],['kolors'],[choice[1]]];
+  alternatives=[[choice[0]==='openai-sunburst'?'image-pro':'openai-sunburst'],[],[choice[1]==='openai-flare'?'image-flash':'openai-flare']];
   approaches=[
-   '用参考素材确认主体与构图，先出样张，再统一延展尺寸；复杂细节逐张修订。',
+   choice[3]+'。用参考素材确认主体与构图，先出样张，再扩展尺寸；复杂细节逐张修订。',
    '免费图只做背景或概念草稿；主体沿用授权实拍，准确文字用排版工具添加。',
    b.family==='edit'?'先锁定一版参考图，仅修改需要变更的区域，复用已通过审核的主体。':'用快速文生图探索多个构图，仅对选中的草图做人工细化与排版。'
   ];
@@ -107,16 +142,18 @@ export function dimensionPlans(industry,dimension){
    '先用静态分镜确定节奏，关键镜头生成一次后复用，转场与字幕交给剪辑工具。'
   ];
  }else if(dimension==='audio'){
-  recipes=[['tts-pro'],['cosy'],['tts']];
+  recipes=[[choice[2]],['tts'],[choice[2]==='openai-tts'?'openai-tts':'tts-31']];
+  alternatives=[[choice[2]==='openai-tts'?'tts-31':'openai-tts'],['cosy'],[]];
   approaches=[
    '先试听角色、语速和情绪样稿，再逐段合成；专名、数字与多角色衔接人工精修。',
-   '仅在已有自部署资源时使用开源模型；先做一种声音的短样，不合适则回到人工录音或另行试算托管 API。',
+   '先用 Flash TTS 合成一种声音的短样，固定片段缓存；已有算力时才试算 CosyVoice，不预设自部署免费或更便宜。',
    '常用提示与固定片段缓存，只重生成更新部分；用词表校音并批量抽听。'
   ];
  }else{
   recipes=specialtyRecipes[b.family];approaches=specialtyApproaches[b.family];
+  if(b.family==='embed')alternatives=[['openai-embedding'],[],['openai-embedding']];
  }
- return ids.map((id,n)=>({id,label:labels[n],models:recipes[n],approach:approaches[n],
+ return ids.map((id,n)=>({id,label:labels[n],models:recipes[n],alternatives:alternatives[n],approach:approaches[n],
   actions:[{label:'准备行业输入',text:b.inputs},{label:'执行核心流程',text:b.method},{label:'按本档控制投入',text:approaches[n]},{label:'交付与验收',text:b.output+'。'+b.acceptance}],
   tradeoff:n===0?'增加复核与迭代投入，优先保证此交付物可用；这是选型建议，尚无本站行业效果实测。':n===1?'优先降低本方案新增支出，会缩小自动化范围；免费配额、自部署算力和人工时间不能混算为零。':'通过复用、批处理与异常复核控制投入；需用真实样本确认稳定性，失败任务保留人工接管。'
  }));
