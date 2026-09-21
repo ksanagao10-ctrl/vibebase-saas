@@ -31,9 +31,9 @@ async function verify() {
     get('data/affiliate-links.js', /(?:javascript|ecmascript)/i),
     get('discovery.js', /(?:javascript|ecmascript)/i),
     get('data/discovery.js', /(?:javascript|ecmascript)/i),
-    get('data/industry-workflows.js', /(?:javascript|ecmascript)/i), get('live-prices.js', /(?:javascript|ecmascript)/i), get('price-picker.js', /(?:javascript|ecmascript)/i), get('data/price-catalog.js', /(?:javascript|ecmascript)/i), get('delivery-cost.js', /(?:javascript|ecmascript)/i), get('experience.js', /(?:javascript|ecmascript)/i), get('data/delivery-rates.js', /(?:javascript|ecmascript)/i), get('data/experience-meta.js', /(?:javascript|ecmascript)/i)
+    get('data/industry-workflows.js', /(?:javascript|ecmascript)/i), get('live-prices.js', /(?:javascript|ecmascript)/i), get('price-picker.js', /(?:javascript|ecmascript)/i), get('data/price-catalog.js', /(?:javascript|ecmascript)/i), get('relay-compare.js', /(?:javascript|ecmascript)/i), get('delivery-cost.js', /(?:javascript|ecmascript)/i), get('experience.js', /(?:javascript|ecmascript)/i), get('data/delivery-rates.js', /(?:javascript|ecmascript)/i), get('data/experience-meta.js', /(?:javascript|ecmascript)/i)
   ]);
-  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js', 'data/industry-workflows.js', 'live-prices.js', 'price-picker.js', 'data/price-catalog.js', 'delivery-cost.js', 'experience.js', 'data/delivery-rates.js', 'data/experience-meta.js'];
+  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js', 'data/industry-workflows.js', 'live-prices.js', 'price-picker.js', 'data/price-catalog.js', 'relay-compare.js', 'delivery-cost.js', 'experience.js', 'data/delivery-rates.js', 'data/experience-meta.js'];
   results.forEach((result, index) => {
     // Cloudflare may inject analytics into HTML; other static files must match exactly.
     if (index > 0) assert.equal(result.hash, manifest.assets[paths[index]], `${paths[index]}: stale or modified asset`);
@@ -50,6 +50,14 @@ async function verify() {
   assert.equal(prices.sources.length, 20);
   assert(prices.sources.filter(s => s.status === 'ok').length >= 2, 'Fewer than two live pricing sources available');
   assert(prices.sources.flatMap(s => s.quotes).every(q => q.source.startsWith('https://') && q.fetchedAt));
+  const [catalog, costs] = await Promise.all([
+    get('api/relay-catalog?sources=openrouter,modelsell', /application\/json/i).then(r=>JSON.parse(r.text)),
+    get('api/relay-costs?model=sol56&sources=modelsell&quantity=1000&turns=3&inputTokens=1000&outputTokens=300', /application\/json/i).then(r=>JSON.parse(r.text))
+  ]);
+  assert.equal(catalog.sources.length, 2);
+  assert(catalog.sources.some(s=>s.status==='ok' && s.modelIds.length>0));
+  assert.equal(costs.workload.requests, 3000);
+  assert(costs.sources.some(s=>s.quotes.some(q=>q.budget && q.budget.total>=0)), 'No task cost available');
   const [probes, feedback] = await Promise.all([
     get('api/probes', /application\/json/i).then(r => JSON.parse(r.text)),
     get('api/feedback?article=image-budget', /application\/json/i).then(r => JSON.parse(r.text))
