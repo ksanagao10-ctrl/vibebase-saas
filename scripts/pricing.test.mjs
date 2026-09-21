@@ -15,7 +15,7 @@ class Cache {data=new Map();async match(key){return this.data.get(key.url)?.clon
 beforeEach(resetRuntimeState);
 test('all selectable model IDs resolve and default input satisfies its HTML step',()=>{
  for(const m of discovery.models)assert(priceModels.some(p=>p.id===m.id));
- const html=livePricePanel('sol56');assert(html.includes('step="1" value="4000"'));
+ const html=livePricePanel('sol56');assert(html.includes('step="1" value="4000"'));assert(!html.includes('data-model='));assert(html.includes('data-price-model='));
 });
 test('real group and long-context quotes preserve exact boundary operators',()=>{
  const low=normalizeNewApi(fixture('lietio'),source,model,{inputTokens:272000}).quotes.find(q=>q.group==='【GPT】不降智分组');

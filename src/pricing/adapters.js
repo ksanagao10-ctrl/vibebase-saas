@@ -17,7 +17,7 @@ export function parseTierExpression(expr,inputTokens){
  if(!m)return null;
  const low=linear(m[3]),high=linear(m[4]);if(!low||!high)return null;
  const threshold=Number(m[2]),lower=m[1]==='<='?inputTokens<=threshold:inputTokens<threshold;
- return {...(lower?low:high),tier:lower?'标准上下文':'长上下文',threshold,condition:'单次输入 '+m[1]+' '+threshold+' Token'};
+ return {...(lower?low:high),tier:lower?'标准上下文':'长上下文',threshold,condition:'单次输入 '+(lower?m[1]:m[1]==='<='?'>':'>=')+' '+threshold+' Token'};
 }
 function base(source,row,group=''){
  return {sourceId:source.id,channel:source.name,source:source.url,modelId:row.model_name||row.id,group};

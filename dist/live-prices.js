@@ -3,7 +3,7 @@ const safeLink=(url,label)=>{try{const u=new URL(url);if(u.protocol==='https:'&&
 const amount=n=>Number.isFinite(n)?Number(n.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6}):'—';
 const time=s=>s?new Date(s).toLocaleString('zh-CN',{hour12:false}):'未取得';
 export function livePricePanel(id){
- return '<section id="livePricePanel" class="notice" data-model="'+esc(id)+'"><div class="section-head"><div><span class="eyebrow">LIVE CHANNEL PRICES</span><h2>单模型 · 中转站实时报价</h2></div><button id="refreshPrices" class="soft-btn">刷新报价</button></div><p>直接读取 9 个平台的公开价格目录，最多缓存 5 分钟。型号精确匹配，分组、上下文阶梯分别列出；抓取成功不代表 API 调用成功。</p><div class="price-controls"><label>单次输入长度（决定阶梯）<input id="liveContext" type="number" min="1" max="2000000" step="1" value="4000"></label><label>按次计费的请求数<input id="liveRequests" type="number" min="1" max="1000000" value="100"></label><label>筛选平台<select id="liveSource"><option value="all">全部平台</option></select></label></div><p id="livePriceStatus" role="status" aria-live="polite">准备获取报价…</p><div id="livePriceResults"></div><p class="mini-meta">USD 是公开美元单价；“额度美元”按 New API 标准 500,000 quota 换算，仅代表站内消耗，充值汇率与折扣未确认，不能与现金美元直接排名。所有金额均不含工具、缓存存储、重试与税费；分组权限及底层模型身份尚未实测。</p></section>';
+ return '<section id="livePricePanel" class="notice" data-price-model="'+esc(id)+'"><div class="section-head"><div><span class="eyebrow">LIVE CHANNEL PRICES</span><h2>单模型 · 中转站实时报价</h2></div><button id="refreshPrices" class="soft-btn">刷新报价</button></div><p>直接读取 9 个平台的公开价格目录，最多缓存 5 分钟。型号精确匹配，分组、上下文阶梯分别列出；抓取成功不代表 API 调用成功。</p><div class="price-controls"><label>单次输入长度（决定阶梯）<input id="liveContext" type="number" min="1" max="2000000" step="1" value="4000"></label><label>按次计费的请求数<input id="liveRequests" type="number" min="1" max="1000000" value="100"></label><label>筛选平台<select id="liveSource"><option value="all">全部平台</option></select></label></div><p id="livePriceStatus" role="status" aria-live="polite">准备获取报价…</p><div id="livePriceResults"></div><p class="mini-meta">USD 是公开美元单价；“额度美元”按 New API 标准 500,000 quota 换算，仅代表站内消耗，充值汇率与折扣未确认，不能与现金美元直接排名。所有金额均不含工具、缓存存储、重试与税费；分组权限及底层模型身份尚未实测。</p></section>';
 }
 export function renderLivePrices(data,{inputM=1,outputM=.2,requests=100,source='all'}={}){
  const providers=data.sources.filter(s=>source==='all'||s.id===source);
@@ -33,7 +33,7 @@ export function bindLivePrices(){
   button.disabled=true;status.textContent='正在获取各站报价，通常需要数秒；个别来源超时不影响其他结果。';results.setAttribute('aria-busy','true');
   const timer=setTimeout(()=>controller.abort(),30000);
   try{
-   const response=await fetch('/api/prices?model='+encodeURIComponent(root.dataset.model)+'&inputTokens='+encodeURIComponent(context.value),{signal:controller.signal});
+   const response=await fetch('/api/prices?model='+encodeURIComponent(root.dataset.priceModel)+'&inputTokens='+encodeURIComponent(context.value),{signal:controller.signal});
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw Error('报价服务未就绪，请稍后重试');
    const value=await response.json();if(!Array.isArray(value.sources))throw Error('报价响应格式异常');
    if(version!==sequence||!root.isConnected)return;data=value;
