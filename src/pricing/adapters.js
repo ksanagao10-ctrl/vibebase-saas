@@ -40,9 +40,11 @@ export function normalizeNewApi(payload,source,model,{inputTokens=4000}={}){
    const quotaType=number(row.quota_type);
    let rates=null,unit='tokens',note='标准倍率；无缓存命中。';
    if(row.billing_mode==='tiered_expr'){
-    rates=parseTierExpression(row.billing_expr,inputTokens);
+    const fixed=typeof row.billing_expr==='string'&&row.billing_expr.match(/^tier\(\s*"[^"\\]{1,100}"\s*,\s*fixed\(\s*(\d+(?:\.\d+)?)\s*\)\s*\)$/);
+    if(fixed){rates={perRequest:Number(fixed[1])};unit='request';note='固定计费表达式。';}
+    else rates=parseTierExpression(row.billing_expr,inputTokens);
     if(!rates){fail('复杂计费表达式尚不能可靠换算');continue;}
-    note=rates.condition+'；当前采用'+rates.tier+'价，无缓存命中。';
+    if(unit==='tokens')note=rates.condition+'；当前采用'+rates.tier+'价，无缓存命中。';
    }else if(row.billing_expr||row.billing_mode&&!['ratio','price',''].includes(row.billing_mode)){
     fail('未知计费规则，未估算');continue;
    }else if(quotaType===0){
@@ -54,7 +56,8 @@ export function normalizeNewApi(payload,source,model,{inputTokens=4000}={}){
     if(price===null){fail('按次价格缺失');continue;}
     rates={perRequest:price};unit='request';note='按请求收费；不推断每次对应图片数量、秒数或分辨率。';
    }else{fail('未知计费类型');continue;}
-   if(unit==='tokens'&&!model.text){fail('多模态 Token / 专项计费待适配；不能当作普通文本报价');continue;}
+   if(unit==='tokens'&&!model.text){fail('多模态专项计费待核实：模型倍率 '+String(row.model_ratio)+'，输出倍率 '+String(row.completion_ratio)+'，分组倍率 '+ratio+'。不能据此推算每张图片 / 每秒音视频费用。');continue;}
+   if(unit==='request'&&!model.text){unit='catalog_unit';note='站方目录基础单价；音视频时长、字符数、图片规格可能另有倍率。计费单位尚未验证，不参与总价估算或最低价排序。';}
    const details=typeof payload.usable_group?.[group]==='string'?payload.usable_group[group].slice(0,800):'分组资格需在站方账户确认';
    const output={...common,currency:'CREDIT_USD',unit,groupRatio:ratio,note,conditions:details,
     identity:'仅核对渠道声明的型号，未实测底层模型身份',input:rates.input===undefined?null:rates.input*ratio,output:rates.output===undefined?null:rates.output*ratio,perRequest:rates.perRequest===undefined?null:rates.perRequest*ratio};

@@ -89,3 +89,15 @@ npm run dev
 ```
 
 `src/pricing/sources.js` 定义白名单；`models.js` 定义明确别名；`adapters.js` 实现纯函数换算；`service.js` 负责抓取、大小限制、超时、缓存及错误隔离。`scripts/fixtures/pricing` 保存 2026-09-21 的最小公开响应样本，验证分组与 272K 边界。添加站点时先保存最小样本、写换算测试，再加入白名单；不要将缺失费率默认成零或一。
+
+
+### 分类模型比价（2026-09-21）
+
+- 六类弹窗：生文、生图、生视频、ASR、TTS、其它，每类 10 个候选。排序依据是本次已收录候选的独立站点目录覆盖数，不是性能排行榜。
+- `dist/data/price-catalog.js` 是前后端共用型号、精确别名、来源白名单和覆盖证据。保留旧模型深链接，新增型号也能直接访问。
+- 本次检查 883 个不同站点地址，234 个返回非空 New API 公开目录。选择覆盖较广的来源并保留既有接入，共 80 个站点（含 OpenRouter）；未把同站分组计为独立站。
+- 浏览器按每批 8 家、3 批并发逐步显示结果。服务端每次最多 20 家，默认前 20 家；避免单请求大量外部连接。缓存仍为 5 分钟，旧快照不参与排序。
+- **不是所有模型都有 20 家有效报价。** 生文前十的保存响应各有 24–60 家可换算报价；ASR、视频等很多型号连公开收录都不足 20 家。页面显示实际取得的报价家数和缺口。
+- 多模态固定目录单价的“每秒 / 字符 / 图片 / 任务”结算口径未经验证时，只显示基础单价，不作为每次请求总价排序。不能把文本 Token 规则直接套用到 ASR / TTS。
+- 复核快照：`node scripts/audit-price-coverage.mjs <snapshot-directory> [--update]`。目录包含 `sources.json`（id/name/url）和每个 id 的公开 JSON 响应。该命令生成 coverage.json；`--update` 更新目录覆盖数及排序。
+- 全部来源爬取：`npm run prices:crawl -- --model=sol56 --output=prices.json`。CLI 自动分批；`--sources=lietio,modelsell` 可限定来源。

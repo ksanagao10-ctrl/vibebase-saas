@@ -6,7 +6,7 @@ import {affiliatePrograms, ownedReferrals} from '../dist/data/affiliate-programs
 import {activeReferral, affiliateFor, providerDestination} from '../dist/data/affiliate-links.js';
 import './discovery.test.mjs';
 execFileSync(process.execPath,['--test','scripts/pricing.test.mjs'],{stdio:'inherit'});
-for(const f of ['dist/discovery.js','dist/live-prices.js','dist/data/discovery.js','dist/data/industry-workflows.js','src/worker.js','src/pricing/service.js','src/pricing/adapters.js','src/pricing/models.js','src/pricing/sources.js'])execFileSync(process.execPath,['--check',f]);
+for(const f of ['dist/discovery.js','dist/live-prices.js','dist/price-picker.js','dist/data/price-catalog.js','dist/data/discovery.js','dist/data/industry-workflows.js','src/worker.js','src/pricing/service.js','src/pricing/adapters.js','src/pricing/models.js','src/pricing/sources.js'])execFileSync(process.execPath,['--check',f]);
 for(const f of ['dist/app.js','dist/data/providers.js','dist/data/affiliate-programs.js','dist/data/affiliate-links.js'])execFileSync(process.execPath,['--check',f]);
 const html=readFileSync('dist/index.html','utf8');
 assert(html.includes('charset="UTF-8"')&&html.includes('VibeBase'));

@@ -87,3 +87,43 @@ test('UI separates credits/cash/request pricing, escapes source data and exclude
  const html=renderLivePrices(data);assert(!html.includes('<img'));assert(!html.includes('href="javascript:'));assert(!html.includes('OLD-QUOTE'));
  assert(html.includes('站内额度报价')&&html.includes('按次计费')&&html.includes('美元报价'));
 });
+
+test('six top-ten categories resolve exact routes, rank by coverage and count distinct stations',async()=>{
+ const {priceCatalog:c}=await import('../dist/data/price-catalog.js');
+ const {pickerRows}=await import('../dist/price-picker.js');
+ const {renderDiscovery}=await import('../dist/discovery.js');
+ assert.equal(c.categories.length,6);assert.equal(c.sources.length,80);
+ assert.equal(new Set(c.sources.map(s=>new URL(s.url).hostname)).size,80);
+ assert.equal(new Set(c.models.map(m=>m.id)).size,c.models.length);
+ for(const category of c.categories){
+  assert.equal(category.models.length,10);assert.equal(new Set(category.models).size,10);
+  let previous=Infinity;
+  for(const id of category.models){
+   assert(!id.includes('/'));
+   const m=c.models.find(m=>m.id===id);assert(m);assert(m.listedSources.length>0);
+   assert(m.listedSources.length<=previous);previous=m.listedSources.length;
+   assert.equal(new Set(m.listedSources).size,m.listedSources.length);
+   assert(m.comparableSources.every(s=>m.listedSources.includes(s)));
+   assert(renderDiscovery('boards/price/'+id).includes('data-price-model="'+id+'"'));
+  }
+  assert.equal((pickerRows(category.id).match(/data-price-choice=/g)||[]).length,10);
+ }
+ assert(pickerRows('asr','NO-SUCH-MODEL').includes('没有匹配模型'));
+ assert(pickerRows('text','GPT').includes('GPT-6 Astra'));
+});
+test('large provider inventories are bounded per request and distinct groups never inflate source count',()=>{
+ const query=parseQuery(new URL('https://vibebase.vip/api/prices'));
+ assert.equal(query.selected.length,20);
+ assert.throws(()=>parseQuery(new URL('https://vibebase.vip/api/prices?sources='+sources.slice(0,21).map(s=>s.id).join(','))));
+ const q=parseQuery(new URL('https://vibebase.vip/api/prices?sources=lietio,lietio'));
+ assert.equal(q.selected.length,1);
+});
+test('fixed expressions cannot execute code and multimodal base prices never masquerade as per-request totals',()=>{
+ const payload={success:true,group_ratio:{default:1},data:[{model_name:'sora-2',enable_groups:['default'],quota_type:1,model_price:.4,billing_mode:'tiered_expr',billing_expr:'tier("standard", fixed(0.4))'}]};
+ const m=priceModels.find(m=>m.id==='sora-2');
+ const r=normalizeNewApi(payload,source,m);assert.equal(r.quotes[0].unit,'catalog_unit');assert.equal(r.quotes[0].perRequest,.4);
+ const html=renderLivePrices({sources:[{...source,status:'unsupported',quotes:r.quotes}]});
+ assert(html.includes('目录基础单价'));assert(!html.includes('估算消耗'));
+ payload.data[0].billing_expr='tier("standard", fixed(process.exit()))';
+ assert.equal(normalizeNewApi(payload,source,m).quotes.length,0);
+});

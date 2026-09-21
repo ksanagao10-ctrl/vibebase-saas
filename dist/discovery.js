@@ -1,3 +1,5 @@
+import {pricePicker,bindPricePicker} from './price-picker.js';
+import {priceCatalog} from './data/price-catalog.js';
 import {livePricePanel,bindLivePrices} from './live-prices.js';
 import {activeReferral} from './data/affiliate-links.js';
 import { discovery as d } from './data/discovery.js';
@@ -190,13 +192,13 @@ export function renderDiscovery(route,providers=[]){
  body=taskDirectory(arg||'all',value);
  }else if(page==='model'){body=model(arg)?modelPage(model(arg)):header('NOT FOUND','模型未收录','请返回模型列表。')+link('models','查看全部模型');}
  else if(page==='boards'){
- const kind=arg||'price',id=model(value)?value:'flash';
+ const kind=arg||'price',id=priceCatalog.models.some(m=>m.id===value)?value:'sol56';
  body=header('COMPARE WITH CONTEXT','榜单与选型','价格、免费条件和任务候选分别看。排名仅覆盖已收录样本，不代表全网最低。')+tabs(boardItems,kind,'boards/');
  if(d.tasks.some(t=>t.id===kind))body+=taskBoard(kind);
  else if(kind==='free')body+=freeBoard(value||'all',false,freeCap||'all',decodeSafe(freeQuery||''),freeSort==='context'?'context':'name',freePage);
  else if(kind==='trials')body+=trialBoard(value||'all');
  else if(kind==='picks')body+='<div class="discovery-grid three">'+d.taskGuides.map(taskGuideCard).join('')+'</div>';
- else body+='<div class="board-panel"><div class="price-controls"><label>选择同一模型<select id="priceModel">'+d.models.map(m=>'<option value="'+m.id+'" '+(m.id===id?'selected':'')+'>'+esc(m.name)+'</option>').join('')+'</select></label><label>累计输入量（百万 Token）<input id="priceInput" type="number" min="0" max="1000000" step="0.1" value="1"></label><label>累计输出量（百万 Token）<input id="priceOutput" type="number" min="0" max="1000000" step="0.1" value="0.2"></label></div>'+livePricePanel(id)+'<details><summary>已整理的参考报价（非实时）</summary><div id="priceResults">'+(d.quotes.some(q=>q.model===id)?quoteTable(id):'<div class="empty"><b>暂无可比报价</b>正在补齐同规格数据，暂不生成排名。'+sourceLink(model(id).source,'查看模型规格 ↗')+'</div>')+'</div><p class="mini-meta">按估算文本费用升序排列。同价并列；渠道费用可能不同。USD，不换算人民币。此处缓存命中按 0 计算。输入量是多次短请求累计值，假设每次输入 4000 Token；单次长上下文不能直接套用此预算，请核对下方阶梯条件。</p>'+d.quotes.filter(q=>q.model===id).map(q=>'<p class="mini-meta">'+esc(q.channel)+'：'+esc(q.note)+'</p>').join('')+'</details></div>';
+ else body+='<div class="board-panel">'+pricePicker(id)+'<div class="price-controls" '+(priceCatalog.models.find(m=>m.id===id)?.text?'':'hidden')+'><label>累计输入量（百万 Token）<input id="priceInput" type="number" min="0" max="1000000" step="0.1" value="1"></label><label>累计输出量（百万 Token）<input id="priceOutput" type="number" min="0" max="1000000" step="0.1" value="0.2"></label></div>'+livePricePanel(id)+'<details><summary>已整理的参考报价（非实时）</summary><div id="priceResults">'+(d.quotes.some(q=>q.model===id)?quoteTable(id):'<div class="empty"><b>暂无可比报价</b>正在补齐同规格数据，暂不生成排名。'+(model(id)?sourceLink(model(id).source,'查看模型规格 ↗'):'')+'</div>')+'</div><p class="mini-meta">按估算文本费用升序排列。同价并列；渠道费用可能不同。USD，不换算人民币。此处缓存命中按 0 计算。输入量是多次短请求累计值，假设每次输入 4000 Token；单次长上下文不能直接套用此预算，请核对下方阶梯条件。</p>'+d.quotes.filter(q=>q.model===id).map(q=>'<p class="mini-meta">'+esc(q.channel)+'：'+esc(q.note)+'</p>').join('')+'</details></div>';
  }else if(page==='offers'){
  const kind=arg||'all';body=header('FREE & LIMITED','免费与限时福利','免费、付费促销与邀请奖励分开展示。有效期以官方规则为准。')+tabs([['all','有效活动'],['free','免费'],['promo','付费优惠'],['reward','邀请奖励'],['expired','已结束']],kind,'offers/');
  const rows=d.offers.filter(o=>kind==='expired'?offerExpired(o):!offerExpired(o)&&(kind==='all'||o.type===kind));
@@ -238,7 +240,7 @@ export function bindDiscovery({navigate,openProvider,estimate}){
  const navigateFree=()=>navigate('boards/free/'+freeForm.dataset.platform+'/'+freeForm.dataset.cap+'/'+encodeURIComponent(document.querySelector('#freeModelQuery').value.trim())+'/'+document.querySelector('#freeModelSort').value);
  freeForm?.addEventListener('submit',e=>{e.preventDefault();navigateFree();});
  document.querySelector('#freeModelSort')?.addEventListener('change',navigateFree);
- document.querySelector('#priceModel')?.addEventListener('change',e=>navigate('boards/price/'+e.target.value));
+ bindPricePicker(navigate);
  const update=()=>{
  const id=document.querySelector('#priceModel')?.value;
  const input=Math.max(0,Math.min(1e6,Number(document.querySelector('#priceInput')?.value)||0)),output=Math.max(0,Math.min(1e6,Number(document.querySelector('#priceOutput')?.value)||0));

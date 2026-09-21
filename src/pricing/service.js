@@ -1,4 +1,4 @@
-import {sources,FRESH_SECONDS,RETAIN_SECONDS,SCHEMA_VERSION} from './sources.js';
+import {sources,FRESH_SECONDS,RETAIN_SECONDS,SCHEMA_VERSION,MAX_QUERY_SOURCES} from './sources.js';
 import {priceModels} from './models.js';
 import {normalize} from './adapters.js';
 const pending=new Map(),failures=new Map();
@@ -48,8 +48,8 @@ export function parseQuery(url){
  if(!model)throw Error('请选择已收录的具体模型版本');
  const raw=url.searchParams.get('inputTokens')??'4000';
  if(!/^\d+$/.test(raw)||Number(raw)<1||Number(raw)>2000000)throw Error('单次输入长度需在 1–2000000 Token');
- const requested=url.searchParams.get('sources')?.split(',')||sources.map(s=>s.id);
- if(requested.length>sources.length||requested.some(id=>!sources.some(s=>s.id===id)))throw Error('不支持的报价来源');
+ const requested=url.searchParams.get('sources')?.split(',')||sources.slice(0,MAX_QUERY_SOURCES).map(s=>s.id);
+ if(requested.length>MAX_QUERY_SOURCES||requested.some(id=>!sources.some(s=>s.id===id)))throw Error('报价来源无效或超过每批 20 家上限');
  return {model,inputTokens:Number(raw),selected:sources.filter(s=>requested.includes(s.id))};
 }
 export async function collectPrices(query,deps={}){
@@ -57,7 +57,7 @@ export async function collectPrices(query,deps={}){
  async function consume(){while(next<query.selected.length){const index=next++,source=query.selected[index];try{
   const entry=await loadSource(source,{...deps,now});
   const parsed=normalize(entry.payload,source,query.model,{inputTokens:query.inputTokens,now:new Date(now)});
-  results[index]={id:source.id,name:source.name,url:source.url,status:entry.stale?'stale':parsed.quotes.length?'ok':parsed.matched?'unsupported':'not_listed',fetchedAt:entry.fetchedAt,cached:entry.cached,error:entry.error,
+  results[index]={id:source.id,name:source.name,url:source.url,status:entry.stale?'stale':parsed.quotes.some(q=>q.unit!=='catalog_unit')?'ok':parsed.matched?'unsupported':'not_listed',fetchedAt:entry.fetchedAt,cached:entry.cached,error:entry.error,
    quotes:parsed.quotes.map(q=>({...q,fetchedAt:entry.fetchedAt,stale:entry.stale})),issues:parsed.issues.slice(0,100)};
  }catch(e){results[index]={id:source.id,name:source.name,url:source.url,status:'error',error:String(e.message).slice(0,180),quotes:[],issues:[]};}}}
  await Promise.all(Array.from({length:Math.min(4,query.selected.length)},consume));
