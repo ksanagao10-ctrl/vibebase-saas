@@ -10,7 +10,9 @@
     "build": "node scripts/validate.mjs && node scripts/release.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "dev": "wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "prices:crawl": "node scripts/crawl-prices.mjs",
+    "test:prices": "node --test scripts/pricing.test.mjs"
   },
   "devDependencies": {
     "wrangler": "4.135.0"

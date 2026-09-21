@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-6-astra",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5,
+      "enable_groups": [
+        "Codex-临时特惠",
+        "Codex-pro",
+        "Codex-plus",
+        "Codex-pro-企业"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 272000 ? tier(\"小于272k\", p * 10 + c * 50 + cr * 1 + cc * 12.5) : tier(\"大于272k\", p * 20 + c * 100 + cr * 2 + cc * 25)"
+    },
+    {
+      "model_name": "gpt-5.6-sol",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "completion_ratio": 6,
+      "enable_groups": [
+        "Cursor免费福利",
+        "Codex-pro",
+        "Codex-plus",
+        "Codex-pro-企业",
+        "Codex-临时特惠"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 272000 ? tier(\"小于272k\", p * 5 + c * 30 + cr * 0.5 + cc * 6.25) : tier(\"大于272k\", p * 10 + c * 45 + cr * 1 + cc * 12.5)"
+    }
+  ],
+  "group_ratio": {
+    "Codex-plus": 0.12,
+    "Codex-pro": 0.16,
+    "Codex-pro-企业": 0.22,
+    "Codex-临时特惠": 0.05,
+    "Cursor免费福利": 0,
+    "Deepseek正式版": 0.18,
+    "GLM": 0.18,
+    "Grok-heavy稳定高速": 0.21,
+    "Grok-官方": 0.12,
+    "高缓存DeepSeekv-4.1-flash": 0.25
+  },
+  "success": true,
+  "usable_group": {
+    "Codex-plus": "正版plus号池！请使用原生格式",
+    "Codex-pro": "Codex-pro ，不降智，近期卡池没被波及",
+    "Codex-pro-企业": "正价Pro20x满血+官key，确保不降智",
+    "Codex-临时特惠": "低价通道可能存在短时波动，建议在不稳定时切换稳定通道",
+    "Cursor免费福利": "使用Anthropic协议，亏本福利，不稳定，限制高并发",
+    "Deepseek正式版": "chat协议，4.1另有高缓分组",
+    "GLM": "官转token plan",
+    "Grok-heavy稳定高速": "稳定高速高缓存",
+    "Grok-官方": "",
+    "高缓存DeepSeekv-4.1-flash": "chat协议，稳定高缓存"
+  }
+}

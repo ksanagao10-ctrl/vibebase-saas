@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-6-astra",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5,
+      "enable_groups": [
+        "Azure",
+        "azureopenai",
+        "codex",
+        "CodexPro",
+        "OpenaiEA"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 10 + c * 50 + cr * 1 + cc * 12.5) : tier(\"long_context\", p * 20 + c * 75 + cr * 2 + cc * 25)"
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "completion_ratio": 8.333333333333,
+      "enable_groups": [
+        "gemini",
+        "geminicheap",
+        "geminipro",
+        "GeminiVertex"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.3 + c * 2.5 + cr * 0.03)"
+    },
+    {
+      "model_name": "gpt-5.6-sol",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "completion_ratio": 6,
+      "enable_groups": [
+        "Azure",
+        "azureopenai",
+        "codex",
+        "CodexPro",
+        "OpenaiEA"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 4 + c * 20 + cr * 0.4 + cc * 5) : tier(\"long_context\", p * 8 + c * 30 + cr * 0.8 + cc * 10)"
+    }
+  ],
+  "group_ratio": {
+    "Azure": 1.9,
+    "ClaudeEA": 4.2,
+    "ClaudeEB": 3,
+    "ClaudeLite": 1.2,
+    "ClaudeMax": 1.6,
+    "ClaudeMix": 1.6,
+    "ClaudePro": 1.4,
+    "Claude| ᐕ)⁾⁾": 1.4,
+    "CodexPro": 0.3,
+    "Deepseek": 0.2,
+    "GeminiVertex": 1.6,
+    "Grok": 0.8,
+    "GrokBuild": 0.05,
+    "Kiro": 0.12,
+    "OpenaiEA": 3.5,
+    "Temp": 0.4,
+    "all": 1,
+    "auto": 1,
+    "azureopenai": 0.5,
+    "claudecheap": 0.5,
+    "claudecode": 2.3,
+    "claudecodecheap": 0.8,
+    "codex": 0.2,
+    "default": 1,
+    "gemini": 1.6,
+    "geminicheap": 0.5,
+    "geminipro": 3,
+    "once": 1
+  },
+  "success": true,
+  "usable_group": {
+    "Azure": "Azure source OpenAI",
+    "ClaudeEA": "ClaudeEA(There will be out-of-stock situations.)",
+    "ClaudeEB": "ClaudeEB(There will be out-of-stock situations.)",
+    "ClaudeLite": "测试中，非Max订阅(Testingnon-Max subscription)",
+    "ClaudeMax": "官方 Max 订阅号池 / Official Max Subscription Pool",
+    "ClaudeMix": "Vertex&AWS(Mix)",
+    "ClaudePro": "Official Max Subscription Pool",
+    "Claude| ᐕ)⁾⁾": "200KClaude",
+    "CodexPro": "OpenaiPro订阅/OpenaiPro Subscription",
+    "Deepseek": "Now and then(时有时无)",
+    "GeminiVertex": "Gemini Vertex",
+    "Grok": "Grok Official API",
+    "GrokBuild": "GrokBuild",
+    "Kiro": "Kiro",
+    "OpenaiEA": "OpenaiEA",
+    "Temp": "Now and then(丢一些临时模型)",
+    "all": "逐步弃用，请勿选择。 /Gradually deprecated, please do not select.",
+    "auto": "自动选用分组 / Auto-select group",
+    "azureopenai": "OpenaiGPT",
+    "claudecheap": "特价Claude(对话用) / Discounted Claude",
+    "claudecode": "官方 Max 订阅号池 / Official Max Subscription Pool",
+    "claudecodecheap": "ClaudeCode特价/Discounted ClaudeCode",
+    "codex": "codex",
+    "default": "逐步弃用，请勿选择。 /Gradually deprecated, please do not select.",
+    "gemini": "官方Gemini/ Official Gemini",
+    "geminicheap": "特价Gemini / Discounted Gemini",
+    "geminipro": "GeminiPro/ Official GeminiPro",
+    "once": "按次计费分组 / Per-use billing group"
+  }
+}

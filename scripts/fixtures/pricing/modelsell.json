@@ -1,0 +1,104 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-6-astra",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "GPT官+AZ 混合",
+        "GPT特价",
+        "OpenAI",
+        "Azure"
+      ]
+    },
+    {
+      "model_name": "gpt-5.6-sol",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "completion_ratio": 6,
+      "enable_groups": [
+        "OpenAI",
+        "Azure",
+        "default",
+        "GPT官+AZ 混合",
+        "GPT特价"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "completion_ratio": 8.333333333333334,
+      "enable_groups": [
+        "default",
+        "Google AI Studio",
+        "Google Vertex"
+      ]
+    }
+  ],
+  "group_model_ratio": {
+    "GPT特价": {
+      "gpt-5.6-luna": 0.35
+    }
+  },
+  "group_ratio": {
+    "Alibaba": 1,
+    "AmazonBedrock": 0.6,
+    "Anthropic": 0.9,
+    "Azure": 0.6,
+    "CCMax": 0.3,
+    "Claude kiro": 0.1,
+    "GPT官+AZ 混合": 0.6,
+    "GPT特价": 0.1,
+    "Gemini Cli": 0.1,
+    "Google AI Studio": 0.5,
+    "Google Vertex": 0.7,
+    "Moonshot": 1,
+    "OpenAI": 0.6,
+    "Tencent": 1,
+    "Vertex Claude": 0.7,
+    "Volcengine": 0.92,
+    "WaveSpeed": 1,
+    "XiaomiMIMO": 1,
+    "claude特供": 0.6,
+    "kling": 0.8,
+    "official": 1,
+    "xAI": 0.6,
+    "优质按次": 2,
+    "标准按次": 1,
+    "火山引擎特价": 0.45
+  },
+  "success": true,
+  "usable_group": {
+    "Alibaba": "阿里巴巴百炼官方",
+    "AmazonBedrock": "AWS 官方",
+    "Anthropic": "Anthropic 官方",
+    "Azure": "微软云API直连，稳定可靠",
+    "CCMax": "使用自用 vibe coding，纯血 ccmax号池",
+    "Claude kiro": "使用自用 vibe coding，kiro号池",
+    "GPT官+AZ 混合": "适合生产环境，az 和官 key 混合渠道",
+    "GPT特价": "适合vibe coding自用，gpt pro 号池",
+    "Gemini Cli": "Gemini cli 号池，适合 vibe coding学习等场景",
+    "Google AI Studio": "谷歌官方接口",
+    "Google Vertex": "谷歌官方接口",
+    "Moonshot": "Kimi 官方渠道",
+    "OpenAI": "Openai官方接口",
+    "Tencent": "腾讯云官方渠道",
+    "Vertex Claude": "Google Vertex 官方 Claude直连",
+    "Volcengine": "火山引擎官方接口",
+    "WaveSpeed": "多模态稳定供应，官方价格",
+    "XiaomiMIMO": "XiaomiMIMO 官方",
+    "claude特供": "适合生产环境，AWS Bedrock组成",
+    "kling": "可灵官方API 直连",
+    "official": "官方接口直连",
+    "xAI": "xAI 官方",
+    "优质按次": "",
+    "标准按次": "图片音频视频等多模态按次计费",
+    "火山引擎特价": "火山引擎官方接口，高并发，活动特价"
+  }
+}

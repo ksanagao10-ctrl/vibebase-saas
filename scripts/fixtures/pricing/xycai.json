@@ -1,0 +1,349 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-5.6-sol",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "completion_ratio": 6,
+      "enable_groups": [
+        "gpt-ent",
+        "ttc",
+        "gpt-eco"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 0.5)"
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "completion_ratio": 8.33333333,
+      "enable_groups": [
+        "gemini-ent",
+        "gemini-flow"
+      ]
+    },
+    {
+      "model_name": "gpt-6-astra",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5,
+      "enable_groups": [
+        "gpt-eco",
+        "ttc",
+        "gpt-ent"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 10 + c * 50 + cr * 1) : tier(\"long_context\", p * 20 + c * 75 + cr * 2)"
+    }
+  ],
+  "group_ratio": {
+    "claude-eco": 1,
+    "claude-edu": 1,
+    "claude-ent": 1,
+    "claude-flow": 1,
+    "cohere-flow": 1,
+    "deepseek-ent": 1,
+    "deepseek-flow": 1,
+    "deepseek-free": 1,
+    "default": 1,
+    "doubao-flow": 1,
+    "gemini-ent": 1,
+    "gemini-flow": 1,
+    "glm-ent": 1,
+    "glm-flow": 1,
+    "gpt-eco": 1,
+    "gpt-ent": 1,
+    "gpt-flow": 1,
+    "gpt-img": 1,
+    "grok-ent": 1,
+    "grok-flow": 1,
+    "kimi-ent": 1,
+    "minimax-ent": 1,
+    "misc-flow": 1,
+    "mistral-flow": 1,
+    "ttc": 1,
+    "vip": 1,
+    "yi-flow": 1
+  },
+  "pricing_groups": [
+    {
+      "key": "claude-edu",
+      "category": "Anthropic",
+      "label": "Claude 学习版",
+      "desc": "0.8倍率、Pro与Max混合号池（剔除所有第三方反重力）特价渠道、以实惠的价格、不限制客户端、本站支持1M选项的日常学习首选",
+      "ratio": 0.8,
+      "discount": 0.11,
+      "order": 1,
+      "auto_exclude": true
+    },
+    {
+      "key": "claude-eco",
+      "category": "Anthropic",
+      "label": "Claude 经济版",
+      "desc": "1.3倍率、Pro与Max混合号池（剔除所有第三方反重力）满血渠道、以实惠的价格、不限制客户端、本站支持1M选项的日常工作首选",
+      "ratio": 1.3,
+      "discount": 0.188,
+      "order": 2
+    },
+    {
+      "key": "claude-ent",
+      "category": "Anthropic",
+      "label": "Claude 企业版",
+      "desc": "2.7倍率、官方满血、官方母号、无任何限制、全模型长上下文、图片、搜索、适合大项目开发主要生产力（实测100+小时长任务存活以及26万个文件的前端任务几分钟到达）",
+      "ratio": 2.7,
+      "discount": 0.39,
+      "order": 3
+    },
+    {
+      "key": "claude-flow",
+      "category": "Anthropic",
+      "label": "Claude 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 4
+    },
+    {
+      "key": "gpt-eco",
+      "category": "OpenAI",
+      "label": "GPT 经济版",
+      "desc": "0.7倍率、Plus与Pro混合号池（剔除所有第三方反重力）特价渠道、以实惠的价格、限制Codex客户端（Codex APP+Codex Cli）、不能生图",
+      "ratio": 0.7,
+      "discount": 0.1,
+      "order": 5,
+      "client_limit": "codex"
+    },
+    {
+      "key": "gpt-ent",
+      "category": "OpenAI",
+      "label": "GPT 企业版",
+      "desc": "1x倍率、官方满血、官方母号、无任何限制、全模型长上下文、图片、搜索、适合大项目开发主要生产力（生图不用切换分组，直接均可按照1x倍率生成就行、除非排agent需要才需要切换到独立的GPT生图组）",
+      "ratio": 1,
+      "discount": 0.143,
+      "order": 6,
+      "model_discounts": {
+        "gpt-image-2": 1,
+        "gpt-image-2.5": 1,
+        "gpt-image-2.5-flare": 1,
+        "gpt-image-2.5-sunburst": 1
+      }
+    },
+    {
+      "key": "gpt-img",
+      "category": "OpenAI",
+      "label": "GPT 生图",
+      "desc": "1x倍率，与GPT企业版同价，此分组是为了特殊排agent使用，一般客户端无需选择此分组",
+      "ratio": 1,
+      "discount": 1,
+      "order": 7
+    },
+    {
+      "key": "gpt-flow",
+      "category": "OpenAI",
+      "label": "GPT 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 8
+    },
+    {
+      "key": "glm-ent",
+      "category": "智谱",
+      "label": "GLM 企业版",
+      "desc": "国产之光、一个不排队的glm",
+      "ratio": 4.55,
+      "discount": 0.65,
+      "order": 9
+    },
+    {
+      "key": "kimi-ent",
+      "category": "Kimi",
+      "label": "Kimi 企业版",
+      "desc": "满血 kimi-k3 国产之光、媲美 fable-5 与 gpt-5.6 sol，官价 5.5折 满血体验！本站支持1M选项的日常工作首选",
+      "ratio": 3.85,
+      "discount": 0.55,
+      "order": 10
+    },
+    {
+      "key": "deepseek-ent",
+      "category": "DeepSeek",
+      "label": "DeepSeek 企业版",
+      "desc": "满血 deepseek 国产之光、高峰时段为北京时间 9:00 - 12:00、14:00 - 18:00（其余为空闲时段）、空闲时段9折，高峰直接5折，好好享受国产之光带来的精品。，版本号：deepseek-v4-pro（0813正式版）deepseek-v4-flash（0731正式版）",
+      "ratio": 1.75,
+      "discount": 0.25,
+      "order": 11,
+      "model_discounts": {
+        "deepseek-v4-flash-vision-exp": 0.95,
+        "deepseek-v4.1-flash": 0.95
+      },
+      "time_discounts": {
+        "off_peak": 0.9,
+        "peak": 0.5
+      }
+    },
+    {
+      "key": "minimax-ent",
+      "category": "MiniMax",
+      "label": "MiniMax 企业版",
+      "desc": "满血 MiniMax，官价 5.5折 满血体验！本站支持1M选项的日常工作首选",
+      "ratio": 3.85,
+      "discount": 0.55,
+      "order": 12
+    },
+    {
+      "key": "glm-flow",
+      "category": "智谱",
+      "label": "GLM 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 13
+    },
+    {
+      "key": "gemini-flow",
+      "category": "Gemini",
+      "label": "Gemini 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 14,
+      "model_discounts": {
+        "gemini-3-pro-image-preview": 0.7,
+        "gemini-3.1-flash-image-preview": 0.7
+      }
+    },
+    {
+      "key": "deepseek-flow",
+      "category": "DeepSeek",
+      "label": "DeepSeek 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 15
+    },
+    {
+      "key": "grok-flow",
+      "category": "Grok",
+      "label": "Grok 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 18
+    },
+    {
+      "key": "doubao-flow",
+      "category": "字节跳动",
+      "label": "豆包 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 19
+    },
+    {
+      "key": "cohere-flow",
+      "category": "Cohere",
+      "label": "Cohere 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 20
+    },
+    {
+      "key": "mistral-flow",
+      "category": "Mistral",
+      "label": "Mistral 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 21
+    },
+    {
+      "key": "yi-flow",
+      "category": "零一万物",
+      "label": "零一万物 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 22
+    },
+    {
+      "key": "misc-flow",
+      "category": "其他",
+      "label": "其他 工作流",
+      "desc": "非编程类主力官方原价特惠工作流、工具处理类",
+      "ratio": 6.86,
+      "discount": 0.98,
+      "order": 23
+    },
+    {
+      "key": "grok-ent",
+      "category": "Grok",
+      "label": "Grok 企业版",
+      "desc": "Grok后起之秀、好像算力不太足够，但是听说智商高，限制几乎没有，完全媲美 opus 4.8",
+      "ratio": 2.03,
+      "discount": 0.29,
+      "order": 17,
+      "model_discounts": {
+        "grok-imagine-image": 1,
+        "grok-imagine-image-quality": 1,
+        "grok-imagine-video": 1,
+        "grok-imagine-video-1.5": 1
+      }
+    },
+    {
+      "key": "deepseek-free",
+      "category": "DeepSeek",
+      "label": "DeepSeek 福利免费版",
+      "desc": "deepseek 国产之光，特惠免费福利分组，全免费调用，不保障可用率。",
+      "ratio": 0,
+      "discount": 0,
+      "order": 12,
+      "auto_exclude": true,
+      "free": true
+    },
+    {
+      "key": "gemini-ent",
+      "category": "Gemini",
+      "label": "Gemini 企业版",
+      "desc": "1.61倍率、官方满血 Gemini 全系、超长上下文与联网搜索，编程与多模态任务高性价比之选",
+      "ratio": 1.61,
+      "discount": 0.23,
+      "order": 13
+    }
+  ],
+  "success": true,
+  "usable_group": {
+    "auto": "智能分组",
+    "claude-eco": "Claude 经济版",
+    "claude-edu": "Claude 学习版",
+    "claude-ent": "Claude 企业版",
+    "claude-flow": "Claude 工作流",
+    "cohere-flow": "Cohere 工作流",
+    "deepseek-ent": "DeepSeek 企业版",
+    "deepseek-flow": "DeepSeek 工作流",
+    "deepseek-free": "DeepSeek 福利免费版",
+    "default": "默认分组",
+    "doubao-flow": "豆包 工作流",
+    "gemini-ent": "Gemini 企业版",
+    "gemini-flow": "Gemini 工作流",
+    "glm-ent": "GLM 企业版",
+    "glm-flow": "GLM 工作流",
+    "gpt-eco": "GPT 经济版",
+    "gpt-ent": "GPT 企业版",
+    "gpt-flow": "GPT 工作流",
+    "gpt-img": "GPT 生图",
+    "grok-ent": "Grok 企业版",
+    "grok-flow": "Grok 工作流",
+    "kimi-ent": "Kimi 企业版",
+    "minimax-ent": "MiniMax 企业版",
+    "misc-flow": "其他 工作流",
+    "mistral-flow": "Mistral 工作流",
+    "ttc": "套餐分组",
+    "vip": "vip分组",
+    "yi-flow": "零一万物 工作流"
+  }
+}

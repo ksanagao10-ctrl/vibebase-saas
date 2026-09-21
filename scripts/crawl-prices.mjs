@@ -1,0 +1,12 @@
+import {writeFileSync} from 'node:fs';
+import {parseQuery,collectPrices} from '../src/pricing/service.js';
+const args=Object.fromEntries(process.argv.slice(2).map(arg=>{const [key,...v]=arg.replace(/^--/,'').split('=');return [key,v.join('=')];}));
+const url=new URL('https://vibebase.vip/api/prices');
+url.searchParams.set('model',args.model||'sol56');
+url.searchParams.set('inputTokens',args['input-tokens']||'4000');
+if(args.sources)url.searchParams.set('sources',args.sources);
+const result=await collectPrices(parseQuery(url));
+if(args.output)writeFileSync(args.output,JSON.stringify(result,null,2)+'\n');
+else console.log(JSON.stringify(result,null,2));
+console.error(result.sources.map(s=>s.name+': '+s.status+' ('+s.quotes.length+' quotes)').join('\n'));
+if(result.sources.every(s=>s.status==='error'))process.exitCode=1;

@@ -1,3 +1,4 @@
+import {livePricePanel,bindLivePrices} from './live-prices.js';
 import {activeReferral} from './data/affiliate-links.js';
 import { discovery as d } from './data/discovery.js';
 import {dimensions,capabilityModels,dimensionBrief,dimensionPlans,workflowBriefs} from './data/industry-workflows.js';
@@ -173,7 +174,7 @@ function modelPage(m){
  const quotes=d.quotes.filter(q=>q.model===m.id);
  return header(m.vendor||'MODEL GUIDE',m.name,m.desc)+'<p class="model-id">模型 ID：'+esc(m.modelId)+'</p>'+'<div class="tag-row">'+m.tasks.map(t=>link('models/'+t,task(t).name,'tag')).join('')+'</div><div class="notice">编辑候选，不是质量排名。能力按来源资料整理；渠道实际功能仍需接入验证。资料核验 '+d.checkedAt+' · '+sourceLink(m.source)+'</div>'+
  (m.guideCount?'<section class="section"><h2>适合哪些具体任务</h2><div class="discovery-grid two">'+d.taskGuides.filter(g=>g.picks.some(p=>p.model===m.id)).map(taskGuideCard).join('')+'</div></section>':'<div class="notice">此型号保留用于已有项目或专项评估，未列为新任务的默认推荐。'+link('models','查看当前任务选型 →')+'</div>')+(m.pricingNote?'<div class="notice"><strong>当前渠道报价说明</strong><p>'+esc(m.pricingNote)+'</p>'+sourceLink(m.source,'核对当前费率 ↗')+'</div>':'')+
- '<section class="section"><div class="section-head"><h2>报价与接入</h2>'+link('boards/'+(d.mediaQuotes.find(q=>q.model===m.id)?.task||'price/'+m.id),'查看比价 →')+'</div>'+(quotes.length?quoteTable(m.id):d.mediaQuotes.some(q=>q.model===m.id)?rankedTable(d.mediaQuotes.filter(q=>q.model===m.id)):'<div class="empty"><b>标准化报价待补齐</b>该型号尚未加入统一成本样本；请按任务用量核对来源报价。'+sourceLink(m.source,'查看官方规格 ↗')+'</div>')+(m.provider?'<button class="soft-btn" data-discover-provider="'+m.provider+'">查看接入平台</button>':sourceLink(m.source,'查看接入与计费说明 ↗'))+'</section>'+
+ '<section class="section"><div class="section-head"><h2>报价与接入</h2>'+link('boards/price/'+m.id,'此模型实时比价 →')+'</div>'+(quotes.length?quoteTable(m.id):d.mediaQuotes.some(q=>q.model===m.id)?rankedTable(d.mediaQuotes.filter(q=>q.model===m.id)):'<div class="empty"><b>标准化报价待补齐</b>该型号尚未加入统一成本样本；请按任务用量核对来源报价。'+sourceLink(m.source,'查看官方规格 ↗')+'</div>')+(m.provider?'<button class="soft-btn" data-discover-provider="'+m.provider+'">查看接入平台</button>':sourceLink(m.source,'查看接入与计费说明 ↗'))+'</section>'+
  section('相关教程','先理解工作流，再开始调用。','covibe','<div class="discovery-grid two">'+d.articles.filter(a=>['live38','openai-live','openai-realtime'].includes(m.id)?['first-api','choose-model'].includes(a.id):a.models.includes(m.id)||a.tasks.some(t=>m.tasks.includes(t))).slice(0,2).map(a=>articleCard(a)).join('')+'</div>');
 }
 export function searchDiscovery(query,providers=[]){
@@ -195,7 +196,7 @@ export function renderDiscovery(route,providers=[]){
  else if(kind==='free')body+=freeBoard(value||'all',false,freeCap||'all',decodeSafe(freeQuery||''),freeSort==='context'?'context':'name',freePage);
  else if(kind==='trials')body+=trialBoard(value||'all');
  else if(kind==='picks')body+='<div class="discovery-grid three">'+d.taskGuides.map(taskGuideCard).join('')+'</div>';
- else body+='<div class="board-panel"><div class="price-controls"><label>选择同一模型<select id="priceModel">'+d.models.filter(m=>m.id===id||d.quotes.some(q=>q.model===m.id)).map(m=>'<option value="'+m.id+'" '+(m.id===id?'selected':'')+'>'+esc(m.name)+'</option>').join('')+'</select></label><label>输入量（百万 Token）<input id="priceInput" type="number" min="0" max="1000000" step="0.1" value="1"></label><label>输出量（百万 Token）<input id="priceOutput" type="number" min="0" max="1000000" step="0.1" value="0.2"></label></div><div id="priceResults">'+(d.quotes.some(q=>q.model===id)?quoteTable(id):'<div class="empty"><b>暂无可比报价</b>正在补齐同规格数据，暂不生成排名。'+sourceLink(model(id).source,'查看模型规格 ↗')+'</div>')+'</div><p class="mini-meta">按估算文本费用升序排列。同价并列；渠道费用可能不同。USD，不换算人民币。此处缓存命中按 0 计算。输入量是多次短请求累计值，假设每次输入 4000 Token；单次长上下文不能直接套用此预算，请核对下方阶梯条件。</p>'+d.quotes.filter(q=>q.model===id).map(q=>'<p class="mini-meta">'+esc(q.channel)+'：'+esc(q.note)+'</p>').join('')+'</div>';
+ else body+='<div class="board-panel"><div class="price-controls"><label>选择同一模型<select id="priceModel">'+d.models.map(m=>'<option value="'+m.id+'" '+(m.id===id?'selected':'')+'>'+esc(m.name)+'</option>').join('')+'</select></label><label>累计输入量（百万 Token）<input id="priceInput" type="number" min="0" max="1000000" step="0.1" value="1"></label><label>累计输出量（百万 Token）<input id="priceOutput" type="number" min="0" max="1000000" step="0.1" value="0.2"></label></div>'+livePricePanel(id)+'<details><summary>已整理的参考报价（非实时）</summary><div id="priceResults">'+(d.quotes.some(q=>q.model===id)?quoteTable(id):'<div class="empty"><b>暂无可比报价</b>正在补齐同规格数据，暂不生成排名。'+sourceLink(model(id).source,'查看模型规格 ↗')+'</div>')+'</div><p class="mini-meta">按估算文本费用升序排列。同价并列；渠道费用可能不同。USD，不换算人民币。此处缓存命中按 0 计算。输入量是多次短请求累计值，假设每次输入 4000 Token；单次长上下文不能直接套用此预算，请核对下方阶梯条件。</p>'+d.quotes.filter(q=>q.model===id).map(q=>'<p class="mini-meta">'+esc(q.channel)+'：'+esc(q.note)+'</p>').join('')+'</details></div>';
  }else if(page==='offers'){
  const kind=arg||'all';body=header('FREE & LIMITED','免费与限时福利','免费、付费促销与邀请奖励分开展示。有效期以官方规则为准。')+tabs([['all','有效活动'],['free','免费'],['promo','付费优惠'],['reward','邀请奖励'],['expired','已结束']],kind,'offers/');
  const rows=d.offers.filter(o=>kind==='expired'?offerExpired(o):!offerExpired(o)&&(kind==='all'||o.type===kind));
@@ -225,6 +226,7 @@ export function renderDiscovery(route,providers=[]){
 function decodeSafe(s){try{return decodeURIComponent(s)}catch{return s}}
 export function relatedTutorials(p){const ids=p.id==='official-gemini'?['first-api','free-credits']:['choose-model','read-prices'];return '<div class="detail-block" style="margin-top:16px"><h4>CoVibe · 相关教程</h4>'+ids.map(id=>link('read/'+id,d.articles.find(a=>a.id===id).title)).join('<br>')+'</div>';}
 export function bindDiscovery({navigate,openProvider,estimate}){
+ bindLivePrices();
  document.querySelectorAll('[data-discover-provider]').forEach(el=>el.onclick=()=>openProvider(el.dataset.discoverProvider));
  document.querySelectorAll('[data-board-tab]').forEach(el=>el.onclick=()=>{
  document.querySelectorAll('[data-board-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===el)));

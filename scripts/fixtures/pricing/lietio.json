@@ -1,0 +1,90 @@
+{
+  "data": [
+    {
+      "model_name": "gpt-5.6-sol",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "completion_ratio": 6,
+      "enable_groups": [
+        "【GPT】不降智分组",
+        "【GPT】大厂官转 高缓不降智",
+        "【GPT】官key直连",
+        "plus/pro混池",
+        "福利分组",
+        "【GPT】PRO号池"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000\n  ? tier(\"标准 standard\", p * 5 + c * 30 + cr * 0.5 + cc * 6.25)\n  : tier(\"长上下文 long_context\", p * 10 + c * 45 + cr * 1 + cc * 12.5)"
+    },
+    {
+      "model_name": "gpt-6-astra",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5,
+      "enable_groups": [
+        "【GPT】PRO号池",
+        "【GPT】不降智分组",
+        "【GPT】大厂官转 高缓不降智",
+        "【GPT】官key直连",
+        "福利分组"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 10 + c * 50 + cr * 1 + cc * 12.5) : tier(\"long_context\", p * 20 + c * 75 + cr * 2 + cc * 25)"
+    }
+  ],
+  "group_ratio": {
+    "AWSB低模型": 4.5,
+    "AWSB稳定": 0.55,
+    "AWSB速刷": 5,
+    "CC可外接可蒸馏": 1.5,
+    "Claude Cursor渠道": 0.65,
+    "Grok Heavy": 0.3,
+    "default": 1,
+    "free": 0,
+    "gemini": 0.4,
+    "grok": 1,
+    "image2 1k 专用": 0.25,
+    "image2 4k": 1.5,
+    "kiro": 0.2,
+    "plus/pro混池": 0.16,
+    "【Claude】CCMAX": 0.9,
+    "【Claude】大厂官转": 0.9,
+    "【GPT】PRO号池": 0.25,
+    "【GPT】不降智分组": 0.4,
+    "【GPT】大厂官转 高缓不降智": 0.6,
+    "【GPT】官key直连": 0.7,
+    "国模": 0.4,
+    "特惠国模": 0.2,
+    "福利分组": 0.1,
+    "超分4k": 0.625
+  },
+  "success": true,
+  "usable_group": {
+    "AWSB低模型": "",
+    "AWSB稳定": "正宗awsb稳定车，全模型",
+    "AWSB速刷": "正宗awsb速刷车，无fable，非稳定车！",
+    "CC可外接可蒸馏": "",
+    "Claude Cursor渠道": "智商比kiro 高",
+    "Grok Heavy": "满血高智商",
+    "default": "默认分组",
+    "free": "免费渠道，不做任何保障",
+    "gemini": "",
+    "grok": "",
+    "image2 1k 专用": "不保证可用性",
+    "image2 4k": "不支持高并发",
+    "kiro": "",
+    "plus/pro混池": "",
+    "【Claude】CCMAX": "接入CC 缓存高",
+    "【Claude】大厂官转": "仅外接使用，偷渡来的渠道，发现断了就先等修复",
+    "【GPT】PRO号池": "稳定",
+    "【GPT】不降智分组": "满血不降智",
+    "【GPT】大厂官转 高缓不降智": "偷渡来的渠道，发现断了就先等修复",
+    "【GPT】官key直连": "满血官key 99缓存",
+    "国模": "",
+    "特惠国模": "",
+    "福利分组": "不保证可用性",
+    "超分4k": ""
+  }
+}

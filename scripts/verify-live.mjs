@@ -14,7 +14,7 @@ const decoder = new TextDecoder('utf-8', { fatal: true });
 async function get(path, mime) {
   const url = new URL(path, base);
   url.searchParams.set('release_check', Date.now().toString());
-  const response = await fetch(url, { signal: AbortSignal.timeout(20000), headers: { 'Cache-Control': 'no-cache' } });
+  const response = await fetch(url, { signal: AbortSignal.timeout(35000), headers: { 'Cache-Control': 'no-cache' } });
   assert.equal(response.status, 200, `${path}: HTTP ${response.status}`);
   assert(mime.test(response.headers.get('content-type') || ''), `${path}: wrong Content-Type`);
   const bytes = Buffer.from(await response.arrayBuffer());
@@ -31,9 +31,9 @@ async function verify() {
     get('data/affiliate-links.js', /(?:javascript|ecmascript)/i),
     get('discovery.js', /(?:javascript|ecmascript)/i),
     get('data/discovery.js', /(?:javascript|ecmascript)/i),
-    get('data/industry-workflows.js', /(?:javascript|ecmascript)/i)
+    get('data/industry-workflows.js', /(?:javascript|ecmascript)/i), get('live-prices.js', /(?:javascript|ecmascript)/i)
   ]);
-  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js', 'data/industry-workflows.js'];
+  const paths = ['index.html', 'styles.css', 'app.js', 'data/providers.js', 'data/relays.json', 'data/affiliate-programs.js', 'data/affiliate-links.js', 'discovery.js', 'data/discovery.js', 'data/industry-workflows.js', 'live-prices.js'];
   results.forEach((result, index) => {
     // Cloudflare may inject analytics into HTML; other static files must match exactly.
     if (index > 0) assert.equal(result.hash, manifest.assets[paths[index]], `${paths[index]}: stale or modified asset`);
@@ -45,6 +45,11 @@ async function verify() {
   assert.equal(data.sites.length, manifest.rawCatalogEntries);
   assert(data.sites.some(site => /[\u4e00-\u9fff]/.test(site.description || '')), 'Chinese content missing');
   assert(!/fetch\s*\(\s*['"]https?:/.test(results[2].text), 'Unexpected external runtime data source');
+  const prices = JSON.parse((await get('api/prices?model=sol56', /application\/json/i)).text);
+  assert.equal(prices.model.id, 'sol56');
+  assert.equal(prices.sources.length, 9);
+  assert(prices.sources.filter(s => s.status === 'ok').length >= 2, 'Fewer than two live pricing sources available');
+  assert(prices.sources.flatMap(s => s.quotes).every(q => q.source.startsWith('https://') && q.fetchedAt));
   console.log(`PASS ${base.href}: commit ${manifest.commit}; HTML/CSS/JS/JSON, UTF-8, ${data.sites.length} catalog records and asset hashes verified.`);
 }
 for (let attempt = 1; attempt <= attempts; attempt++) {
