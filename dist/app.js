@@ -1,3 +1,5 @@
+import {deliveryPage,bindDelivery} from './delivery-cost.js';
+import {probesPage,bindProbes} from './experience.js';
 import { providers, apps } from './data/providers.js';
 import {homeDiscovery,renderDiscovery,bindDiscovery,relatedTutorials} from './discovery.js';
 import { affiliatePrograms, affiliateCheckedAt } from './data/affiliate-programs.js';
@@ -222,7 +224,7 @@ function filterAffiliate(){
 
 function render(){
   const route=state.route;
-  app.innerHTML= route==='home'?home():route==='explore'?explore():route==='apps'?appsPage():route==='compare'?comparePage():route==='calculator'?calculatorPage():route==='affiliate'?affiliatePage():(renderDiscovery(route,providers)||home());
+  app.innerHTML= route==='home'?home():route==='explore'?explore():route==='apps'?appsPage():route==='compare'?comparePage():route==='calculator'?deliveryPage():route==='calculator/token'?calculatorPage():route==='probes'?probesPage():route==='affiliate'?affiliatePage():(renderDiscovery(route,providers)||home());
   $$('.topnav a').forEach(a=>a.classList.toggle('active',a.dataset.route===route||(a.dataset.route==='covibe'&&/^(covibe|read)\//.test(route))));
   bind(); renderDock(); if(route==='apps')filterApps(); if(route==='affiliate')filterAffiliate();
 }
@@ -235,7 +237,8 @@ function renderDock(){
 }
 
 function bind(){
-  bindDiscovery({navigate:setRoute,openProvider,estimate:(q,input,output)=>{state.calc={input:input*1e6,output:output*1e6,inputPrice:q.input,outputPrice:q.output,calls:1};setRoute('calculator')}});
+  bindDelivery();bindProbes();
+  bindDiscovery({navigate:setRoute,openProvider,estimate:(q,input,output)=>{state.calc={input:input*1e6,output:output*1e6,inputPrice:q.input,outputPrice:q.output,calls:1};setRoute('calculator/token')}});
   $('#affiliateQ')?.addEventListener('input',e=>{state.affiliateQuery=e.target.value;filterAffiliate()});
   $('#affiliateScope')?.addEventListener('change',e=>{state.affiliateScope=e.target.value;filterAffiliate()});
   $('#affiliateKind')?.addEventListener('change',e=>{state.affiliateKind=e.target.value;filterAffiliate()});

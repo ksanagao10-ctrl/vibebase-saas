@@ -1,8 +1,10 @@
+import {evidenceApi} from './evidence.js';
 import {parseQuery,collectPrices} from './pricing/service.js';
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 export default {
  async fetch(request,env){
   const url=new URL(request.url);
+  if(['/api/probes','/api/feedback'].includes(url.pathname)){try{return await evidenceApi(request,env);}catch{return json({error:'存储服务暂时不可用，请稍后重试'},503);}}
   if(url.pathname==='/api/prices'){
    if(request.method!=='GET')return json({error:'仅支持 GET'},405);
    let query;try{query=parseQuery(url);}catch(e){return json({error:e.message},400);}

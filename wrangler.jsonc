@@ -9,5 +9,13 @@
       "/api/*"
     ]
   },
-  "main": "src/worker.js"
+  "main": "src/worker.js",
+  "d1_databases": [
+    {
+      "binding": "EVIDENCE_DB",
+      "database_name": "vibebase-evidence",
+      "database_id": "78bdcc9e-7cc2-4dfc-9eb9-28d0d4c77bed",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

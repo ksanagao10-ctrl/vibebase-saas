@@ -101,3 +101,8 @@ npm run dev
 - 多模态固定目录单价的“每秒 / 字符 / 图片 / 任务”结算口径未经验证时，只显示基础单价，不作为每次请求总价排序。不能把文本 Token 规则直接套用到 ASR / TTS。
 - 复核快照：`node scripts/audit-price-coverage.mjs <snapshot-directory> [--update]`。目录包含 `sources.json`（id/name/url）和每个 id 的公开 JSON 响应。该命令生成 coverage.json；`--update` 更新目录覆盖数及排序。
 - 全部来源爬取：`npm run prices:crawl -- --model=sol56 --output=prices.json`。CLI 自动分批；`--sources=lietio,modelsell` 可限定来源。
+
+
+### 交付预算与经验档案（2026-09-22）
+
+新增 `/#calculator` 四种交付预算、`/#probes` 渠道证据档案，以及每篇 CoVibe 文章的版本信息和服务器反馈。原 Token 计算器迁移至 `/#calculator/token`。反馈和采样记录使用 `EVIDENCE_DB`，迁移文件在 migrations/；上线前先应用迁移并初始化服务器反馈盐。详细采样、账单核对与反馈审核方法见 [运营说明](docs/evidence-operations.md)。已有公开目录采样不等于付费推理测试，未取得的实际扣费显示未知。
