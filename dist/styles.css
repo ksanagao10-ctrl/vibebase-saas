@@ -298,3 +298,7 @@ input:focus,select:focus{border-color:var(--focus)}
 .relay-comparison-table tbody tr:hover>th,.relay-comparison-table tbody tr:hover>td{background:var(--bg,#f6f7f2)}
 @media(max-width:600px){.relay-comparison-table th,.relay-comparison-table td{padding:12px}.relay-comparison-table th:first-child{min-width:112px;max-width:112px}.relay-comparison-scroll{max-height:70vh}}
 .relay-comparison-table select,.relay-settlement input{border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;padding:9px}
+.relay-model-control{display:grid;gap:8px;align-content:start}.relay-model-control small{font-size:12px;color:var(--muted)}
+#openRelayModel{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;width:100%;min-height:50px}
+#openRelayModel:hover,#openRelayModel:focus-visible{border-color:var(--ink);outline:2px solid var(--accent);outline-offset:2px}
+#relayModelDialog .price-model-option{grid-template-columns:minmax(0,1fr) auto}#relayModelDialog .price-model-option small{overflow-wrap:anywhere;white-space:normal}
