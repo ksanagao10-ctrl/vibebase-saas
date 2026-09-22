@@ -35,6 +35,7 @@ export function bindRelayCompare(){
  dialog.addEventListener('close',()=>{opener.setAttribute('aria-expanded','false');opener.focus();});
  dialog.querySelector('[data-relay-close]').onclick=()=>dialog.close();
  search.oninput=drawChoices;
+ dialog.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();dialog.close();}});
  search.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const options=list.querySelectorAll('[data-relay-choice]');if(options.length===1)options[0].click();else options[0]?.focus();}};
  dialog.onclick=e=>{const category=e.target.closest('[data-relay-category]'),choice=e.target.closest('[data-relay-choice]');if(category){dialogCategory=category.dataset.relayCategory;drawChoices();}if(choice){form.elements.category.value=dialogCategory;form.elements.modelVersion.value=choice.dataset.relayChoice;note();dialog.close();refresh();}if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
  function note(){const m=priceCatalog.models.find(m=>m.id===form.elements.modelVersion.value);root.querySelector('#relaySelectedModel').textContent=m?.name||'点击选择或搜索模型';if(dialog.open)drawChoices();root.querySelector('#relayTextWorkload').hidden=!m?.text;root.querySelector('#relayModelNote').textContent=m?(m.text?'统一任务量估算；缓存命中为 0，长上下文阶梯自动匹配。':'当前模型仅比较目录报价；多模态规格与计费单位待核验。'):'此分类本次没有取得已映射模型，仍可在下方查看原始目录。';}
