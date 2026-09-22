@@ -2,9 +2,9 @@
 const number = v => (typeof v==='number'||typeof v==='string'&&v.trim()!=='')&&Number.isFinite(Number(v))&&Number(v)>=0 ? Number(v) : null;
 const own=(o,k)=>Object.prototype.hasOwnProperty.call(o||{},k);
 function linear(expr){
- const result={p:0,c:0,cr:0,cc:0};
+ const result={p:0,c:0,cr:0,cc:0,cc1h:0};
  for(const term of expr.trim().split('+')){
-  const m=term.trim().match(/^(p|c|cr|cc)\s*\*\s*(\d+(?:\.\d+)?)$/);
+  const m=term.trim().match(/^(p|c|cr|cc|cc1h)\s*\*\s*(\d+(?:\.\d+)?)$/);
   if(!m||own(result,'seen_'+m[1]))return null;
   result[m[1]]=Number(m[2]);result['seen_'+m[1]]=true;
  }
@@ -13,6 +13,8 @@ function linear(expr){
 }
 export function parseTierExpression(expr,inputTokens){
  if(typeof expr!=='string'||expr.length>3000)return null;
+ const single=expr.trim().match(/^tier\(\s*"[^"\\]{1,100}"\s*,\s*([^()]+)\)$/);
+ if(single){const rates=linear(single[1]);return rates?{...rates,tier:'统一单价',condition:'所有输入长度（站方单层公式）'}:null;}
  const m=expr.trim().match(/^len\s*(<=|<)\s*(\d+)\s*\?\s*tier\(\s*"[^"\\]{1,100}"\s*,\s*([^()]+)\)\s*:\s*tier\(\s*"[^"\\]{1,100}"\s*,\s*([^()]+)\)$/);
  if(!m)return null;
  const low=linear(m[3]),high=linear(m[4]);if(!low||!high)return null;

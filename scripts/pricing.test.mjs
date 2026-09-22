@@ -127,3 +127,19 @@ test('fixed expressions cannot execute code and multimodal base prices never mas
  payload.data[0].billing_expr='tier("standard", fixed(process.exit()))';
  assert.equal(normalizeNewApi(payload,source,m).quotes.length,0);
 });
+
+test('Fable 5.1 explicitly matches dotted and hyphenated versions without merging variant suffixes',()=>{
+ const model=priceModels.find(m=>m.id==='fable51');
+ assert(model.aliases.includes('claude-fable-5-1'));
+ for(const id of ['claude-fable-5','claude-fable-5-1-max','claude-fable-5-1-thinking','anthropic/claude-fable-5.1:batch'])assert(!model.aliases.includes(id));
+ const source={id:'sample',name:'Sample',url:'https://example.com/api/pricing'};
+ const row=id=>({model_name:id,enable_groups:['default'],quota_type:0,model_ratio:5,completion_ratio:5});
+ const result=normalizeNewApi({success:true,data:[row('claude-fable-5-1'),row('claude-fable-5.1'),row('claude-fable-5'),row('claude-fable-5-1-max')],group_ratio:{default:1}},source,model);
+ assert.equal(result.matched,2);assert.equal(result.quotes.length,2);assert.equal(result.quotes[0].input,10);assert.equal(result.quotes[0].output,50);
+});
+test('single-tier billing parses known cache terms but never executes unknown expressions',()=>{
+ const r=parseTierExpression('tier("base", p * 10 + c * 50 + cr * 0.25 + cc * 12.5 + cc1h * 20)',1000);
+ assert.equal(r.input,10);assert.equal(r.output,50);
+ for(const e of ['tier("x", p * 10 + c * 50 + unknown * 2)','tier("x", p * 10 + c * 50 + p * 2)','tier("x", p * 10 + c * 50 + fetch("https://bad"))'])assert.equal(parseTierExpression(e,1000),null);
+ const r2=parseTierExpression('len <= 200000 ? tier("a", p * 10 + c * 50 + cc1h * 20) : tier("b", p * 20 + c * 75 + cc1h * 30)',200001);assert.equal(r2.input,20);
+});
