@@ -280,3 +280,21 @@ input:focus,select:focus{border-color:var(--focus)}
 
 .relay-model-list{overflow-wrap:anywhere;max-height:280px;overflow:auto;line-height:1.9} #relayCompare .notice{margin-bottom:20px} #relayCompare select{max-width:100%} .relay-cash{font-size:18px;padding:16px;background:var(--bg);border-radius:12px}
 #relayTextWorkload[hidden]{display:none}
+/* Compare channels as aligned columns on desktop and a scrollable table on mobile. */
+.relay-comparison-scroll{overflow:auto;max-height:75vh;border:1px solid var(--line,#ddd);border-radius:16px;margin-bottom:24px}
+.relay-comparison-table{width:100%;min-width:1420px;border-collapse:separate;border-spacing:0;font-size:13px;text-align:left}
+.relay-comparison-table caption{text-align:left;padding:16px;font-weight:600;background:var(--surface,#fff)}
+.relay-comparison-table th,.relay-comparison-table td{padding:16px;vertical-align:top;border-bottom:1px solid var(--line,#ddd);background:var(--surface,#fff);min-width:140px}
+.relay-comparison-table thead th{position:sticky;top:0;z-index:2;background:var(--bg,#f6f7f2);font-size:12px;white-space:nowrap}
+.relay-comparison-table th:first-child{position:sticky;left:0;z-index:1;min-width:150px;border-right:1px solid var(--line,#ddd)}
+.relay-comparison-table thead th:first-child{z-index:3}
+.relay-comparison-table .mini-meta{display:block;margin:6px 0;font-weight:400;font-size:12px}
+.relay-comparison-table select{width:210px;margin-top:8px;padding:8px}
+.relay-comparison-table summary{cursor:pointer;white-space:nowrap;margin-bottom:8px}
+.relay-comparison-table details p{min-width:180px;max-width:290px;overflow-wrap:anywhere;font-weight:400}
+.relay-model-id{display:block;max-width:230px;overflow-wrap:anywhere}
+.relay-settlement{width:210px;display:grid;gap:10px;padding-top:8px}
+.relay-settlement label{font-size:12px}.relay-settlement input{width:100%;margin-top:4px}
+.relay-comparison-table tbody tr:hover>th,.relay-comparison-table tbody tr:hover>td{background:var(--bg,#f6f7f2)}
+@media(max-width:600px){.relay-comparison-table th,.relay-comparison-table td{padding:12px}.relay-comparison-table th:first-child{min-width:112px;max-width:112px}.relay-comparison-scroll{max-height:70vh}}
+.relay-comparison-table select,.relay-settlement input{border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;padding:9px}
