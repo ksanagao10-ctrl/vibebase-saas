@@ -41,7 +41,7 @@ async function verify() {
   const radar=JSON.parse((await get('api/radar', /application\/json/i)).text);
   assert(Array.isArray(radar.items)&&radar.sources.some(s=>s.id==='apify'));
   for(const id of ['twitterapi','x-api','apify-unlimited','apify-v2','twscrape','twikit'])assert(radar.collectors.some(s=>s.id===id), 'Missing collector '+id);
-  for(const path of ['radar.js','data/radar-sources.js']){const asset=await get(path,/(?:javascript|ecmascript)/i);assert.equal(asset.hash,manifest.assets[path]);}
+  for(const path of ['operations.js','data/operations.js','radar.js','data/radar-sources.js']){const asset=await get(path,/(?:javascript|ecmascript)/i);assert.equal(asset.hash,manifest.assets[path]);}
   assert(results[0].text.includes('VibeBase'), 'Wrong website served');
   assert(/charset=["']?utf-8/i.test(results[0].text), 'Missing UTF-8 declaration');
   const data = JSON.parse(results[4].text);

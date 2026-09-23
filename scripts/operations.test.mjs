@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {buildOperations,validateReview,beijingDay,operationDigest,operationTypes,checklistKey} from '../dist/data/operations.js';
+import {operationsPage} from '../dist/operations.js';
+const now=new Date('2026-09-24T10:00:00Z'),post={id:'2034694288651473335',url:'https://x.com/OpenAI/status/2034694288651473335',text:'API outage and price change',publishedAt:'2026-09-24T09:00:00Z',author:'OpenAI'};
+test('one post yields multiple review actions without inflating independent post count',()=>{const t=buildOperations([post,post],now);assert.equal(t.length,2);assert.equal(t[0].type.id,'outage');assert.equal(t[1].type.id,'price');assert(operationDigest(t,{},now).includes('1 条原帖'));assert.equal(operationTypes.length,10);});
+test('invalid, stale, future and hostile links do not create operational tasks',()=>{for(const change of [{url:'javascript:alert(1)'},{url:'https://evil.test/a'},{publishedAt:'bad'},{publishedAt:'2020-01-01'},{publishedAt:'2030-01-01'}])assert.equal(buildOperations([{...post,...change}],now).length,0);});
+test('completion requires evidence and notes, reproduction requires actual date',()=>{const base={status:'reviewed',evidence:'official',note:'已核对官方型号和价格，相关参数仍需复现。',url:'https://example.com/docs',testedAt:''};assert.equal(validateReview(base).status,'reviewed');for(const patch of [{url:'javascript:alert(1)'},{note:''},{url:''},{evidence:'invented'},{evidence:'reproduced',testedAt:'2026-02-30'},{evidence:'reproduced',testedAt:'2099-01-01'}])assert.throws(()=>validateReview({...base,...patch}));});
+test('Beijing daily boundary is independent of browser timezone; old tasks excluded from daily digest',()=>{assert.equal(beijingDay(new Date('2026-09-23T16:00:00Z')),'2026-09-24');const t=buildOperations([{...post,publishedAt:'2026-09-22T09:00:00Z'}],now);assert(t.length);assert(operationDigest(t,{},now).includes('0 条原帖'));});
+test('UI explicitly marks local-only workflow and does not fabricate live data',()=>{const page=operationsPage();assert(page.includes('只保存在当前浏览器'));assert(page.includes('不会自动修改'));assert(page.includes('opsQueue'));assert(!page.includes(post.url));});
+
+test('weekly review stays checked throughout the Beijing week',()=>{assert.equal(checklistKey('weekly',new Date('2026-09-24T00:00:00Z')),checklistKey('weekly',new Date('2026-09-25T00:00:00Z')));assert.notEqual(checklistKey('weekly',new Date('2026-09-28T00:00:00Z')),checklistKey('weekly',new Date('2026-09-25T00:00:00Z')));});

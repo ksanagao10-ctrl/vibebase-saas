@@ -9,7 +9,7 @@ export const radarSources=[
  {id:'twikit',name:'Twikit',kind:'开源自部署',quota:'软件免费，需自行维护登录状态',detail:'支持已有 Cookie 的本地采集与鉴权推送；与 twscrape 二选一即可。',url:'https://github.com/d60/twikit',pricing:'https://github.com/d60/twikit'}
 ];
 export const radarQueries=[
- '(OpenAI OR Claude OR Gemini OR DeepSeek OR Qwen) (API OR release OR launch) -filter:retweets',
- '(OpenRouter OR 中转站 OR 模型API) (免费 OR 限免 OR 降价 OR pricing OR free) -filter:retweets',
- '(LLM OR 大模型) (tutorial OR 教程 OR workflow OR 攻略) -filter:retweets'
+ '(OpenAI OR Claude OR Gemini OR DeepSeek OR Qwen) (API OR release OR launch OR pricing OR deprecated OR benchmark) -filter:retweets',
+ '(OpenRouter OR 中转站 OR 模型API) (免费 OR 限免 OR 降价 OR pricing OR free OR outage OR 故障 OR 兼容) -filter:retweets',
+ '(LLM OR 大模型) (tutorial OR 教程 OR workflow OR 攻略 OR 报错 OR feature OR "which model") -filter:retweets'
 ];

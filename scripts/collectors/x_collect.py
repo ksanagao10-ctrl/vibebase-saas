@@ -10,8 +10,8 @@ import urllib.request
 
 QUERIES = [
     '(OpenAI OR Claude OR Gemini OR DeepSeek OR Qwen) API -filter:retweets',
-    '(OpenRouter OR 中转站) (免费 OR pricing OR API) -filter:retweets',
-    '(LLM OR 大模型) (tutorial OR 教程 OR workflow) -filter:retweets',
+    '(OpenRouter OR 中转站) (免费 OR pricing OR API OR outage OR 故障 OR 兼容) -filter:retweets',
+    '(LLM OR 大模型) (tutorial OR 教程 OR workflow OR 报错 OR feature) -filter:retweets',
 ]
 
 def iso(value):
