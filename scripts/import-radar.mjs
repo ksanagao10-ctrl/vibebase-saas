@@ -9,5 +9,5 @@ let rows;try{rows=JSON.parse(text);}catch{rows=text.trim().split('\n').map(line=
 const posts=normalizePosts(rows,source);if(!posts.length)throw Error('No valid recent AI posts; no SQL written');
 const quoted=JSON.stringify(posts).replace(/'/g,"''");
 // This explicit import replaces the current snapshot. Review before applying.
-writeFileSync(output,`-- Replace radar snapshot with ${posts.length} validated posts. Review before applying.\nINSERT INTO app_config(key,value) VALUES('radar:items','${quoted}') ON CONFLICT(key) DO UPDATE SET value=excluded.value;\n`,{mode:0o600});
+writeFileSync(output,`-- Replace radar snapshot with ${posts.length} validated posts. Review before applying.\nINSERT INTO app_config(key,value) VALUES('radar:${source}:items','${quoted}') ON CONFLICT(key) DO UPDATE SET value=excluded.value;\n`,{mode:0o600});
 console.log(`Prepared ${posts.length} posts. Review the SQL before applying to D1. No credentials included.`);

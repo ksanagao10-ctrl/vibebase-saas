@@ -7,7 +7,7 @@ export default {
  async scheduled(event,env,ctx){ctx.waitUntil(collectRadar(env));},
  async fetch(request,env){
   const url=new URL(request.url);
-  if(url.pathname==='/api/radar'){try{return await radarApi(request,env);}catch{return json({error:'信息存储暂时不可用'},503);}}
+  if(['/api/radar','/api/radar/ingest'].includes(url.pathname)){try{return await radarApi(request,env);}catch{return json({error:'信息存储暂时不可用'},503);}}
   if(['/api/probes','/api/feedback'].includes(url.pathname)){try{return await evidenceApi(request,env);}catch{return json({error:'存储服务暂时不可用，请稍后重试'},503);}}
   if(['/api/relay-catalog','/api/relay-costs'].includes(url.pathname)){
    if(request.method!=='GET')return json({error:'仅支持 GET'},405);
