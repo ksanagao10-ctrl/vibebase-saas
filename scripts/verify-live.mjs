@@ -38,6 +38,9 @@ async function verify() {
     // Cloudflare may inject analytics into HTML; other static files must match exactly.
     if (index > 0) assert.equal(result.hash, manifest.assets[paths[index]], `${paths[index]}: stale or modified asset`);
   });
+  const radar=JSON.parse((await get('api/radar', /application\/json/i)).text);
+  assert(Array.isArray(radar.items)&&radar.sources.some(s=>s.id==='apify'));
+  for(const path of ['radar.js','data/radar-sources.js']){const asset=await get(path,/(?:javascript|ecmascript)/i);assert.equal(asset.hash,manifest.assets[path]);}
   assert(results[0].text.includes('VibeBase'), 'Wrong website served');
   assert(/charset=["']?utf-8/i.test(results[0].text), 'Missing UTF-8 declaration');
   const data = JSON.parse(results[4].text);
