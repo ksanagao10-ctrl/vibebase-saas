@@ -47,7 +47,7 @@ export function mergePosts(old,rows,now=new Date()){
 async function read(db,key,fallback){const row=await db.prepare('SELECT value FROM app_config WHERE key=?').bind(key).first();return row?JSON.parse(row.value):fallback;}
 async function write(db,key,value){await db.prepare('INSERT INTO app_config(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value').bind(key,JSON.stringify(value)).run();}
 async function fetchJson(url,init={}){
- const res=await fetch(url,{...init,redirect:'error',signal:AbortSignal.timeout(20000)});
+ const res=await fetch(url,{...init,redirect:'manual',signal:AbortSignal.timeout(20000)});
  if(!res.ok)throw Error(`Upstream HTTP ${res.status}`);
  const reader=res.body.getReader();let size=0,chunks=[];
  try{while(true){const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>2000000)throw Error('Response too large');chunks.push(value);}}finally{await reader.cancel().catch(()=>{});}

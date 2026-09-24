@@ -29,7 +29,7 @@ test('missing free-plan confirmation cannot start a paid run',async()=>{
 test('daily reservation, server-side budget, pending polling and real result persistence',async()=>{
  const original=globalThis.fetch,env={EVIDENCE_DB:db(),APIFY_TOKEN:'secret',APIFY_FREE_PLAN_CONFIRMED:'true'};let starts=0;
  globalThis.fetch=async(url,init)=>{
-  assert.equal(init.headers.Authorization,'Bearer secret');assert(!url.includes('secret'));
+  assert.equal(init.redirect,'manual');assert.equal(init.headers.Authorization,'Bearer secret');assert(!url.includes('secret'));
   if(init.method==='POST'){starts++;const u=new URL(url);assert.equal(u.searchParams.get('maxTotalChargeUsd'),'0.03');assert.equal(u.searchParams.get('maxItems'),'45');assert.equal(JSON.parse(init.body).maxResults,15);return Response.json({data:{id:'testrun'}});}
   if(url.includes('actor-runs'))return Response.json({data:{status:'SUCCEEDED',defaultDatasetId:'testdataset'}});
   return Response.json([row,{...row,isMock:true}]);
@@ -87,4 +87,10 @@ test('dated validation retry permits one extra attempt and retains monthly cap',
  const original=globalThis.fetch,env={EVIDENCE_DB:db(),TWITTERAPI_KEY:'s',TWITTERAPI_ENABLED:'true',TWITTERAPI_MONTHLY_REQUEST_LIMIT:'2'};let calls=0;
  globalThis.fetch=async()=>{calls++;return Response.json({tweets:[]});};
  try{await collectRadar(env,now);env.RADAR_VALIDATION_RETRY=now.toISOString().slice(0,10);await collectRadar(env,now);await collectRadar(env,now);assert.equal(calls,2);}finally{globalThis.fetch=original;}
+});
+
+test('redirect response is rejected without following credentials',async()=>{
+ const original=globalThis.fetch,env={EVIDENCE_DB:db(),APIFY_TOKEN:'secret',APIFY_FREE_PLAN_CONFIRMED:'true'};
+ globalThis.fetch=async(url,init)=>{assert.equal(init.redirect,'manual');return new Response(null,{status:302,headers:{Location:'https://untrusted.test'}});};
+ try{await collectRadar(env,now);const result=await(await radarApi(new Request('https://example.test/api/radar'),env)).json();assert(result.collectors[0].message.includes('HTTP 302'));}finally{globalThis.fetch=original;}
 });
