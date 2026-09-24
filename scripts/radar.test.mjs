@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DatabaseSync} from 'node:sqlite';
-import {normalizePosts,mergePosts,radarApi,collectRadar} from '../src/radar.js';
+import {normalizePosts,mergePosts,radarApi,collectRadar,safeCollectionError} from '../src/radar.js';
 import {makeRadarDraft} from '../dist/radar.js';
 const now=new Date(),row={tweetId:'2034694288651473335',url:'https://x.com/OpenAI/status/2034694288651473335',text:'OpenAI API release and pricing announcement',createdAt:now.toISOString(),success:true};
 function db(){
@@ -76,4 +76,15 @@ test('V2 only starts on weekly schedule, missing opt-in never calls Apify',async
  const original=globalThis.fetch;let calls=0;globalThis.fetch=async()=>{calls++;return Response.json({data:{id:'weekly'}});};
  const env={EVIDENCE_DB:db(),APIFY_TOKEN:'s',APIFY_V2_ENABLED:'true'};
  try{await collectRadar(env,new Date('2026-09-22'));assert.equal(calls,0);await collectRadar(env,new Date('2026-09-21'));assert.equal(calls,1);}finally{globalThis.fetch=original;}
+});
+
+test('diagnostic errors expose status and categories without upstream credentials',()=>{
+ assert.equal(safeCollectionError(Error('Upstream HTTP 401')),'上游 HTTP 401');
+ assert.equal(safeCollectionError(Error('Invalid header secret-value')),'请求认证头格式无效');
+ assert(!safeCollectionError(Error('credential private-key')).includes('private-key'));
+});
+test('dated validation retry permits one extra attempt and retains monthly cap',async()=>{
+ const original=globalThis.fetch,env={EVIDENCE_DB:db(),TWITTERAPI_KEY:'s',TWITTERAPI_ENABLED:'true',TWITTERAPI_MONTHLY_REQUEST_LIMIT:'2'};let calls=0;
+ globalThis.fetch=async()=>{calls++;return Response.json({tweets:[]});};
+ try{await collectRadar(env,now);env.RADAR_VALIDATION_RETRY=now.toISOString().slice(0,10);await collectRadar(env,now);await collectRadar(env,now);assert.equal(calls,2);}finally{globalThis.fetch=original;}
 });

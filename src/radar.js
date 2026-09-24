@@ -1,6 +1,16 @@
 import {radarSources,radarCheckedAt,radarQueries} from '../dist/data/radar-sources.js';
 
 import {collectors,sourceEnabled,requestFor,extractRows} from './radar-adapters.js';
+export function safeCollectionError(error){
+ const message=String(error?.message||'');
+ const http=message.match(/^Upstream HTTP (\d{3})$/);
+ if(http)return '上游 HTTP '+http[1];
+ if(/header/i.test(message))return '请求认证头格式无效';
+ if(error?.name==='TimeoutError'||error?.name==='AbortError')return '上游请求超时';
+ if(error instanceof SyntaxError)return '上游返回了非 JSON 数据';
+ if(/Invalid .*response|Invalid dataset|Missing run ID/.test(message))return '上游响应结构不符';
+ return '服务端请求异常（'+(['TypeError','RangeError'].includes(error?.name)?error.name:'未知类型')+'）';
+}
 const ITEMS='radar:items', stateKey=id=>'radar:'+id+':state', itemKey=id=>'radar:'+id+':items';
 export const ACTOR='lance_api~x-tweet-scraper-api';
 const response=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
@@ -62,7 +72,10 @@ async function collectSource(env,source,now){
  try{
   if(state.status==='running'){await finishRun(env,source,state,now);return;}
   if(source.weekly&&now.getUTCDay()!==1)return;
-  const day=now.toISOString().slice(0,10),lock=source.id==='apify'?'radar:day:'+day:`radar:${source.id}:day:${day}`;
+  const day=now.toISOString().slice(0,10),baseLock=source.id==='apify'?'radar:day:'+day:`radar:${source.id}:day:${day}`;
+  // A dated operator retry remains idempotent and counts against the monthly cap.
+  const retry=env.RADAR_VALIDATION_RETRY===day?':validation-retry':'';
+  const lock=baseLock+retry;
   const reserved=await db.prepare('INSERT OR IGNORE INTO app_config(key,value) VALUES(?,?)').bind(lock,now.toISOString()).run();if(!reserved.meta?.changes)return;
   if(source.limit){
    const budget=await db.prepare("INSERT INTO app_config(key,value) VALUES(?, '1') ON CONFLICT(key) DO UPDATE SET value=CAST(CAST(value AS INTEGER)+1 AS TEXT) WHERE CAST(value AS INTEGER) < ?").bind(`radar:${source.id}:month:${day.slice(0,7)}`,Number(env[source.limit])).run();
@@ -72,7 +85,7 @@ async function collectSource(env,source,now){
   const {url,init}=requestFor(source,env,now),result=await fetchJson(url,init);
   if(source.actor){if(!result.data?.id)throw Error('Missing run ID');await write(db,stateKey(source.id),{...state,status:'running',runId:result.data.id,message:'采集中，下一次调度检查结果'});}
   else await saveRows(env,source.id,extractRows(source.id,result),state,now);
- }catch{await write(db,stateKey(source.id),{...state,status:'error',message:'采集失败，请检查该来源控制台的权限、余额和运行记录；今日不重复启动',checkedAt:now.toISOString()});}
+ }catch(error){await write(db,stateKey(source.id),{...state,status:'error',message:safeCollectionError(error)+'；请检查来源控制台，今日不重复启动',checkedAt:now.toISOString()});}
 }
 export async function collectRadar(env,now=new Date()){
  if(!env.EVIDENCE_DB)return;
